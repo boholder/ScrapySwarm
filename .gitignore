@@ -1,3 +1,5 @@
 *.bat
 *.jl
 .idea
+ScrapySwarm/spiders/__pycache__
+ScrapySwarm/__pycache__
