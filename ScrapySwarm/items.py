@@ -13,6 +13,7 @@ class BaiduSearchItem(Item):
     # name = Field()
     url = Field()   # 新闻项的url
     crawl_time = Field()
+    site = Field()
 
 
 class ChinaNewsItem(Item):

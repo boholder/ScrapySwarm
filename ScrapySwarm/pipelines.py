@@ -12,17 +12,18 @@ from scrapy.conf import settings
 from scrapy.exceptions import DropItem
 
 
-class ScrapyswarmPipeline(object):
+class MongoDBPipeline(object):
     def __init__(self):
         connection = pymongo.MongoClient \
             (settings['LOCAL_MONGO_HOST'], settings['LOCAL_MONGO_PORT'])
         db = connection[settings['MONGO_DB_NAME']]
+
         self.bdsearch = db[settings['COLL_BAIDU_SREACH']]
-        self.Information = db[settings["Information"]]
-        self.Tweets = db[settings["Tweets"]]
-        self.Comments = db[settings["Comments"]]
-        self.Relationships = db[settings["Relationships"]]
-        self.Chinanews = db[settings["Chinanews"]]
+        self.Information = db[settings['COLL_WEIBO_INFOMATION']]
+        self.Tweets = db[settings['COLL_WEIBO_TWEETS']]
+        self.Comments = db[settings['COLL_WEIBO_COMMENTS']]
+        self.Relationships = db[settings['COLL_WEIBO_RELATIONSHIPS']]
+        self.Chinanews = db[settings['COLL_CHINA_NEWS']]
 
     def process_item(self, item, spider):
         # self.collection.insert(dict(item))
@@ -46,7 +47,6 @@ class ScrapyswarmPipeline(object):
 
     @staticmethod
     def insert_item(collection, item):
-
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:
