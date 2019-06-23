@@ -31,7 +31,7 @@ class China(Spider):
     def start_requests(self):
         # start_uids = [
         #     '2803301701',  # 人民日报
-        #     '1699432410'  # 新华社
+        #     '1699432410'  # 新华�
         # ]
         for i in range(300):
             q = i * 10
@@ -88,7 +88,7 @@ class China(Spider):
                 imgs.append(ire.findall(i)[0])
                 p=p.replace(i,'&&此处有图片，url:'+imgs[-1]+",存储名为:"+(url.split('/')[-1])+imgs[-1].split('/')[-1]+'&&')
             content = content + p.strip()
-        time = response.xpath('//div[@class="left-t"]/text()').get().replace('来源：', "").strip()
+        time = response.xpath('//div[@class="left-t"]/text()').get().replace('来源', "").strip()
 
         item['title'] = title
         item['content'] = content

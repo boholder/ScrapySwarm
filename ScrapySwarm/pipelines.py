@@ -56,5 +56,5 @@ class ScrapyswarmPipeline(object):
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:
-            # 有重复数据
+            # 有重复数�
             pass

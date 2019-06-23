@@ -3,3 +3,5 @@
 .idea
 ScrapySwarm/spiders/__pycache__
 ScrapySwarm/__pycache__
+Stiky.txt
+*.orig

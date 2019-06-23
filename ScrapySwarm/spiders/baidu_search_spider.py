@@ -13,7 +13,7 @@
 import scrapy
 import re
 import time
-
+from ScrapySwarm.items import BaiduSearchItem
 
 class BaiduSearchSpider(scrapy.Spider):
     name = 'baidusearch'
@@ -27,17 +27,18 @@ class BaiduSearchSpider(scrapy.Spider):
             querystr = '中美贸易'
         if site is None:
             site = 'news.qq.com'
-        url = self.baidusearchurlGen(querystr, site, 0)
+        url = self.baidusearchurlGen(self, querystr, site, 0)
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         # ===get info from every result===
-        for item in response.xpath('//div[@class=\'result c-container \']\
+        for oneresult in response.xpath('//div[@class=\'result c-container \']\
                                     /h3/a/@href'):
-            itemurl = item.get()
-            time = self.getCurrentTime()
-            site = self.getOriSiteUrl(self, response.url)
-            yield {'url': itemurl, 'crawl_time': time, 'site': site}
+            item = BaiduSearchItem()
+            item['url'] = oneresult.get()
+            item['crawl_time'] = self.getCurrentTime(self)
+            item['site'] = self.getOriSiteUrl(self, response.url)
+            yield item
 
         # ===crawl next page, if exist===
 
@@ -103,14 +104,18 @@ class BaiduSearchSpider(scrapy.Spider):
     '''
     获取搜索时的原站点网址 exm: news.qq.com
     
+    @ param {string} resurl response.url 
+                            exm: https://www.baidu.com/s?
+                                wd="中美贸易" site%3Anews.qq.com&pn=0
+                                
     @ return {string}
     '''
 
     @staticmethod
     def getOriSiteUrl(self, resurl):
         # 'site%3A{site domain}&pn'
-        sitecharindex = re.search('site%3A.*&pn', resurl).span()
-        strstart = sitecharindex[0] + 7
-        strend = sitecharindex[1] - 3
+        sitecharindex = re.search('site:.*&pn', resurl).span()
+        strstart = int(sitecharindex[0]) + 5
+        strend = int(sitecharindex[1]) - 3
         # '{site domain}'
-        return resurl[strstart, strend]
+        return resurl[strstart:strend]

@@ -14,21 +14,19 @@ BOT_NAME = 'ScrapySwarm'
 SPIDER_MODULES = ['ScrapySwarm.spiders']
 NEWSPIDER_MODULE = 'ScrapySwarm.spiders'
 
-
-
 # MongoDB setting
 LOCAL_MONGO_HOST = '127.0.0.1'
 LOCAL_MONGO_PORT = 27017
 MONGO_DB_NAME = 'WebData'
-ITEM_PIPELINES = {
-    'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300,
-}
-COLL_BAIDU_SREACH= 'baidu_search_results'
-COLL_WEIBO_INFOMATION='weibo_infomation'
-COLL_WEIBO_TWEETS='weibo_tweets'
-COLL_WEIBO_COMMENTS='weibo_comments'
-COLL_WEIBO_RELATIONSHIPs='weibo_relationships'
-COLL_CHINA_NEWS='news_china'
+
+COLL_BAIDU_SREACH = 'baidu_search_results'
+COLL_WEIBO_INFOMATION = 'weibo_infomation'
+COLL_WEIBO_TWEETS = 'weibo_tweets'
+COLL_WEIBO_COMMENTS = 'weibo_comments'
+COLL_WEIBO_RELATIONSHIPS = 'weibo_relationships'
+COLL_CHINA_NEWS = 'news_china'
+
+ITEM_PIPELINES = {'ScrapySwarm.pipelines.MongoDBPipeline': 300, }
 
 # ===weibo setting===
 
@@ -39,7 +37,7 @@ COLL_CHINA_NEWS='news_china'
 #     'Cookie':'_T_WM=f7fc1975334e2610dd77c4a949caaa2e; __guid=78840338.2690867225963806000.1561098303394.3926; TMPTOKEN=xWotEi1ho4BsQadI1WKh50PW3wxeD0MXriFaU01sHfs7ddDfYkc6g8QC0brRQ2iI; SUB=_2A25wCAggDeRhGeBM6lER8yzJzD2IHXVT8qhorDV6PUJbkdAKLUnFkW1NRRuUuWjxLqOlReVo19AJKlLVFf0K-Qcb; SUHB=0h1J3h4MnoA8ye; SCF=AqNspA5hvpJAB-QOIpSEFOvS7uTz2C-xcjU2d4im-izONxHBJbLovO6aDcPk7st0qIDcNhWWOxTPgrhwENoLpoA.; SSOLoginState=1561098352; monitor_count=2'
 # }
 #
-# # 当前是单账号，所以下面的 CONCURRENT_REQUESTS 和 DOWNLOAD_DELAY 请不要修改
+# # 当前是单账号，所以下面的 CONCURRENT_REQUESTS �DOWNLOAD_DELAY 请不要修�
 #
 # CONCURRENT_REQUESTS = 16
 #
@@ -51,79 +49,81 @@ COLL_CHINA_NEWS='news_china'
 #     'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': None
 # }
 #
-
+# ITEM_PIPELINES = {
+#     'sina.pipelines.MongoDBPipeline': 300,
+# }
 # ===weibo setting END===
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'ScrapySwarm (+http://www.yourdomain.com)'
+# USER_AGENT = 'ScrapySwarm (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+# CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+# DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
+# TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
+# DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
-#}
+# }
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
+# SPIDER_MIDDLEWARES = {
 #    'ScrapySwarm.middlewares.ScrapyswarmSpiderMiddleware': 543,
-#}
+# }
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+# DOWNLOADER_MIDDLEWARES = {
 #    'ScrapySwarm.middlewares.ScrapyswarmDownloaderMiddleware': 543,
-#}
+# }
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
+# EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
+# }
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
+# ITEM_PIPELINES = {
 #    'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300,
-#}
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+# AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+# AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-#AUTOTHROTTLE_MAX_DELAY = 60
+# AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
-#AUTOTHROTTLE_DEBUG = False
+# AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = 'httpcache'
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 0
+# HTTPCACHE_DIR = 'httpcache'
+# HTTPCACHE_IGNORE_HTTP_CODES = []
+# HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
