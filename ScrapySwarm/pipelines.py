@@ -4,26 +4,26 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import os
 
 import pymongo
 from pymongo.errors import DuplicateKeyError
 import ScrapySwarm.items as items
-from scrapy.conf import settings
-from scrapy.exceptions import DropItem
+from ScrapySwarm import settings
 
 
-class MongoDBPipeline(object):
+class ScrapyswarmPipeline(object):
+
     def __init__(self):
-        connection = pymongo.MongoClient \
-            (settings['LOCAL_MONGO_HOST'], settings['LOCAL_MONGO_PORT'])
-        db = connection[settings['MONGO_DB_NAME']]
-
-        self.bdsearch = db[settings['COLL_BAIDU_SREACH']]
-        self.Information = db[settings['COLL_WEIBO_INFOMATION']]
-        self.Tweets = db[settings['COLL_WEIBO_TWEETS']]
-        self.Comments = db[settings['COLL_WEIBO_COMMENTS']]
-        self.Relationships = db[settings['COLL_WEIBO_RELATIONSHIPS']]
-        self.Chinanews = db[settings['COLL_CHINA_NEWS']]
+        from ScrapySwarm.settings import LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPs,COLL_WEIBO_TWEETS
+        connection = pymongo.MongoClient(LOCAL_MONGO_HOST,LOCAL_MONGO_PORT)
+        db = connection[MONGO_DB_NAME]
+        self.bdsearch = db[COLL_BAIDU_SREACH]
+        self.Information = db[COLL_WEIBO_INFOMATION]
+        self.Tweets = db[COLL_WEIBO_TWEETS]
+        self.Comments = db[COLL_WEIBO_COMMENTS]
+        self.Relationships = db[COLL_WEIBO_RELATIONSHIPs]
+        self.Chinanews = db[COLL_CHINA_NEWS]
 
     def process_item(self, item, spider):
         # self.collection.insert(dict(item))
@@ -42,13 +42,18 @@ class MongoDBPipeline(object):
             self.insert_item(self.Comments, item)
         elif isinstance(item, items.ChinaNewsItem):
             self.insert_item(self.Chinanews, item)
+            # for img in item['imgs']:
+            #     image_path = os.path.join(self.image_dir, '{}.jpg'.format(zhihu_id))
+            #     # download_pic.delay(image_url, image_path)
+
 
         return item
 
     @staticmethod
     def insert_item(collection, item):
+
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:
-            # 有重复数据
+            # 有重复数�
             pass

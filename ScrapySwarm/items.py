@@ -22,6 +22,7 @@ class ChinaNewsItem(Item):
     content=Field()
     title=Field()
     time=Field()
+    imgs=Field()
 
 class TweetsItem(Item):
     """ 微博信息 """
