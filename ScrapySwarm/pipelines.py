@@ -10,16 +10,12 @@ import pymongo
 from pymongo.errors import DuplicateKeyError
 from  ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
-from ScrapySwarm import settings
 
 
-class MongoDBPipeline(object):
+class ScrapyswarmPipeline(object):
 
     def __init__(self):
-        from ScrapySwarm.settings import \
-            LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,\
-            COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,\
-            COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPS,COLL_WEIBO_TWEETS
+        from ScrapySwarm.settings import LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPS,COLL_WEIBO_TWEETS
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST,LOCAL_MONGO_PORT)
         db = connection[MONGO_DB_NAME]
         self.bdsearch = db[COLL_BAIDU_SREACH]
@@ -59,5 +55,5 @@ class MongoDBPipeline(object):
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:
-            # 有重复数
+            # 有重复数�
             pass

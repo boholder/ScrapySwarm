@@ -27,7 +27,7 @@ COLL_WEIBO_COMMENTS = 'weibo_comments'
 COLL_WEIBO_RELATIONSHIPS = 'weibo_relationships'
 COLL_CHINA_NEWS = 'news_china'
 
-ITEM_PIPELINES = {'ScrapySwarm.pipelines.MongoDBPipeline': 300, }
+ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 
 # ===weibo setting===
 
