@@ -14,6 +14,7 @@ import scrapy
 import re
 import time
 
+
 class BaiduSearchSpider(scrapy.Spider):
     name = 'baidusearch'
 
@@ -34,8 +35,9 @@ class BaiduSearchSpider(scrapy.Spider):
         for item in response.xpath('//div[@class=\'result c-container \']\
                                     /h3/a/@href'):
             itemurl = item.get()
-            time=self.getCurrentTime()
-            yield {'url':itemurl, 'crawl_time':time}
+            time = self.getCurrentTime()
+            site = self.getOriSiteUrl(self, response.url)
+            yield {'url': itemurl, 'crawl_time': time, 'site': site}
 
         # ===crawl next page, if exist===
 
@@ -58,8 +60,8 @@ class BaiduSearchSpider(scrapy.Spider):
 
         if nextpn:
             # get '...&pn=' sub string
-            pncharindex=re.search('&pn=',response.url).span()[1]
-            nexturl = response.url[:pncharindex]+ str((nextpn - 1) * 10)
+            pncharindex = re.search('&pn=', response.url).span()[1]
+            nexturl = response.url[:pncharindex] + str((nextpn - 1) * 10)
             yield response.follow(nexturl, self.parse)
 
     '''
@@ -81,6 +83,7 @@ class BaiduSearchSpider(scrapy.Spider):
     @ return {string}         exm: https://www.baidu.com/s?
                                 wd="中美贸易" site%3Anews.qq.com&pn=0
     '''
+
     @staticmethod
     def baidusearchurlGen(self, querystr, site, pagenumber):
         # 注意https 有一个防爬虫机制，脚本加载真正数据，只能爬个壳。
@@ -92,16 +95,22 @@ class BaiduSearchSpider(scrapy.Spider):
     
     @ return {string} format: YYYY-MM-DD-HH-MM-SS
     '''
+
     @staticmethod
     def getCurrentTime(self):
         return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
 
     '''
-    获取搜索时的原站点网址 exm:news.qq.com
+    获取搜索时的原站点网址 exm: news.qq.com
     
     @ return {string}
     '''
+
     @staticmethod
     def getOriSiteUrl(self, resurl):
-        sitecharindex=re.search('&pn=', resurl).span()
-        return None
+        # 'site%3A{site domain}&pn'
+        sitecharindex = re.search('site%3A.*&pn', resurl).span()
+        strstart = sitecharindex[0] + 7
+        strend = sitecharindex[1] - 3
+        # '{site domain}'
+        return resurl[strstart, strend]
