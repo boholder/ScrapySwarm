@@ -8,6 +8,7 @@ import os
 
 import pymongo
 from pymongo.errors import DuplicateKeyError
+from  ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
 from ScrapySwarm import settings
 
