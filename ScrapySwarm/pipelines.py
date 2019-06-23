@@ -9,6 +9,7 @@ import pymongo
 from pymongo.errors import DuplicateKeyError
 import ScrapySwarm.items as items
 from scrapy.conf import settings
+from scrapy.exceptions import DropItem
 
 
 class ScrapyswarmPipeline(object):
@@ -24,23 +25,34 @@ class ScrapyswarmPipeline(object):
         self.Chinanews = db[settings["Chinanews"]]
 
     def process_item(self, item, spider):
-        """ 判断item的类型，并作相应的处理，再入数据库 """
-        if isinstance(item, items.BaiduSearchItem):
-            self.insert_item(self.bdsearch, item)
-        elif isinstance(item, items.RelationshipsItem):
-            self.insert_item(self.Relationships, item)
-        elif isinstance(item, items.TweetsItem):
-            self.insert_item(self.Tweets, item)
-        elif isinstance(item, items.InformationItem):
-            self.insert_item(self.Information, item)
-        elif isinstance(item, items.CommentItem):
-            self.insert_item(self.Comments, item)
-        elif isinstance(item, items.ChinaNewsItem):
-            self.insert_item(self.Chinanews, item)
+        valid = True
+        for data in item:
+            if not data:
+                valid = False
+                raise DropItem("Missing {0}!".format(data))
+        if valid:
+            # self.collection.insert(dict(item))
+            # log.msg("Question added to MongoDB database!",
+            #         level=log.DEBUG, spider=spider)
+
+            if isinstance(item, items.BaiduSearchItem):
+                self.insert_item(self.bdsearch, item)
+            elif isinstance(item, items.RelationshipsItem):
+                self.insert_item(self.Relationships, item)
+            elif isinstance(item, items.TweetsItem):
+                self.insert_item(self.Tweets, item)
+            elif isinstance(item, items.InformationItem):
+                self.insert_item(self.Information, item)
+            elif isinstance(item, items.CommentItem):
+                self.insert_item(self.Comments, item)
+            elif isinstance(item, items.ChinaNewsItem):
+                self.insert_item(self.Chinanews, item)
+
         return item
 
     @staticmethod
     def insert_item(collection, item):
+
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:

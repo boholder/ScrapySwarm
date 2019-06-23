@@ -8,7 +8,7 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.selector import Selector
 from scrapy.http import Request
 from scrapy.utils.project import get_project_settings
-from ScrapySwarm.items import TweetsItem, InformationItem, RelationshipsItem, CommentItem, NewsItem
+from ScrapySwarm.items import TweetsItem, InformationItem, RelationshipsItem, CommentItem, ChinaNewsItem
 from ScrapySwarm.spiders.weibo_utils import time_fix, extract_weibo_content, extract_comment_content
 import time
 

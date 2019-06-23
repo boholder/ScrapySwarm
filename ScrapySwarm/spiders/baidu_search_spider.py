@@ -37,7 +37,8 @@ class BaiduSearchSpider(scrapy.Spider):
             time=self.getCurrentTime()
             yield {'url':itemurl, 'crawl_time':time}
 
-        # ===crawl next page if exist===
+        # ===crawl next page, if exist===
+
         # pn = page number
         currentpn = response.xpath('//div[@id=\'page\']/\
                         strong/span[@class=\'pc\']/text()')
@@ -80,6 +81,7 @@ class BaiduSearchSpider(scrapy.Spider):
     @ return {string}         exm: https://www.baidu.com/s?
                                 wd="中美贸易" site%3Anews.qq.com&pn=0
     '''
+    @staticmethod
     def baidusearchurlGen(self, querystr, site, pagenumber):
         # 注意https 有一个防爬虫机制，脚本加载真正数据，只能爬个壳。
         return "http://www.baidu.com/s?wd=\"" \
@@ -90,5 +92,16 @@ class BaiduSearchSpider(scrapy.Spider):
     
     @ return {string} format: YYYY-MM-DD-HH-MM-SS
     '''
+    @staticmethod
     def getCurrentTime(self):
         return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+
+    '''
+    获取搜索时的原站点网址 exm:news.qq.com
+    
+    @ return {string}
+    '''
+    @staticmethod
+    def getOriSiteUrl(self, resurl):
+        sitecharindex=re.search('&pn=', resurl).span()
+        return None
