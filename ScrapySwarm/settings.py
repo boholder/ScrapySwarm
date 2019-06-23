@@ -14,10 +14,15 @@ BOT_NAME = 'ScrapySwarm'
 SPIDER_MODULES = ['ScrapySwarm.spiders']
 NEWSPIDER_MODULE = 'ScrapySwarm.spiders'
 
+
+
 # MongoDB setting
 LOCAL_MONGO_HOST = '127.0.0.1'
 LOCAL_MONGO_PORT = 27017
 MONGO_DB_NAME = 'WebData'
+ITEM_PIPELINES = {
+    'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300,
+}
 COLL_BAIDU_SREACH= 'baidu_search_results'
 COLL_WEIBO_INFOMATION='weibo_infomation'
 COLL_WEIBO_TWEETS='weibo_tweets'
@@ -46,9 +51,7 @@ COLL_CHINA_NEWS='news_china'
 #     'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': None
 # }
 #
-# ITEM_PIPELINES = {
-#     'sina.pipelines.MongoDBPipeline': 300,
-# }
+
 # ===weibo setting END===
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
