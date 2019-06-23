@@ -25,28 +25,22 @@ class ScrapyswarmPipeline(object):
         self.Chinanews = db[settings["Chinanews"]]
 
     def process_item(self, item, spider):
-        valid = True
-        for data in item:
-            if not data:
-                valid = False
-                raise DropItem("Missing {0}!".format(data))
-        if valid:
-            # self.collection.insert(dict(item))
-            # log.msg("Question added to MongoDB database!",
-            #         level=log.DEBUG, spider=spider)
+        # self.collection.insert(dict(item))
+        # log.msg("Question added to MongoDB database!",
+        #         level=log.DEBUG, spider=spider)
 
-            if isinstance(item, items.BaiduSearchItem):
-                self.insert_item(self.bdsearch, item)
-            elif isinstance(item, items.RelationshipsItem):
-                self.insert_item(self.Relationships, item)
-            elif isinstance(item, items.TweetsItem):
-                self.insert_item(self.Tweets, item)
-            elif isinstance(item, items.InformationItem):
-                self.insert_item(self.Information, item)
-            elif isinstance(item, items.CommentItem):
-                self.insert_item(self.Comments, item)
-            elif isinstance(item, items.ChinaNewsItem):
-                self.insert_item(self.Chinanews, item)
+        if isinstance(item, items.BaiduSearchItem):
+            self.insert_item(self.bdsearch, item)
+        elif isinstance(item, items.RelationshipsItem):
+            self.insert_item(self.Relationships, item)
+        elif isinstance(item, items.TweetsItem):
+            self.insert_item(self.Tweets, item)
+        elif isinstance(item, items.InformationItem):
+            self.insert_item(self.Information, item)
+        elif isinstance(item, items.CommentItem):
+            self.insert_item(self.Comments, item)
+        elif isinstance(item, items.ChinaNewsItem):
+            self.insert_item(self.Chinanews, item)
 
         return item
 
