@@ -12,17 +12,20 @@ import ScrapySwarm.items as items
 from ScrapySwarm import settings
 
 
-class ScrapyswarmPipeline(object):
+class MongoDBPipeline(object):
 
     def __init__(self):
-        from ScrapySwarm.settings import LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPs,COLL_WEIBO_TWEETS
+        from ScrapySwarm.settings import \
+            LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,\
+            COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,\
+            COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPS,COLL_WEIBO_TWEETS
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST,LOCAL_MONGO_PORT)
         db = connection[MONGO_DB_NAME]
         self.bdsearch = db[COLL_BAIDU_SREACH]
         self.Information = db[COLL_WEIBO_INFOMATION]
         self.Tweets = db[COLL_WEIBO_TWEETS]
         self.Comments = db[COLL_WEIBO_COMMENTS]
-        self.Relationships = db[COLL_WEIBO_RELATIONSHIPs]
+        self.Relationships = db[COLL_WEIBO_RELATIONSHIPS]
         self.Chinanews = db[COLL_CHINA_NEWS]
 
     def process_item(self, item, spider):
@@ -55,5 +58,5 @@ class ScrapyswarmPipeline(object):
         try:
             collection.insert(dict(item))
         except DuplicateKeyError:
-            # 有重复数�
+            # 有重复数
             pass

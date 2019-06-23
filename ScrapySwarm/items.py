@@ -14,6 +14,7 @@ class BaiduSearchItem(Item):
     url = Field()   # 新闻项的url
     crawl_time = Field()
     site = Field()
+    waste = Field()
 
 
 class ChinaNewsItem(Item):

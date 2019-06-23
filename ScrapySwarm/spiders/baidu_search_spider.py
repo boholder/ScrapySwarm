@@ -15,6 +15,7 @@ import re
 import time
 from ScrapySwarm.items import BaiduSearchItem
 
+
 class BaiduSearchSpider(scrapy.Spider):
     name = 'baidusearch'
 
@@ -27,7 +28,7 @@ class BaiduSearchSpider(scrapy.Spider):
             querystr = '中美贸易'
         if site is None:
             site = 'news.qq.com'
-        url = self.baidusearchurlGen(self, querystr, site, 0)
+        url = self.baidusearchurlGen(querystr, site, 0)
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
@@ -36,8 +37,9 @@ class BaiduSearchSpider(scrapy.Spider):
                                     /h3/a/@href'):
             item = BaiduSearchItem()
             item['url'] = oneresult.get()
-            item['crawl_time'] = self.getCurrentTime(self)
-            item['site'] = self.getOriSiteUrl(self, response.url)
+            item['crawl_time'] = self.getCurrentTime()
+            item['site'] = self.getOrigSiteUrl(response.url)
+            item['waste'] = 0
             yield item
 
         # ===crawl next page, if exist===
@@ -86,7 +88,7 @@ class BaiduSearchSpider(scrapy.Spider):
     '''
 
     @staticmethod
-    def baidusearchurlGen(self, querystr, site, pagenumber):
+    def baidusearchurlGen(querystr, site, pagenumber):
         # 注意https 有一个防爬虫机制，脚本加载真正数据，只能爬个壳。
         return "http://www.baidu.com/s?wd=\"" \
                + querystr + "\" site:" + site + "&pn=" + str(pagenumber)
@@ -98,7 +100,7 @@ class BaiduSearchSpider(scrapy.Spider):
     '''
 
     @staticmethod
-    def getCurrentTime(self):
+    def getCurrentTime():
         return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
 
     '''
@@ -112,7 +114,7 @@ class BaiduSearchSpider(scrapy.Spider):
     '''
 
     @staticmethod
-    def getOriSiteUrl(self, resurl):
+    def getOrigSiteUrl(resurl):
         # 'site%3A{site domain}&pn'
         sitecharindex = re.search('site:.*&pn', resurl).span()
         strstart = int(sitecharindex[0]) + 5
