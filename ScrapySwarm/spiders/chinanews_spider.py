@@ -111,17 +111,17 @@ class China(Spider):
                     -1] + '&&')
             content = content + p.strip()
         timeandsource = response.xpath('//div[@class="left-t"]/text()').get().strip()
-        ts = timeandsource.split('来源�)
+        ts = timeandsource.split('来源')
 
         item['crawl_time'] = str(int(time.time()))
         created_time = ts[0].strip()
-        timeArray = time.strptime(created_time, "%Y�m�d�%H:%M")
+        timeArray = time.strptime(created_time, "%Y�m�d�%H:%M")
         otherStyleTime = time.strftime("%Y-%m-%d-%H-%M-%S", timeArray)
         if len(ts) > 1:
             source = ts[1]
             item['source'] = source
         if not item['source']:
-            item['source'] = '中国新闻�
+            item['source'] = '中国新闻'
         item['_id'] = url + otherStyleTime
         item['keyword'] = self.querystr
         item['title'] = title
