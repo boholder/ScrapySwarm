@@ -23,14 +23,16 @@ class ChinaNewsItem(Item):
     url=Field()
     content=Field()  #内容，其中保留了图片的路径，用&&隔断
     title=Field()
+    keyword=Field()#检索关键字
     time=Field()     #格式 YYYY-MM-DD-HH-MM-SS
     imgs=Field()     #list
-    crawl_time = Field()  # 抓取时间戳  格式 YYYY-MM-DD-HH-MM-SS
+    crawl_time = Field()  # 抓取时间戳 int类型
     source=Field() #新闻来源
 
 class TweetsItem(Item):
     """ 微博信息 """
     _id = Field()  # 微博id
+    keyword = Field()  # 检索关键字
     weibo_url = Field()  # 微博URL
     created_at = Field()  # 微博发表时间
     like_num = Field()  # 点赞数

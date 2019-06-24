@@ -42,10 +42,11 @@ class ScrapyswarmPipeline(object):
             self.insert_item(self.Comments, item)
         elif isinstance(item, items.ChinaNewsItem):
             self.insert_item(self.Chinanews, item)
+            folderpath="e:"+item['keyword'];
             for img in item['imgs']:
                 image_path1=img.split("/")[-1]
                 image_path1=item["url"].split("/")[-1]+image_path1
-                image_path = os.path.join("e:china",image_path1)
+                image_path = os.path.join(folderpath,image_path1)
                 download_pic(img, image_path)
         return item
 
