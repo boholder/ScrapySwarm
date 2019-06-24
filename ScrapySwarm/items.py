@@ -19,11 +19,14 @@ class BaiduSearchItem(Item):
 
 class ChinaNewsItem(Item):
     """中国新闻网"""
+    _id=Field()  #主键，由url+time构成
     url=Field()
-    content=Field()
+    content=Field()  #内容，其中保留了图片的路径，用&&隔断
     title=Field()
-    time=Field()
-    imgs=Field()
+    time=Field()     #格式 YYYY-MM-DD-HH-MM-SS
+    imgs=Field()     #list
+    crawl_time = Field()  # 抓取时间戳  格式 YYYY-MM-DD-HH-MM-SS
+    source=Field() #新闻来源
 
 class TweetsItem(Item):
     """ 微博信息 """
