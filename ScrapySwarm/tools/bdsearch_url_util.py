@@ -32,34 +32,17 @@ class BDsearchUrlUtil(object):
         self.bdsearch = db[COLL_BAIDU_SREACH]
 
     '''
-    从mongodb中按'site'与'time'表项读取所有“新的”url,
+    从mongodb中按'site'表项读取所有“新的('waste'=0)”url,
     组成url列表并返回列表
     
     @ param {string} site   exm: 'news.qq.com'
     
-    @ return {List}  [url1,url2,url3,...]
+    @ return {List|None}  [url1,url2,url3,...] 
+                            urlexm: 'http://baidu.com/...'
+                          None for no new url
     '''
 
-    def getUrlList(self, site):
-        urllist = []
-
-    '''
-    clockoff就是打卡下班的意思，当爬虫运行完时（如果能介入过程的话）
-    应该调用此函数，把这次query到的url的'waste'字段都打为1，
-    标记这个url已查询
-    '''
-
-    def clockoff(self):
-        pass
-
-    '''
-    从mongodb中获取
-    'time'字段比传入的参数'time'更新（更大）的，
-    且'site'字段相同的，
-    所有查询结果
-    '''
-
-    def getNewUrl(self, site, time):
+    def getNewUrl(self, site):
         # construct query and fliter
         query = {
             "site": site,
@@ -71,4 +54,38 @@ class BDsearchUrlUtil(object):
             "_id": False
         }
 
-        return list(self.bdsearch.find(query,fields))
+        try:
+            urllist= (self.bdsearch.find(query, fields))
+            if len(urllist) == 0:
+                return None
+            else:
+                return urllist
+
+        except:
+            print('[Error] in query bdsearch url result from MongoDB')
+            return None
+
+
+    '''
+    clockoff就是打卡下班的意思，当爬虫运行完时（如果能介入过程的话）
+    应该调用此函数，把这次query到的url的'waste'字段都打为1，
+    标记这个url已查询
+    
+    @ param {string} site   exm: 'news.qq.com'
+    
+    @ return {True|False}
+    '''
+
+    def clockoff(self, site):
+        query = {
+            "site": site,
+            "waste": 0
+        }
+
+        try:
+            return self.bdsearch.update_many(
+                {"waste": 0},
+                {"$set": {"waste": 1}}).acknowledged
+        except:
+            print('[Error] in change \'waste\' field in MongoDB')
+            return False
