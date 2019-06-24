@@ -7,15 +7,17 @@
 
 @Author : Boholder
 
-@Function : 从MongoDB拉取，由百度爬虫爬下的目标网站的文章的url，
+@Function : getNewUrl()
+            从MongoDB拉取，由百度爬虫爬下的目标网站的文章的url，
             生成列表并返回。
-            爬虫结束时
+            clockoff()
+            改写'waste'字段标明已使用过这次查到的url
+
             该模块被其他需要借助百度搜索提供url的爬虫们调用。
 
 '''
 
 import pymongo
-
 
 
 class BDsearchUrlUtil(object):
@@ -36,34 +38,32 @@ class BDsearchUrlUtil(object):
     组成url列表并返回列表
     
     @ param {string} site   exm: 'news.qq.com'
+        
+    @ param {string} keyword exm: '中美贸易'
     
     @ return {List|None}  [url1,url2,url3,...] 
                             urlexm: 'http://baidu.com/...'
                           None for no new url
     '''
 
-    def getNewUrl(self, site):
+    def getNewUrl(self, site, keyword):
         # construct query and fliter
         query = {
             "site": site,
+            "keyword": keyword,
             "waste": 0
         }
 
-        fields={
+        fields = {
             "url": True,
             "_id": False
         }
 
-        try:
-            urllist= (self.bdsearch.find(query, fields))
-            if len(urllist) == 0:
-                return None
-            else:
-                return urllist
-
-        except:
-            print('[Error] in query bdsearch url result from MongoDB')
+        urllist = list(self.bdsearch.find(query, fields))
+        if len(urllist) == 0:
             return None
+        else:
+            return [one['url'] for one in urllist]
 
 
     '''
@@ -73,19 +73,20 @@ class BDsearchUrlUtil(object):
     
     @ param {string} site   exm: 'news.qq.com'
     
+    @ param {string} keyword exm: '中美贸易'
+    
     @ return {True|False}
     '''
 
-    def clockoff(self, site):
+
+    def clockoff(self, site, keyword):
         query = {
             "site": site,
+            "keyword": keyword,
             "waste": 0
         }
 
-        try:
-            return self.bdsearch.update_many(
-                {"waste": 0},
-                {"$set": {"waste": 1}}).acknowledged
-        except:
-            print('[Error] in change \'waste\' field in MongoDB')
-            return False
+        return self.bdsearch.update_many(
+            {"waste": 0},
+            {"$set": {"waste": 1}}
+            ).acknowledged

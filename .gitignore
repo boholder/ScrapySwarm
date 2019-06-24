@@ -2,8 +2,9 @@
 *.jl
 .idea
 ScrapySwarm/spiders/__pycache__
+ScrapySwarm/tools/__pycache__
 ScrapySwarm/__pycache__
 Stiky.txt
 *.orig
-test.py
 /ScrapySwarm/spiders/test.py
+debug.py

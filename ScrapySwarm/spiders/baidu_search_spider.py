@@ -12,8 +12,11 @@
 '''
 import scrapy
 import re
-import time
+import urllib.parse
+
 from ScrapySwarm.items import BaiduSearchItem
+
+from ScrapySwarm.tools.crawl_time_format import getCurrentTime
 
 
 class BaiduSearchSpider(scrapy.Spider):
@@ -37,9 +40,10 @@ class BaiduSearchSpider(scrapy.Spider):
                                     /h3/a/@href'):
             item = BaiduSearchItem()
             item['url'] = oneresult.get()
-            item['crawl_time'] = self.getCurrentTime()
+            item['crawl_time'] = getCurrentTime()
             item['site'] = self.getOrigSiteUrl(response.url)
             item['waste'] = 0
+            item['keyword'] = self.getOrigKeyword(response.url)
             yield item
 
         # ===crawl next page, if exist===
@@ -94,16 +98,6 @@ class BaiduSearchSpider(scrapy.Spider):
                + querystr + "\" site:" + site + "&pn=" + str(pagenumber)
 
     '''
-    返回被调用时的系统时间
-    
-    @ return {string} format: YYYY-MM-DD-HH-MM-SS
-    '''
-
-    @staticmethod
-    def getCurrentTime():
-        return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-
-    '''
     获取搜索时的原站点网址 exm: news.qq.com
     
     @ param {string} resurl response.url 
@@ -116,8 +110,24 @@ class BaiduSearchSpider(scrapy.Spider):
     @staticmethod
     def getOrigSiteUrl(resurl):
         # 'site%3A{site domain}&pn'
-        sitecharindex = re.search('site:.*&pn', resurl).span()
-        strstart = int(sitecharindex[0]) + 5
-        strend = int(sitecharindex[1]) - 3
+        index = re.search('site:.*&pn', resurl).span()
         # '{site domain}'
-        return resurl[strstart:strend]
+        return resurl[(index[0] + 5):(index[1] - 3)]
+
+
+    '''
+    获取搜索时的关键字 exm: ‘中美贸易’
+
+    @ param {string} resurl response.url 
+                            exm: https://www.baidu.com/s?
+                                wd="中美贸易" site%3Anews.qq.com&pn=0
+
+    @ return {string}
+    '''
+
+    @staticmethod
+    def getOrigKeyword(resurl):
+        # 's?wd="{keyword}" site'
+        index = re.search('wd=%22.*%22%20', resurl).span()
+        # '{keyword} in url(ascii for url), decode'
+        return urllib.parse.unquote(resurl[(index[0] + 6):(index[1] - 6)])

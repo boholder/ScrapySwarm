@@ -8,22 +8,40 @@
 from scrapy import Item, Field
 
 
+class QQNewsItem(Item):
+    url = Field()  # 新闻项的url
+    content = Field()  # 新闻正文
+    title = Field()  # 新闻标题
+    time = Field()  # 新闻发布时间    format: 'YYYY-MM-DD-HH-MM-SS'
+    imgs = Field()  # 新闻附属图片的url的列表
+    crawl_time = Field()  # 爬虫抓取时间 format: 'YYYY-MM-DD-HH-MM-SS'
+    keyword = Field()   # 搜索的关键字值 exm: '中美贸易'
+    source = Field()    # 新闻来源|报社
+
+
 class BaiduSearchItem(Item):
-    # define the fields for your item here like:
-    # name = Field()
-    url = Field()   # 新闻项的url
+    # 新闻项的url
+    url = Field()
+    # 本项目的baidu_search_spider抓取该url的时间
+    # format: 'YYYY-MM-DD-HH-MM-SS'
     crawl_time = Field()
+    # 给与 baidu_search_spider 的 site 参数值
+    # exm:'news.qq.com'
     site = Field()
+    # 搜索的关键字值 exm: '中美贸易'
+    keyword = Field()
+    # 是否已被对应爬虫使用过 (int 0 没用过| 1 用过了)
     waste = Field()
 
 
 class ChinaNewsItem(Item):
     """中国新闻网"""
-    url=Field()
-    content=Field()
-    title=Field()
-    time=Field()
-    imgs=Field()
+    url = Field()
+    content = Field()
+    title = Field()
+    time = Field()
+    imgs = Field()
+
 
 class TweetsItem(Item):
     """ 微博信息 """
@@ -39,7 +57,7 @@ class TweetsItem(Item):
     image_url = Field()  # 图片
     video_url = Field()  # 视频
     location = Field()  # 定位信息
-    location_map_info = Field() # 定位的经纬度信息
+    location_map_info = Field()  # 定位的经纬度信息
     origin_weibo = Field()  # 原始微博，只有转发的微博才有这个字段
     crawl_time = Field()  # 抓取时间戳
 

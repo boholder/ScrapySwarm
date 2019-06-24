@@ -8,15 +8,21 @@ import os
 
 import pymongo
 from pymongo.errors import DuplicateKeyError
-from  ScrapySwarm.tools.imag import download_pic
+from ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
 
 
 class ScrapyswarmPipeline(object):
 
     def __init__(self):
-        from ScrapySwarm.settings import LOCAL_MONGO_HOST,LOCAL_MONGO_PORT,MONGO_DB_NAME,COLL_BAIDU_SREACH,COLL_CHINA_NEWS,COLL_WEIBO_COMMENTS,COLL_WEIBO_INFOMATION,COLL_WEIBO_RELATIONSHIPS,COLL_WEIBO_TWEETS
-        connection = pymongo.MongoClient(LOCAL_MONGO_HOST,LOCAL_MONGO_PORT)
+        from ScrapySwarm.settings import \
+            LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
+            COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
+            COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS, \
+            COLL_QQ_NEWS
+
+        connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
+
         db = connection[MONGO_DB_NAME]
         self.bdsearch = db[COLL_BAIDU_SREACH]
         self.Information = db[COLL_WEIBO_INFOMATION]
@@ -24,6 +30,7 @@ class ScrapyswarmPipeline(object):
         self.Comments = db[COLL_WEIBO_COMMENTS]
         self.Relationships = db[COLL_WEIBO_RELATIONSHIPS]
         self.Chinanews = db[COLL_CHINA_NEWS]
+        self.QQNews = db[COLL_QQ_NEWS]
 
     def process_item(self, item, spider):
         # self.collection.insert(dict(item))
@@ -43,18 +50,18 @@ class ScrapyswarmPipeline(object):
         elif isinstance(item, items.ChinaNewsItem):
             self.insert_item(self.Chinanews, item)
 
-
-
-
             for img in item['imgs']:
+                image_path1 = img.split("/")[-1]
 
-                image_path1=img.split("/")[-1]
+                image_path1 = item["url"].split("/")[-1] + image_path1
 
-                image_path1=item["url"].split("/")[-1]+image_path1
-
-                image_path = os.path.join("e:china",image_path1)
+                image_path = os.path.join("e:china", image_path1)
 
                 download_pic(img, image_path)
+
+        elif isinstance(item, items.QQNewsItem):
+            self.insert_item(self.QQNews, item)
+
         return item
 
     @staticmethod
