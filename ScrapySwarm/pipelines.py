@@ -7,12 +7,15 @@
 import os
 
 import pymongo
-from pymongo.errors import DuplicateKeyError
+
 from ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
+from ScrapySwarm.tools.unique_db_insert_util \
+    import UniqueDBInsertUtil as Uni
 
 
 class ScrapyswarmPipeline(object):
+    uni = Uni()
 
     def __init__(self):
         from ScrapySwarm.settings import \
@@ -24,7 +27,7 @@ class ScrapyswarmPipeline(object):
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 
         db = connection[MONGO_DB_NAME]
-        self.bdsearch = db[COLL_BAIDU_SREACH]
+        self.Bdsearch = db[COLL_BAIDU_SREACH]
         self.Information = db[COLL_WEIBO_INFOMATION]
         self.Tweets = db[COLL_WEIBO_TWEETS]
         self.Comments = db[COLL_WEIBO_COMMENTS]
@@ -38,7 +41,7 @@ class ScrapyswarmPipeline(object):
         #         level=log.DEBUG, spider=spider)
 
         if isinstance(item, items.BaiduSearchItem):
-            self.insert_item(self.bdsearch, item)
+            self.insert_item(self.Bdsearch, item)
         elif isinstance(item, items.RelationshipsItem):
             self.insert_item(self.Relationships, item)
         elif isinstance(item, items.TweetsItem):
@@ -48,24 +51,19 @@ class ScrapyswarmPipeline(object):
         elif isinstance(item, items.CommentItem):
             self.insert_item(self.Comments, item)
         elif isinstance(item, items.ChinaNewsItem):
-            self.insert_item(self.Chinanews, item)
-            folderpath="e:"+item['keyword'];
+            self.uni.newsUniqueInsert(item)
+            folderpath = "e:" + item['keyword'];
             for img in item['imgs']:
                 image_path1 = img.split("/")[-1]
                 image_path1 = item["url"].split("/")[-1] + image_path1
-                image_path = os.path.join(folderpath,image_path1)
+                image_path = os.path.join(folderpath, image_path1)
                 download_pic(img, image_path)
 
         elif isinstance(item, items.QQNewsItem):
-            self.insert_item(self.QQNews, item)
+            self.uni.newsUniqueInsert(item)
 
         return item
 
     @staticmethod
     def insert_item(collection, item):
-
-        try:
-            collection.insert(dict(item))
-        except DuplicateKeyError:
-            # 有重复数�
-            pass
+        collection.insert(dict(item))

@@ -8,8 +8,8 @@
 
 @Function : 腾讯新闻网(news.qq.com)爬虫，需借助百度搜索
             腾讯新闻分两个排版
-            “腾讯新闻事实派”(new) https://news.qq.com/a/20170119/024678.htm
-            和“腾讯新闻”(old) https://news.qq.com/a/20100104/000741.htm
+            “腾讯新闻事实派” https://news.qq.com/a/20170119/024678.htm
+            和“腾讯新闻” https://news.qq.com/a/20100104/000741.htm
             其中发布来源与发布时间的排版还千奇百怪
             百度搜索还可能抓到腾讯新闻网的index网址，此时忽略此条，跳到下一条url
 

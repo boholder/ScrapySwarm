@@ -29,6 +29,7 @@ class BDsearchUrlUtil(object):
         from ScrapySwarm.settings import \
             LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
             COLL_BAIDU_SREACH
+
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
         db = connection[MONGO_DB_NAME]
         self.bdsearch = db[COLL_BAIDU_SREACH]
