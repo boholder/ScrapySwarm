@@ -11,6 +11,8 @@
 '''
 
 import pymongo
+from pymongo.errors import DuplicateKeyError
+
 import ScrapySwarm.items as items
 
 
@@ -60,7 +62,13 @@ class UniqueDBInsertUtil(object):
     '''
 
     def newsUniqueInsert(self, item):
-        if isinstance(item, items.ChinaNewsItem):
-            self.Chinanews.insert(dict(item))
-        elif isinstance(item, items.QQNewsItem):
-            self.QQNews.insert(dict(item))
+        try:
+            if isinstance(item, items.ChinaNewsItem):
+                self.Chinanews.insert(dict(item))
+            elif isinstance(item, items.QQNewsItem):
+                self.QQNews.insert(dict(item))
+        except DuplicateKeyError:
+            # 有重复数�
+            # 不做处理也可以，结果是没插入成功，
+            # 就是不让raise error了
+            pass

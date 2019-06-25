@@ -7,10 +7,16 @@
 @Author : Boholder
 
 @Function : 腾讯新闻网(news.qq.com)爬虫，需借助百度搜索
-            腾讯新闻分两个排版
+
+            1.腾讯新闻(news.qq.com/a/)分两个排版
             “腾讯新闻事实派” https://news.qq.com/a/20170119/024678.htm
             和“腾讯新闻” https://news.qq.com/a/20100104/000741.htm
             其中发布来源与发布时间的排版还千奇百怪
+
+            2.腾讯网(news.qq.com/omn/)
+            https://new.qq.com/omn/NEW20190/NEW2019062500130308.html
+            但它不让百度、搜狗索引，所以无从keyword->url list，也就作罢
+
             百度搜索还可能抓到腾讯新闻网的index网址，此时忽略此条，跳到下一条url
 
             item['imgs']暂时没有填充，图片是js动态加载的，要写解析挺费劲，先不写
@@ -48,17 +54,17 @@ class QQNewsSpider(scrapy.Spider):
         if self.keyword is None:
             self.keyword = '中美贸易'
 
-        # get url list for mongoDB
-        urllist = self.bd.getNewUrl('news.qq.com', self.keyword)
+        # # get url list for mongoDB
+        # urllist = self.bd.getNewUrl('news.qq.com', self.keyword)
+        #
+        # # if no new url or error, urllist=None
+        # if urllist:
+        #     for url in urllist:
+        #         yield scrapy.Request(url, self.parse)
 
-        # if no new url or error, urllist=None
-        if urllist:
-            for url in urllist:
-                yield scrapy.Request(url, self.parse)
-
-        # # test news_qq spider
-        # url = 'https://news.qq.com/a/20170823/002257.htm'
-        # yield scrapy.Request(url, self.parse)
+        # test news_qq spider
+        url = 'https://news.qq.com/a/20170823/002257.htm'
+        yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         item = QQNewsItem()

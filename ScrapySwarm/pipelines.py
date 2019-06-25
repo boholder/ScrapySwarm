@@ -7,6 +7,7 @@
 import os
 
 import pymongo
+from pymongo.errors import DuplicateKeyError
 
 from ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
@@ -66,4 +67,9 @@ class ScrapyswarmPipeline(object):
 
     @staticmethod
     def insert_item(collection, item):
-        collection.insert(dict(item))
+        try:
+            collection.insert(dict(item))
+        except DuplicateKeyError:
+            # 有重复数�
+            # 不做处理也可以
+            pass

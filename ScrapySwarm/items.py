@@ -17,6 +17,8 @@ class QQNewsItem(Item):
     crawl_time = Field()  # 爬虫抓取时间 format: 'YYYY-MM-DD-HH-MM-SS'
     keyword = Field()   # 搜索的关键字�exm: '中美贸易'
     source = Field()    # 新闻来源|报社
+    comment_num = Field()  # 腾讯新闻有评论数
+
 
 
 class BaiduSearchItem(Item):
