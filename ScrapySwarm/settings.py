@@ -27,6 +27,7 @@ COLL_WEIBO_COMMENTS = 'weibo_comments'
 COLL_WEIBO_RELATIONSHIPS = 'weibo_relationships'
 COLL_CHINA_NEWS = 'news_china'
 COLL_QQ_NEWS = 'news_qq'
+COLL_SINA_NEWS = 'news_sina'
 
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 

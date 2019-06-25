@@ -26,7 +26,7 @@ class UniqueDBInsertUtil(object):
             LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
             COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
             COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS, \
-            COLL_QQ_NEWS
+            COLL_QQ_NEWS, COLL_SINA_NEWS
 
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 
@@ -38,24 +38,25 @@ class UniqueDBInsertUtil(object):
         self.Relationships = db[COLL_WEIBO_RELATIONSHIPS]
         self.Chinanews = db[COLL_CHINA_NEWS]
         self.QQNews = db[COLL_QQ_NEWS]
+        self.SinaNews = db[COLL_SINA_NEWS]
 
         # create news collection unique index
-        field=[
+        field = [
             ("url", pymongo.DESCENDING),
             ("time", pymongo.ASCENDING)
         ]
-        self.Chinanews.create_index(field, unique= True )
-        self.QQNews.create_index(field, unique= True)
+        self.Chinanews.create_index(field, unique=True)
+        self.QQNews.create_index(field, unique=True)
+        self.SinaNews.create_index(field, unique=True)
 
         # 剩下的你对照着加吧，你那个weibo可能因为爬取类型不同，要写不只一个索引
         # 索引是对应单个集合的，
         # 所以实际上我上面那个没必要两个新闻统一一个索引
 
         # weibo collection unique index
-        field={
+        field = {
             "1": 1
         }
-
 
     '''
     
@@ -67,6 +68,9 @@ class UniqueDBInsertUtil(object):
                 self.Chinanews.insert(dict(item))
             elif isinstance(item, items.QQNewsItem):
                 self.QQNews.insert(dict(item))
+            elif isinstance(item, items.SinaNewsItem):
+                self.SinaNews.insert(dict(item))
+
         except DuplicateKeyError:
             # 有重复数�
             # 不做处理也可以，结果是没插入成功，

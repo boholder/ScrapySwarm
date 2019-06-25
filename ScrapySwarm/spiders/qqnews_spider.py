@@ -23,24 +23,34 @@
 '''
 
 import scrapy
+import re
 
 from ScrapySwarm.tools.bdsearch_url_util \
     import BDsearchUrlUtil
 
 from ScrapySwarm.items import QQNewsItem
 
-from ScrapySwarm.tools.crawl_time_format import getCurrentTime
+from ScrapySwarm.tools.crawl_time_format \
+    import getCurrentTime, formatTimeStr
 
 
 class QQNewsSpider(scrapy.Spider):
     name = 'qqnews'
+
+    # 与BDsearchUrlUtil交互要用的参数，指明网址
+    site = 'news.qq.com'
+
+    # 需要在parse()中使用该url关联的'keyword'（自定义item属性），
+    # 当然 scrapy.response 对象中是没有的，
+    # 也不想改写个 response 对象的子类了，直接定义一个全局变量
     keyword = ''
+
     bd = BDsearchUrlUtil()
 
     def close(self, reason):
         # 当爬虫停止时，调用clockoff()修改数据库
-        if self.bd.clockoff('news.qq.com', self.keyword):
-            print('QQnews_spider clock off succeed')
+        if self.bd.clockoff(self.site, self.keyword):
+            print('QQnews_spider clock off successful')
 
         # 重载前scrapy原来的代码
         closed = getattr(self, 'closed', None)
@@ -54,17 +64,17 @@ class QQNewsSpider(scrapy.Spider):
         if self.keyword is None:
             self.keyword = '中美贸易'
 
-        # # get url list for mongoDB
-        # urllist = self.bd.getNewUrl('news.qq.com', self.keyword)
-        #
-        # # if no new url or error, urllist=None
-        # if urllist:
-        #     for url in urllist:
-        #         yield scrapy.Request(url, self.parse)
+        # get url list for mongoDB
+        urllist = self.bd.getNewUrl(self.site, self.keyword)
+
+        # if no new url or error, urllist=None
+        if urllist:
+            for url in urllist:
+                yield scrapy.Request(url, self.parse)
 
         # test news_qq spider
-        url = 'https://news.qq.com/a/20170823/002257.htm'
-        yield scrapy.Request(url, self.parse)
+        # url = 'https://news.qq.com/a/20170823/002257.htm'
+        # yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         item = QQNewsItem()
@@ -80,7 +90,10 @@ class QQNewsSpider(scrapy.Spider):
         content = ''
         for paragraph in response.xpath(
                 '//div[@id=\'Cnt-Main-Article-QQ\']/p/text()'):
-            content = content + paragraph.get().strip()
+            paragraph = paragraph.get().strip()
+            paragraph = re.sub(r'<[^i].*?>', '', paragraph)
+            paragraph = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', paragraph)
+            content = content + paragraph
         item['content'] = content
 
         # 如果有正文，是新闻，没有，不是
@@ -95,6 +108,7 @@ class QQNewsSpider(scrapy.Spider):
         else:
             pass
 
+    @staticmethod
     def trygetPublishTime(self, response):
         time = response.xpath(
             '//span[@class=\'a_time\']/text()').get()
@@ -116,19 +130,11 @@ class QQNewsSpider(scrapy.Spider):
         # 格式化为：
         # 2017-08-23 06:30
         if time:
-            # time exm: 2017-08-23 06:30
-            if time[4] == '-':
-                time = time.replace(' ', '-') \
-                           .replace(':', '-') + '-00'
-            # 2011年07月12日10:33
-            if time[4] == '年':
-                time = time.replace('年', '-') \
-                           .replace('月', '-') \
-                           .replace('日', '-') \
-                           .replace(':', '-') + '-00'
+            time = formatTimeStr(time)
 
         return time
 
+    @staticmethod
     def trygetPublishSource(self, response):
         source = response.xpath(
             '//span[@class=\'a_source\']/a/text()').get()

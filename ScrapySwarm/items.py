@@ -8,13 +8,25 @@
 from scrapy import Item, Field
 
 
+class SinaNewsItem(Item):
+    url = Field()  # 新闻项的url
+    content = Field()  # 新闻正文
+    title = Field()  # 新闻标题
+    time = Field()  # 新闻发布时间    format: 'YYYY-MM-DD-HH-MM-SS'
+    imgs = Field()  # 新闻附属图片的url的列�
+    crawl_time = Field()  # 爬虫抓取时间 format: 大毫秒数
+    keyword = Field()   # 搜索的关键字�exm: '中美贸易'
+    source = Field()    # 新闻来源|报社
+    comment_num = Field()  # 评论数
+
+
 class QQNewsItem(Item):
     url = Field()  # 新闻项的url
     content = Field()  # 新闻正文
     title = Field()  # 新闻标题
     time = Field()  # 新闻发布时间    format: 'YYYY-MM-DD-HH-MM-SS'
     imgs = Field()  # 新闻附属图片的url的列�
-    crawl_time = Field()  # 爬虫抓取时间 format: 'YYYY-MM-DD-HH-MM-SS'
+    crawl_time = Field()  # 爬虫抓取时间 format: 大毫秒数
     keyword = Field()   # 搜索的关键字�exm: '中美贸易'
     source = Field()    # 新闻来源|报社
     comment_num = Field()  # 腾讯新闻有评论数

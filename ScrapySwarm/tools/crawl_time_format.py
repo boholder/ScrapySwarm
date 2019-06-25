@@ -16,9 +16,38 @@ import time
 '''
 返回被调用时的系统时间
 
-@ return {string} format: 'YYYY-MM-DD-HH-MM-SS'
+@ return {int} format: millisecond
 '''
 
 
 def getCurrentTime():
-    return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+    return int(time.time())
+
+'''
+2011年07月12日10:33
+2019年06月21日 17:38
+2017-08-23 06:30
+-> YYYY-MM-DD-HH-MM-SS
+'''
+
+def formatTimeStr(time):
+    # time exm: 2017-08-23 06:30
+    if time[4] == '-':
+        time = time.replace(' ', '-') \
+                   .replace(':', '-') + '-00'
+
+    # 2011年...
+    if time[4] == '年':
+        # 2019年06月21日 17:38
+        if time[11] == ' ':
+            time = time.replace('年', '-') \
+                       .replace('月', '-') \
+                       .replace('日 ', '-') \
+                       .replace(':', '-') + '-00'
+        # 2011年07月12日10:33
+        else:
+            time = time.replace('年', '-') \
+                       .replace('月', '-') \
+                       .replace('日', '-') \
+                       .replace(':', '-') + '-00'
+    return time

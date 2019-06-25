@@ -23,7 +23,7 @@ class ScrapyswarmPipeline(object):
             LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
             COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
             COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS, \
-            COLL_QQ_NEWS
+            COLL_QQ_NEWS, COLL_SINA_NEWS
 
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 
@@ -33,8 +33,11 @@ class ScrapyswarmPipeline(object):
         self.Tweets = db[COLL_WEIBO_TWEETS]
         self.Comments = db[COLL_WEIBO_COMMENTS]
         self.Relationships = db[COLL_WEIBO_RELATIONSHIPS]
-        self.Chinanews = db[COLL_CHINA_NEWS]
-        self.QQNews = db[COLL_QQ_NEWS]
+
+        # # 新闻类已使用 UniqueDBInsertUtil 处理数据库操作
+        # self.Chinanews = db[COLL_CHINA_NEWS]
+        # self.QQNews = db[COLL_QQ_NEWS]
+        # self.SinaNews = db[COLL_SINA_NEWS]
 
     def process_item(self, item, spider):
         # self.collection.insert(dict(item))
@@ -61,6 +64,8 @@ class ScrapyswarmPipeline(object):
                 download_pic(img, image_path)
 
         elif isinstance(item, items.QQNewsItem):
+            self.uni.newsUniqueInsert(item)
+        elif isinstance(item, items.SinaNewsItem):
             self.uni.newsUniqueInsert(item)
 
         return item
