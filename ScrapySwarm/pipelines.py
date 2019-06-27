@@ -49,30 +49,26 @@ class ScrapyswarmPipeline(object):
         elif isinstance(item, items.RelationshipsItem):
             self.insert_item(self.Relationships, item)
         elif isinstance(item, items.TweetsItem):
-            self.insert_item(self.Tweets, item)
+            self.uni.weiboUniqueInsert(item)
         elif isinstance(item, items.InformationItem):
             self.insert_item(self.Information, item)
-        elif isinstance(item, items.CommentItem):
-            self.insert_item(self.Comments, item)
         elif isinstance(item, items.ChinaNewsItem):
             self.uni.newsUniqueInsert(item)
-            folderpath = "e:" + item['keyword'];
-            for img in item['imgs']:
-                image_path1 = img.split("/")[-1]
-                image_path1 = item["url"].split("/")[-1] + image_path1
-                image_path = os.path.join(folderpath, image_path1)
-                download_pic(img, image_path)
-
         elif isinstance(item, items.QQNewsItem):
             self.uni.newsUniqueInsert(item)
         elif isinstance(item, items.SinaNewsItem):
             self.uni.newsUniqueInsert(item)
+        else :
+            print('评论被保存')
+            self.uni.commentsUniqueInsert(item)
+
 
         return item
 
     @staticmethod
     def insert_item(collection, item):
         try:
+            print("通过pipe插入")
             collection.insert(dict(item))
         except DuplicateKeyError:
             # 有重复数�

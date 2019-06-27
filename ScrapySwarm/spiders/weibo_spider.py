@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 # encoding: utf-8
+import os
 import re
 from lxml import etree
 from scrapy import Spider
@@ -8,21 +9,24 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.selector import Selector
 from scrapy.http import Request
 from scrapy.utils.project import get_project_settings
-from ScrapySwarm.items import TweetsItem, InformationItem, \
-    RelationshipsItem, CommentItem
+
+from ScrapySwarm.items import TweetsItem, \
+    CommentItem, RelationshipsItem, InformationItem
 from ScrapySwarm.tools.weibo_utils import time_fix, \
     extract_weibo_content, extract_comment_content
 import time
 
-
 class WeiboSpider(Spider):
     name = "weibo_spider"
-    base_url = "https://weibo.cn/search/mblog?" \
+    hotbase_url = "https://weibo.cn/search/mblog?" \
                "hideSearchFrame=&keyword=#" \
                "&advancedfilter=1&sort=hot&page="
-    q = []
+    base_url = "https://weibo.cn/search/mblog?" \
+               "keyword=#" \
+               "&sort=time&page="
     custom_settings = {
         # 请将Cookie替换成你自己的Cookie
+        'DOWNLOAD_DELAY' : 5,
         'COOKIES_ENABLED':False,
         'DEFAULT_REQUEST_HEADERS' : {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
@@ -33,13 +37,95 @@ class WeiboSpider(Spider):
                      'NoLpoA.; SSOLoginState=1561098352; monitor_count=2'
         }
     }
+
+    q = []
+
     def start_requests(self):
-        querystr = getattr(self, 'q', None)
-        if not querystr:
-            querystr = '中美贸易'
-        self.base_url=self.base_url.replace("#",querystr)
+        querystr = getattr(self, 'q', '中美贸易')
+        self.querystr=querystr
+        folderpath = "e:\weibo" +querystr
+        if (not os.path.exists(folderpath)):
+            os.mkdir(folderpath)
+        folderpath = "e:\weibo"
+        if (not os.path.exists(folderpath)):
+            os.mkdir(folderpath)
+
+
         self.q=[]
-        yield Request(url=self.base_url+"1", callback=self.parse_tweet)
+        self.base_url=self.base_url.replace("#",querystr)
+        self.hotbase_url = self.hotbase_url.replace("#", querystr)
+        yield Request(url=self.hotbase_url+"1", callback=self.parse_tweet)
+        # yield Request(url=self.base_url + "1", callback=self.parse_tweet)
+
+
+
+    def parse_url(self,response):
+        print('我被调用了哦')
+        if  response.url.endswith('page=1'):
+            # 如果是第1页，一次性获取后面的所有页
+            all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
+            if all_page:
+                all_page = all_page.group(1)
+                all_page = int(all_page)
+                print('获取到了页数',all_page)
+                if all_page>=99:
+                    all_page=220
+                for page_num in range(2,all_page):
+                    page_url = response.url.replace(
+                        'page=1', 'page={}'.format(page_num))
+                    yield Request(url=page_url, callback=self.parse_url,
+                                  dont_filter=True, meta=response.meta)
+        """
+        解析本页的数据
+        """
+        tree_node = etree.HTML(response.body)
+        tweet_nodes = tree_node.xpath('//div[@class="c" and @id]')
+        for tweet_node in tweet_nodes:
+                tweet_repost_url = tweet_node.xpath(
+                    './/a[contains(text(),"转发[")]/@href')[0]
+                user_tweet_id = re.search(
+                    r'/repost/(.*?)\?uid=(\d+)', tweet_repost_url)
+                weibo_url = 'https://weibo.com/{}/{}'.format(user_tweet_id.group(2),user_tweet_id.group(1))
+                yield Request(url=weibo_url,callback= self.parse_details,
+                              dont_filter=True, meta=response.meta,args={'wait': 2})
+
+    def parse_details(self,response):
+        body = response.body
+        body = body.decode("utf-8")
+        # print(body)
+        selector =Selector(text=body)
+        headandname = selector.xpath('//div[@class="face"]/a[@class="W_face_radius"]')[0]
+        head=headandname.xpath("./img/@src").get()
+        author_name=headandname.xpath("./@title").get()
+        author_url=headandname.xpath("./@href").get()
+
+        timeandfrom=selector.xpath('//div[@class="WB_from S_txt2"]')[0]
+        posttime=timeandfrom.xpath("./a")[0].xpath("./@title").get()
+        timeArray = time.strptime(posttime, "%Y-%m-%d %H:%M")
+        created_at =time.strftime("%Y-%m-%d-%H-%M-%S", timeArray)
+        crawl_time= str(int(time.time()))
+        tool=""
+        if len(timeandfrom.xpath("./a"))>1:
+            tool=timeandfrom.xpath("./a")[1].xpath("./text()").get()
+
+        content1 =selector.xpath('//div[@class="WB_text W_f14"]')
+        content =content1.get()
+        p = re.sub(r'<.*?>', '', content)
+        content = re.sub(r'  ', '', p).strip()
+        location1=''
+        location1 =content1.xpath('./a/i[@class="W_ficon ficon_cd_place"]')
+        if location1:
+            location=location1.xpath('../@title').get()
+            content=content.rstirp(location)
+            print(content,location)
+
+
+
+
+
+
+
+
 
     def parse_information(self, response):
         """ 抓取个人信息 """
@@ -127,21 +213,24 @@ class WeiboSpider(Spider):
 
 
     def parse_tweet(self, response):
-        if  response.url.endswith('page=1'):
-            # 如果是第1页，一次性获取后面的所有页
-            all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
-            if all_page:
-
-                all_page = all_page.group(1)
-                all_page = int(all_page)
-                print('获取到了页数',all_page)
-                if all_page>=99:
-                    all_page=220
-                for page_num in range(2,93):
-                    page_url = response.url.replace(
-                        'page=1', 'page={}'.format(page_num))
-                    yield Request(page_url, self.parse_tweet,
-                                  dont_filter=True, meta=response.meta)
+        body = response.body
+        body = body.decode("utf-8")
+        print(body)
+        # if  response.url.endswith('page=1'):
+        #     # 如果是第1页，一次性获取后面的所有页
+        #     all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
+        #     if all_page:
+        #
+        #         all_page = all_page.group(1)
+        #         all_page = int(all_page)
+        #         print('获取到了页数',all_page)
+        #         if all_page>=99:
+        #             all_page=220
+        #         for page_num in range(2,93):
+        #             page_url = response.url.replace(
+        #                 'page=1', 'page={}'.format(page_num))
+        #             yield Request(page_url, self.parse_tweet,
+        #                           dont_filter=True, meta=response.meta)
         """
         解析本页的数据
         """
@@ -150,7 +239,9 @@ class WeiboSpider(Spider):
         for tweet_node in tweet_nodes:
             try:
                 tweet_item = TweetsItem()
-                tweet_item['crawl_time'] = int(time.time())
+                tweet_item['keyword']=self.querystr
+                tweet_item['crawl_time'] =[]
+                tweet_item['crawl_time'].append(str(int(time.time())))
                 tweet_repost_url = tweet_node.xpath(
                     './/a[contains(text(),"转发[")]/@href')[0]
                 user_tweet_id = re.search(
@@ -171,16 +262,16 @@ class WeiboSpider(Spider):
                     tweet_item['created_at'] = time_fix(create_time_info.strip())
 
                 like_num = tweet_node.xpath('.//a[contains(text(),"赞[")]/text()')[-1]
-                tweet_item['like_num'] = int(re.search('\d+', like_num).group())
-
+                tweet_item['like_num'] = []
+                tweet_item['like_num'].append( int(re.search('\d+', like_num).group()))
                 repost_num = tweet_node.xpath('.//a[contains(text(),"转发[")]/text()')[-1]
-                tweet_item['repost_num'] = int(re.search('\d+', repost_num).group())
-
+                tweet_item['repost_num'] = []
+                tweet_item['repost_num'].append(int(re.search('\d+', repost_num).group()))
                 comment_num = tweet_node.xpath(
                     './/a[contains(text(),"评论[") '
                     'and not(contains(text(),"原文"))]/text()')[-1]
-                tweet_item['comment_num'] = int(re.search('\d+', comment_num).group())
-
+                tweet_item['comment_num'] = []
+                tweet_item['comment_num'].append(int(re.search('\d+', comment_num).group()))
                 images = tweet_node.xpath('.//img[@alt="图片"]/@src')
                 if images:
                     tweet_item['image_url'] = images[0]
@@ -339,7 +430,21 @@ class WeiboSpider(Spider):
             like_num = comment_node.xpath('.//a[contains(text(),"赞[")]/text()')[-1]
             comment_item['like_num'] = int(re.search('\d+', like_num).group())
             comment_item['created_at'] = time_fix(created_at_info.split('\xa0')[0])
-            yield comment_item
+            people_url='https://weibo.cn/u/'+comment_item['comment_user_id']
+            yield Request(people_url, self.parse_head,
+                                      dont_filter=True, meta=comment_item)
+
+    def parse_head(self, response):
+        body = response.body
+
+        body = body.decode("utf-8")
+        selector = Selector(text=body)
+        head_url=selector.xpath('//img[@alt="头像"]//@src').get()
+        item =response.meta
+        item['head_url']=head_url
+        print(type(item),item)
+        yield  item
+
 
 
 if __name__ == "__main__":
