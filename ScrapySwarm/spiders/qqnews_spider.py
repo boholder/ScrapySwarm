@@ -37,22 +37,25 @@ from ScrapySwarm.tools.crawl_time_format \
 class QQNewsSpider(scrapy.Spider):
     name = 'qqnews'
 
-    # 与BDsearchUrlUtil交互要用的参数，指明网址
-    site = 'news.qq.com'
+    def __init__(self, *args, **kwargs):
+        # 与BDsearchUrlUtil交互要用的参数，指明网址
+        self.site = 'news.qq.com'
 
-    # 需要在parse()中使用该url关联的'keyword'（自定义item属性），
-    # 当然 scrapy.response 对象中是没有的，
-    # 也不想改写个 response 对象的子类了，直接定义一个全局变量
-    keyword = ''
+        # 需要在parse()中使用该url关联的'keyword'（自定义item属性），
+        # 当然 scrapy.response 对象中是没有的，
+        # 也不想改写个 response 对象的子类了，直接定义一个类属性
+        self.keyword = ''
 
-    bd = BDsearchUrlUtil()
+        self.bd = BDsearchUrlUtil()
+
+        super().__init__(*args, **kwargs)
 
     def close(self, reason):
         # 当爬虫停止时，调用clockoff()修改数据库
         if self.bd.clockoff(self.site, self.keyword):
             print('QQnews_spider clock off successful')
 
-        # 重载前scrapy原来的代码
+        # 重写前scrapy原来的代码
         closed = getattr(self, 'closed', None)
         if callable(closed):
             return closed(reason)
