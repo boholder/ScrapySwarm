@@ -75,4 +75,5 @@ class UniqueDBInsertUtil(object):
             # 有重复数�
             # 不做处理也可以，结果是没插入成功，
             # 就是不让raise error了
+            # (每次运行因为客观原因必然爬取到大量重复数据)
             pass

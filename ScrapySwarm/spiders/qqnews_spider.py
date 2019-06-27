@@ -75,7 +75,7 @@ class QQNewsSpider(scrapy.Spider):
             for url in urllist:
                 yield scrapy.Request(url, self.parse)
 
-        # test news_qq spider
+        # # test news_qq spider
         # url = 'https://news.qq.com/a/20170823/002257.htm'
         # yield scrapy.Request(url, self.parse)
 
@@ -112,7 +112,7 @@ class QQNewsSpider(scrapy.Spider):
             pass
 
     @staticmethod
-    def trygetPublishTime(self, response):
+    def trygetPublishTime(response):
         time = response.xpath(
             '//span[@class=\'a_time\']/text()').get()
         if not time:
@@ -138,7 +138,7 @@ class QQNewsSpider(scrapy.Spider):
         return time
 
     @staticmethod
-    def trygetPublishSource(self, response):
+    def trygetPublishSource(response):
         source = response.xpath(
             '//span[@class=\'a_source\']/a/text()').get()
 
