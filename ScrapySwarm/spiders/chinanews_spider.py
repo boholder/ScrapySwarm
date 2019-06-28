@@ -29,7 +29,7 @@ class China(Spider):
             querystr = '中美贸易'
         self.querystr = querystr
         self.q = []
-        folderpath = "e:" + querystr;
+        folderpath ='E:\chinanews' + querystr
         if (not os.path.exists(folderpath)):
             os.mkdir(folderpath)
         my_data = {'q': querystr,
@@ -115,13 +115,13 @@ class China(Spider):
 
         item['crawl_time'] = str(int(time.time()))
         created_time = ts[0].strip()
-        timeArray = time.strptime(created_time, "%Y�m�d�%H:%M")
+        timeArray = time.strptime(created_time, "%Y年%m月%d日 %H:%M")
         otherStyleTime = time.strftime("%Y-%m-%d-%H-%M-%S", timeArray)
+        item['source'] = '中国新闻'
         if len(ts) > 1:
             source = ts[1]
             item['source'] = source
-        if not item['source']:
-            item['source'] = '中国新闻'
+
         item['_id'] = url + otherStyleTime
         item['keyword'] = self.querystr
         item['title'] = title

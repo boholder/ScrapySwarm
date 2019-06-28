@@ -10,7 +10,7 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'ScrapySwarm'
-
+COMMANDS_MODULE = 'ScrapySwarm.commands'
 SPIDER_MODULES = ['ScrapySwarm.spiders']
 NEWSPIDER_MODULE = 'ScrapySwarm.spiders'
 
@@ -30,6 +30,29 @@ COLL_QQ_NEWS = 'news_qq'
 COLL_SINA_NEWS = 'news_sina'
 
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
+
+#
+# SPIDER_MIDDLEWARES = {
+#    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+# }
+
+# 渲染服务的url
+# SPLASH_URL = 'http://192.168.99.100:8050'
+#
+# DOWNLOADER_MIDDLEWARES = {
+#    'scrapy_splash.SplashCookiesMiddleware': 723,
+#    'scrapy_splash.SplashMiddleware': 725,
+#    'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+#
+# }
+# # 去重过滤器
+# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+# # 使用Splash的Http缓存
+# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
+
+
+
+
 
 # ===weibo setting===
 

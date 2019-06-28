@@ -9,11 +9,14 @@
 @Function : 
 
 '''
+import os
 
 import pymongo
 from pymongo.errors import DuplicateKeyError
+from scrapy import cmdline
 
 import ScrapySwarm.items as items
+from ScrapySwarm.tools.imag import download_pic
 
 
 class UniqueDBInsertUtil(object):
@@ -66,6 +69,13 @@ class UniqueDBInsertUtil(object):
         try:
             if isinstance(item, items.ChinaNewsItem):
                 self.Chinanews.insert(dict(item))
+                folderpath = "E:\chinanews" + item['keyword'];
+
+                for img in item['imgs']:
+                    image_path1 = img.split("/")[-1]
+                    image_path1 = item["url"].split("/")[-1] + image_path1
+                    image_path = os.path.join(folderpath, image_path1)
+                    download_pic(img, image_path)
             elif isinstance(item, items.QQNewsItem):
                 self.QQNews.insert(dict(item))
             elif isinstance(item, items.SinaNewsItem):
@@ -76,4 +86,54 @@ class UniqueDBInsertUtil(object):
             # 不做处理也可以，结果是没插入成功，
             # 就是不让raise error了
             # (每次运行因为客观原因必然爬取到大量重复数据)
+            pass
+
+    def commentsUniqueInsert(self, item):
+        try:
+            if True:
+                folderpath = "e:\weibo"
+
+                image_path1 = item['comment_user_id'].split("/")[-1]+'.jpg'
+                image_path = os.path.join(folderpath, image_path1)
+                download_pic(item['head_url'], image_path)
+                self.Comments.insert(item)
+
+        except DuplicateKeyError:
+            # 有重复数�
+            # 不做处理也可以，结果是没插入成功，
+            # 就是不让raise error了
+            pass
+
+
+    def weiboUniqueInsert(self,item):
+        try:
+            if isinstance(item, items.TweetsItem):
+                last = self.Tweets.find_one({'_id': item['_id']})
+                if last:
+                    # last=last[0]
+                    print(last)
+                    if len(last['crawl_time'])<=3:
+                        last['crawl_time'].append(item['crawl_time'][0])
+                        last['like_num'].append(item['like_num'][0])
+                        last['repost_num'].append(item['repost_num'][0])
+                        last['comment_num'].append(item['comment_num'][0])
+                        self.Tweets.update({"_id":last['_id']},{"$set":last})
+
+
+                else:
+                    self.Tweets.insert(dict(item))
+                    print("保存空的了")
+                    folderpath = "e:\weibo" + item['keyword'];
+                    if 'image_url' in item:
+                        print("保存")
+                        image_path1 = item['image_url'].split("/")[-1]
+                        image_path = os.path.join(folderpath, image_path1)
+                        download_pic(item['image_url'], image_path)
+
+
+
+        except DuplicateKeyError:
+            # 有重复数�
+            # 不做处理也可以，结果是没插入成功，
+            # 就是不让raise error了
             pass

@@ -4,9 +4,12 @@
 #
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+import time
 
+import scrapy
 from scrapy import signals
-
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 class ScrapyswarmSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -61,6 +64,9 @@ class ScrapyswarmDownloaderMiddleware(object):
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.
 
+    # driver = webdriver.Chrome(executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
+    # driver.get('https://weibo.cn')
+    # time.sleep(30)
     @classmethod
     def from_crawler(cls, crawler):
         # This method is used by Scrapy to create your spiders.
@@ -68,7 +74,30 @@ class ScrapyswarmDownloaderMiddleware(object):
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
         return s
 
+    def  cookiechange(self,driv,text):
+        q=text.split(';')
+        for s in q:
+            j=s.split('=')
+            driv.add_cookie({'name' : j[0], 'value' : j[1]})
+
+
     def process_request(self, request, spider):
+        # if request.url != 'https://www.aqistudy.cn/historydata/':
+        #
+        #     # driver.get('https://weibo.cn')
+        #     # print(driver.get_cookies())
+        #     # # driver.delete_all_cookies()
+        #     # self.cookiechange(driver,'_T_WM=f7fc1975334e2610dd77c4a949caaa2e; __guid=78840338.2690867225963806000.1561098303'
+        #     #                   '394.3926; TMPTOKEN=xWotEi1ho4BsQadI1WKh50PW3wxeD0MXriFaU01sHfs7ddDfYkc6g8QC0brRQ2iI; SUB=_2A25'
+        #     #                   'wCAggDeRhGeBM6lER8yzJzD2IHXVT8qhorDV6PUJbkdAKLUnFkW1NRRuUuWjxLqOlReVo19AJKlLVFf0K-Qcb; SUHB=0h1J3'
+        #     #                   'h4MnoA8ye; SCF=AqNspA5hvpJAB-QOIpSEFOvS7uTz2C-xcjU2d4im-izONxHBJbLovO6aDcPk7st0qIDcNhWWOxTPgrhwE'
+        #     #                   'NoLpoA.; SSOLoginState=1561098352; monitor_count=2')
+        #     self.driver.get(request.url)
+        #     print(request.url)
+        #     time.sleep(1)
+        #     html = self.driver.page_source
+        #     return scrapy.http.HtmlResponse(url=request.url, body=html.encode('utf-8'), encoding='utf-8',
+        #                                     request=request)
         # Called for each request that goes through the downloader
         # middleware.
 
@@ -79,6 +108,7 @@ class ScrapyswarmDownloaderMiddleware(object):
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
         return None
+
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
