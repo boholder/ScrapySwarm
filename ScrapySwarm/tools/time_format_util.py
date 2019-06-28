@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-@File : crawl_time_format.py
+@File : time_format_util.py
 
 @Time : 2019/6/24
 
@@ -10,7 +10,7 @@
             ‘YYYY-MM-DD-HH-MM-SS’ 格式
 
 '''
-
+import datetime
 import time
 
 '''
@@ -22,6 +22,24 @@ import time
 
 def getCurrentTime():
     return int(time.time())
+
+
+'''
+
+'''
+
+
+def getCurrentTimeReadable():
+    return time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
+
+
+'''
+
+'''
+
+
+def getUTCDateTimeObj():
+    return datetime.datetime.utcnow()
 
 '''
 2011年07月12日10:33

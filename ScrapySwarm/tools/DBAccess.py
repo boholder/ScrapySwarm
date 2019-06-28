@@ -41,7 +41,10 @@ from ScrapySwarm.settings import \
     LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
     COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
     COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS, \
-    COLL_QQ_NEWS, COLL_SINA_NEWS
+    COLL_QQ_NEWS, COLL_SINA_NEWS, \
+    LOG_DB_NAME, COLL_SPIDERS_LOG, COLL_API_LOG
+
+connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 
 
 class UniqueDBInsertUtil(object):
@@ -50,8 +53,6 @@ class UniqueDBInsertUtil(object):
     '''
 
     def __init__(self):
-
-        connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 
         db = connection[MONGO_DB_NAME]
         self.Tweets = db[COLL_WEIBO_TWEETS]
@@ -110,7 +111,7 @@ class UniqueDBInsertUtil(object):
             if True:
                 folderpath = "e:\weibo"
 
-                image_path1 = item['comment_user_id'].split("/")[-1]+'.jpg'
+                image_path1 = item['comment_user_id'].split("/")[-1] + '.jpg'
                 image_path = os.path.join(folderpath, image_path1)
                 download_pic(item['head_url'], image_path)
                 self.Comments.insert(item)
@@ -121,20 +122,19 @@ class UniqueDBInsertUtil(object):
             # 就是不让raise error了
             pass
 
-
-    def weiboUniqueInsert(self,item):
+    def weiboUniqueInsert(self, item):
         try:
             if isinstance(item, items.TweetsItem):
                 last = self.Tweets.find_one({'_id': item['_id']})
                 if last:
                     # last=last[0]
                     print(last)
-                    if len(last['crawl_time'])<=3:
+                    if len(last['crawl_time']) <= 3:
                         last['crawl_time'].append(item['crawl_time'][0])
                         last['like_num'].append(item['like_num'][0])
                         last['repost_num'].append(item['repost_num'][0])
                         last['comment_num'].append(item['comment_num'][0])
-                        self.Tweets.update({"_id":last['_id']},{"$set":last})
+                        self.Tweets.update({"_id": last['_id']}, {"$set": last})
 
 
                 else:
@@ -158,9 +158,6 @@ class UniqueDBInsertUtil(object):
 
 class NormalDBInsertUtil(object):
     def __init__(self):
-
-        connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
-
         db = connection[MONGO_DB_NAME]
         self.Bdsearch = db[COLL_BAIDU_SREACH]
         self.Information = db[COLL_WEIBO_INFOMATION]
@@ -187,11 +184,7 @@ class BDsearchUrlUtil(object):
     '''
 
     def __init__(self):
-        from ScrapySwarm.settings import \
-            LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
-            COLL_BAIDU_SREACH
 
-        connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
         db = connection[MONGO_DB_NAME]
         self.bdsearch = db[COLL_BAIDU_SREACH]
 
@@ -253,4 +246,16 @@ class BDsearchUrlUtil(object):
 
 
 class LogDBAccessUtil(object):
-    pass
+    def __init__(self):
+        db = connection[LOG_DB_NAME]
+        self.Spiderslog = db[COLL_SPIDERS_LOG]
+        self.APIlog = db[COLL_API_LOG]
+
+    def addSpiderRunLog(self, logdict):
+        return True
+
+    def updateSpiderRunState(self, logdict):
+        return True
+
+    def addAPICallingLog(self, logdict):
+        return True

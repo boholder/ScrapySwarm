@@ -10,16 +10,16 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'ScrapySwarm'
-COMMANDS_MODULE = 'ScrapySwarm.commands'
+COMMANDS_MODULE = 'ScrapySwarm.control'
 SPIDER_MODULES = ['ScrapySwarm.spiders']
 NEWSPIDER_MODULE = 'ScrapySwarm.spiders'
 
 # MongoDB setting
 LOCAL_MONGO_HOST = '127.0.0.1'
 LOCAL_MONGO_PORT = 27017
-MONGO_DB_NAME = 'WebData'
 
-# data collections name
+# data db & collections name
+MONGO_DB_NAME = 'WebData'
 COLL_BAIDU_SREACH = 'baidu_search_results'
 COLL_WEIBO_INFOMATION = 'weibo_infomation'
 COLL_WEIBO_TWEETS = 'weibo_tweets'
@@ -28,6 +28,11 @@ COLL_WEIBO_RELATIONSHIPS = 'weibo_relationships'
 COLL_CHINA_NEWS = 'news_china'
 COLL_QQ_NEWS = 'news_qq'
 COLL_SINA_NEWS = 'news_sina'
+
+# log db & collections name
+LOG_DB_NAME = 'SwarmLog'
+COLL_SPIDERS_LOG = 'spiders_log'
+COLL_API_LOG = 'api_log'
 
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 
@@ -49,9 +54,6 @@ ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 # DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 # # 使用Splash的Http缓存
 # HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
-
-
-
 
 
 # ===weibo setting===

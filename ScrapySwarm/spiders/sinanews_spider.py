@@ -25,7 +25,7 @@ from ScrapySwarm.tools.DBAccess \
 
 from ScrapySwarm.items import SinaNewsItem
 
-from ScrapySwarm.tools.crawl_time_format \
+from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
 

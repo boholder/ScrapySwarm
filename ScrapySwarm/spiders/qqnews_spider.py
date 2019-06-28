@@ -30,9 +30,10 @@ from ScrapySwarm.tools.DBAccess \
 
 from ScrapySwarm.items import QQNewsItem
 
-from ScrapySwarm.tools.crawl_time_format \
+from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
+from ScrapySwarm.control.log_util import spider_log_util as slog
 
 class QQNewsSpider(scrapy.Spider):
     name = 'qqnews'
@@ -67,17 +68,18 @@ class QQNewsSpider(scrapy.Spider):
         if self.keyword is None:
             self.keyword = '中美贸易'
 
-        # get url list for mongoDB
-        urllist = self.bd.getNewUrl(self.site, self.keyword)
+        # # get url list for mongoDB
+        # urllist = self.bd.getNewUrl(self.site, self.keyword)
+        #
+        # # if no new url or error, urllist=None
+        # if urllist:
+        #     for url in urllist:
+        #         yield scrapy.Request(url, self.parse)
 
-        # if no new url or error, urllist=None
-        if urllist:
-            for url in urllist:
-                yield scrapy.Request(url, self.parse)
-
-        # # test news_qq spider
-        # url = 'https://news.qq.com/a/20170823/002257.htm'
-        # yield scrapy.Request(url, self.parse)
+        # test news_qq spider
+        url = 'https://news.qq.com/a/20170823/002257.htm'
+        slog.spider_start(self)
+        yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         item = QQNewsItem()

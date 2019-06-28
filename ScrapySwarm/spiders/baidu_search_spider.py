@@ -16,7 +16,7 @@ import urllib.parse
 
 from ScrapySwarm.items import BaiduSearchItem
 
-from ScrapySwarm.tools.crawl_time_format import getCurrentTime
+from ScrapySwarm.tools.time_format_util import getCurrentTime
 
 
 class BaiduSearchSpider(scrapy.Spider):
