@@ -11,12 +11,15 @@ from pymongo.errors import DuplicateKeyError
 
 from ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
-from ScrapySwarm.tools.unique_db_insert_util \
+from ScrapySwarm.tools.DBAccess \
     import UniqueDBInsertUtil as Uni
+from ScrapySwarm.tools.DBAccess \
+    import NormalDBInsertUtil as Nor
 
 
 class ScrapyswarmPipeline(object):
     uni = Uni()
+    nor = Nor()
 
     def __init__(self):
         from ScrapySwarm.settings import \
@@ -45,13 +48,13 @@ class ScrapyswarmPipeline(object):
         #         level=log.DEBUG, spider=spider)
 
         if isinstance(item, items.BaiduSearchItem):
-            self.insert_item(self.Bdsearch, item)
+            self.nor.insert_item(self.Bdsearch, item)
         elif isinstance(item, items.RelationshipsItem):
-            self.insert_item(self.Relationships, item)
+            self.nor.insert_item(self.Relationships, item)
         elif isinstance(item, items.TweetsItem):
             self.uni.weiboUniqueInsert(item)
         elif isinstance(item, items.InformationItem):
-            self.insert_item(self.Information, item)
+            self.nor.insert_item(self.Information, item)
         elif isinstance(item, items.ChinaNewsItem):
             self.uni.newsUniqueInsert(item)
         elif isinstance(item, items.QQNewsItem):
@@ -64,13 +67,3 @@ class ScrapyswarmPipeline(object):
 
 
         return item
-
-    @staticmethod
-    def insert_item(collection, item):
-        try:
-            print("通过pipe插入")
-            collection.insert(dict(item))
-        except DuplicateKeyError:
-            # 有重复数�
-            # 不做处理也可以
-            pass

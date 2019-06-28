@@ -9,6 +9,3 @@
 @Function : 
 
 '''
-from ScrapySwarm.tools.bdsearch_url_util import BDsearchUrlUtil as bd
-
-util=bd()

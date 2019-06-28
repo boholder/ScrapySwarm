@@ -16,3 +16,12 @@
 
             scrapy本身的log在cc-api中控制是否写入一个文本文件
 '''
+
+
+'''
+
+'''
+
+class spider_log_util(object):
+    def spider_start(self):
+        pass

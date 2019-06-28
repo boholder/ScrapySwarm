@@ -20,7 +20,7 @@
 import scrapy
 import re
 
-from ScrapySwarm.tools.bdsearch_url_util \
+from ScrapySwarm.tools.DBAccess \
     import BDsearchUrlUtil
 
 from ScrapySwarm.items import SinaNewsItem
