@@ -4,6 +4,7 @@
 ScrapySwarm/spiders/__pycache__
 ScrapySwarm/tools/__pycache__
 ScrapySwarm/__pycache__
+ScrapySwarm/control/__pycache__
 Stiky.txt
 *.orig
 /ScrapySwarm/spiders/test.py
