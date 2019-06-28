@@ -10,6 +10,7 @@ from scrapy.selector import Selector
 from scrapy.http import Request
 from scrapy.utils.project import get_project_settings
 
+from ScrapySwarm.control.log_util import spider_log_util
 from ScrapySwarm.items import TweetsItem, \
     CommentItem, RelationshipsItem, InformationItem
 from ScrapySwarm.tools.weibo_utils import time_fix, \
@@ -40,7 +41,21 @@ class WeiboSpider(Spider):
 
     q = []
 
+    def __init__(self, *args, **kwargs):
+
+        self.slog = spider_log_util()
+
+        super().__init__(*args, **kwargs)
+
+    def close(self, reason):
+
+        self.slog.spider_finish(self)
+        super().close(self, reason)
+
     def start_requests(self):
+
+        self.slog.spider_finish(self)
+
         querystr = getattr(self, 'q', '中美贸易')
         self.querystr=querystr
         folderpath = "e:\weibo" +querystr

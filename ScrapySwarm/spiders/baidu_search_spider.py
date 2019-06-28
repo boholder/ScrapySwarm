@@ -18,9 +18,21 @@ from ScrapySwarm.items import BaiduSearchItem
 
 from ScrapySwarm.tools.time_format_util import getCurrentTime
 
+from ScrapySwarm.control.log_util import spider_log_util
 
 class BaiduSearchSpider(scrapy.Spider):
     name = 'baidusearch'
+
+    def __init__(self, *args, **kwargs):
+
+        self.slog = spider_log_util()
+
+        super().__init__(*args, **kwargs)
+
+    def close(self, reason):
+
+        self.slog.spider_finish(self)
+        super().close(self, reason)
 
     def start_requests(self):
         # get params (from console command) when be started
@@ -31,6 +43,9 @@ class BaiduSearchSpider(scrapy.Spider):
             querystr = '中美贸易'
         if site is None:
             site = 'news.qq.com'
+
+        self.slog.spider_start(self)
+
         url = self.baidusearchurlGen(querystr, site, 0)
         yield scrapy.Request(url, self.parse)
 

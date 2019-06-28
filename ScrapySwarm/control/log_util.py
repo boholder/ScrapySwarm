@@ -16,16 +16,17 @@
 
             scrapy本身的log在cc-api中控制是否写入一个文本文件
 '''
-
+import copy
 import logging
+import re
+
 import scrapy
 
 from ScrapySwarm.tools.time_format_util \
-    import getCurrentTime, getCurrentTimeReadable,\
-            getUTCDateTimeObj
+    import getCurrentTime, getCurrentTimeReadable, \
+    getUTCDateTimeObj
 
 from ScrapySwarm.tools.DBAccess import LogDBAccessUtil
-
 
 '''
 
@@ -35,33 +36,71 @@ from ScrapySwarm.tools.DBAccess import LogDBAccessUtil
 class spider_log_util(object):
     def __init__(self):
         self.logdb = LogDBAccessUtil()
+        self.logger = logging.getLogger(__name__)
 
     def spider_start(self, spider=scrapy.Spider):
+        self.logger.info('calling spider_log_util.spider_start')
         logdict = {}
 
         logdict['spider'] = spider.name
 
-        logdict['start_time'] = getCurrentTime()
-        logdict['start_time_readable'] = getCurrentTimeReadable()
-        logdict['last_modified_utc']=getUTCDateTimeObj()
+        logdict['last_modified'] = \
+            getUTCDateTimeObj()
 
-        print(spider.stats)
-
-        if self.logdb.addSpiderRunLog(logdict):
-            logging.info('{0} start log successfully created'
-                         .format(spider.name))
-
-    def spider_close(self, spider=scrapy.Spider):
-        logdict={}
-
-        logdict['spider']=spider.name
-
-        logdict['close_time'] = getCurrentTime()
-        logdict['close_time_readable'] = getCurrentTimeReadable()
-        logdict['last_modified_utc'] = getUTCDateTimeObj()
+        logdict['start_time'] = \
+            spider.crawler.stats._stats['start_time']
 
         if self.logdb.addSpiderRunLog(logdict):
-            logging.info('{0} close log successfully updated'
+            self.logger.info('{0} start log successfully created'
+                             .format(spider.name))
+
+    def spider_finish(self, spider=scrapy.Spider):
+        self.logger.info('calling spider_log_util.spider_finish')
+        logdict = {}
+        statsdict = copy.deepcopy(spider.crawler.stats._stats)
+
+        logdict['spider'] = spider.name
+
+        logdict['last_modified'] = \
+            getUTCDateTimeObj()
+
+        logdict['start_time'] = \
+            statsdict['start_time']
+
+        logdict['finish_time'] = \
+            statsdict['finish_time']
+
+
+        if 'log_count/WARNING' in statsdict:
+            logdict['log_count/WARNING'] = \
+                statsdict['log_count/WARNING']
+        if 'log_count/ERROR' in statsdict:
+            logdict['log_count/ERROR'] = \
+                statsdict['log_count/ERROR']
+
+        if 'downloader/request_count' in statsdict:
+            logdict['downloader/request_count'] = \
+                statsdict['downloader/request_count']
+        if 'downloader/response_count' in statsdict:
+            logdict['downloader/response_count'] = \
+                statsdict['downloader/response_count']
+        if 'downloader/response_bytes' in statsdict:
+            logdict['downloader/response_bytes'] = \
+                statsdict['downloader/response_bytes']
+
+        # response count diff via http response status code
+        for key in statsdict.keys():
+            if re.search('downloader/response_status_count/', key):
+                logdict[key] = statsdict[key]
+
+        logdict['item_scraped_count'] = \
+            statsdict['item_scraped_count']
+
+        logdict['finish_reason'] = \
+            statsdict['finish_reason']
+
+        if self.logdb.updateSpiderFinishStats(logdict):
+            self.logger.info('{0} close log successfully updated'
                          .format(spider.name))
 
 

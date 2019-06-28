@@ -28,6 +28,8 @@ from ScrapySwarm.items import SinaNewsItem
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
+from ScrapySwarm.control.log_util import spider_log_util
+
 
 class SinaNewsSpider(scrapy.Spider):
     name = 'sinanews'
@@ -43,17 +45,18 @@ class SinaNewsSpider(scrapy.Spider):
 
         self.bd = BDsearchUrlUtil()
 
+        self.slog = spider_log_util()
+
         super().__init__(*args, **kwargs)
 
     def close(self, reason):
+        self.slog.spider_finish(self)
+
         # 当爬虫停止时，调用clockoff()修改数据库
         if self.bd.clockoff(self.site, self.keyword):
-            print('SinaNews_spider clock off successful')
+            self.logger.info('SinaNews_spider clock off successful')
 
-        # 重写前scrapy原来的代码
-        closed = getattr(self, 'closed', None)
-        if callable(closed):
-            return closed(reason)
+        super().close(self, reason)
 
     def start_requests(self):
         # get params (from console command) when be started
@@ -61,6 +64,8 @@ class SinaNewsSpider(scrapy.Spider):
 
         if self.keyword is None:
             self.keyword = '中美贸易'
+
+        self.slog.spider_start(self)
 
         # get url list for mongoDB
         urllist = self.bd.getNewUrl(self.site, self.keyword)

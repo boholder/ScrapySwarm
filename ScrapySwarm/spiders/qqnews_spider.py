@@ -33,7 +33,8 @@ from ScrapySwarm.items import QQNewsItem
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
-from ScrapySwarm.control.log_util import spider_log_util as slog
+from ScrapySwarm.control.log_util import spider_log_util
+
 
 class QQNewsSpider(scrapy.Spider):
     name = 'qqnews'
@@ -48,18 +49,17 @@ class QQNewsSpider(scrapy.Spider):
         self.keyword = ''
 
         self.bd = BDsearchUrlUtil()
+        self.slog = spider_log_util()
 
         super().__init__(*args, **kwargs)
 
     def close(self, reason):
         # 当爬虫停止时，调用clockoff()修改数据库
+        self.slog.spider_finish(self)
         if self.bd.clockoff(self.site, self.keyword):
-            print('QQnews_spider clock off successful')
+            self.logger.info('QQnews_spider clock off successful')
 
-        # 重写前scrapy原来的代码
-        closed = getattr(self, 'closed', None)
-        if callable(closed):
-            return closed(reason)
+        super().close(self, reason)
 
     def start_requests(self):
         # get params (from console command) when be started
@@ -68,18 +68,19 @@ class QQNewsSpider(scrapy.Spider):
         if self.keyword is None:
             self.keyword = '中美贸易'
 
-        # # get url list for mongoDB
-        # urllist = self.bd.getNewUrl(self.site, self.keyword)
-        #
-        # # if no new url or error, urllist=None
-        # if urllist:
-        #     for url in urllist:
-        #         yield scrapy.Request(url, self.parse)
+        self.slog.spider_start(self)
 
-        # test news_qq spider
-        url = 'https://news.qq.com/a/20170823/002257.htm'
-        slog.spider_start(self)
-        yield scrapy.Request(url, self.parse)
+        # get url list for mongoDB
+        urllist = self.bd.getNewUrl(self.site, self.keyword)
+
+        # if no new url or error, urllist=None
+        if urllist:
+            for url in urllist:
+                yield scrapy.Request(url, self.parse)
+
+        # # test news_qq spider
+        # url = 'https://news.qq.com/a/20170823/002257.htm'
+        # yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
         item = QQNewsItem()

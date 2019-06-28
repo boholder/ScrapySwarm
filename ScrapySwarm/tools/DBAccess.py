@@ -27,6 +27,7 @@
                 插入或更新DB中的日志表
 
 '''
+import datetime
 import os
 
 import pymongo
@@ -252,10 +253,17 @@ class LogDBAccessUtil(object):
         self.APIlog = db[COLL_API_LOG]
 
     def addSpiderRunLog(self, logdict):
-        return True
+        return self.Spiderslog \
+            .insert_one(logdict).acknowledged
 
-    def updateSpiderRunState(self, logdict):
-        return True
+    def updateSpiderFinishStats(self, logdict):
+        return self.Spiderslog.update_many(
+            {"spider": logdict['spider'],
+             "start_time": {'$lt': datetime.datetime.now(),
+                            '$gt': logdict['start_time']
+                                   - datetime.timedelta(seconds=1)}},
+            {"$set": logdict}
+        ).acknowledged
 
     def addAPICallingLog(self, logdict):
-        return True
+        pass

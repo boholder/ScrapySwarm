@@ -9,6 +9,8 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.selector import Selector
 from scrapy.http import Request
 from scrapy.utils.project import get_project_settings
+
+from ScrapySwarm.control.log_util import spider_log_util
 from ScrapySwarm.items import TweetsItem, InformationItem, RelationshipsItem, CommentItem, ChinaNewsItem
 
 
@@ -23,7 +25,20 @@ class China(Spider):
         'DOWNLOAD_DELAY': 3
     }
 
+    def __init__(self, *args, **kwargs):
+
+        self.slog = spider_log_util()
+
+        super().__init__(*args, **kwargs)
+
+    def close(self, reason):
+
+        self.slog.spider_finish(self)
+        super().close(self, reason)
+
     def start_requests(self):
+        self.slog.spider_start(self)
+
         querystr = getattr(self, 'q', None)
         if not querystr:
             querystr = '中美贸易'
