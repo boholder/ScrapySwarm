@@ -8,3 +8,4 @@ Stiky.txt
 *.orig
 /ScrapySwarm/spiders/test.py
 debug.py
+scrapylog.txt
