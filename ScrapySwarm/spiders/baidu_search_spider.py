@@ -18,14 +18,14 @@ from ScrapySwarm.items import BaiduSearchItem
 
 from ScrapySwarm.tools.time_format_util import getCurrentTime
 
-from ScrapySwarm.control.log_util import spider_log_util
+from ScrapySwarm.control.log_util import SpiderLogUtil
 
 class BaiduSearchSpider(scrapy.Spider):
     name = 'baidusearch'
 
     def __init__(self, *args, **kwargs):
 
-        self.slog = spider_log_util()
+        self.slog = SpiderLogUtil()
 
         super().__init__(*args, **kwargs)
 
@@ -109,8 +109,8 @@ class BaiduSearchSpider(scrapy.Spider):
     @staticmethod
     def baidusearchurlGen(querystr, site, pagenumber):
         # 注意https 有一个防爬虫机制，脚本加载真正数据，只能爬个壳。
-        return "http://www.baidu.com/s?wd=\"" \
-               + querystr + "\" site:" + site + "&pn=" + str(pagenumber)
+        return "http://www.baidu.com/s?wd=" \
+               + querystr + " site:" + site + "&pn=" + str(pagenumber)
 
     '''
     获取搜索时的原站点网址 exm: news.qq.com
@@ -135,7 +135,7 @@ class BaiduSearchSpider(scrapy.Spider):
 
     @ param {string} resurl response.url 
                             exm: https://www.baidu.com/s?
-                                wd="中美贸易" site%3Anews.qq.com&pn=0
+                                wd=中美贸易 site%3Anews.qq.com&pn=0
 
     @ return {string}
     '''
@@ -143,6 +143,6 @@ class BaiduSearchSpider(scrapy.Spider):
     @staticmethod
     def getOrigKeyword(resurl):
         # 's?wd="{keyword}" site'
-        index = re.search('wd=%22.*%22%20', resurl).span()
+        index = re.search('wd=.*%20', resurl).span()
         # '{keyword} in url(ascii for url), decode'
-        return urllib.parse.unquote(resurl[(index[0] + 6):(index[1] - 6)])
+        return urllib.parse.unquote(resurl[(index[0] + 3):(index[1] - 3)])

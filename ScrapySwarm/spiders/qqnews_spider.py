@@ -33,7 +33,7 @@ from ScrapySwarm.items import QQNewsItem
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
-from ScrapySwarm.control.log_util import spider_log_util
+from ScrapySwarm.control.log_util import SpiderLogUtil
 
 
 class QQNewsSpider(scrapy.Spider):
@@ -49,7 +49,7 @@ class QQNewsSpider(scrapy.Spider):
         self.keyword = ''
 
         self.bd = BDsearchUrlUtil()
-        self.slog = spider_log_util()
+        self.slog = SpiderLogUtil()
 
         super().__init__(*args, **kwargs)
 

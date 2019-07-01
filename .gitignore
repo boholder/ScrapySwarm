@@ -8,5 +8,6 @@ ScrapySwarm/control/__pycache__
 Stiky.txt
 *.orig
 /ScrapySwarm/spiders/test.py
-debug.py
+main.py
 scrapylog.txt
+*.log

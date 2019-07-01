@@ -8,8 +8,6 @@ import time
 
 import scrapy
 from scrapy import signals
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 class ScrapyswarmSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,

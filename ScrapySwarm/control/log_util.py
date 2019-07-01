@@ -7,14 +7,14 @@
 @Author : Boholder
 
 @Function : 两个类，spider_log_util被爬虫调用，
-            cc_log_util被cc-api模块调用，
+            cc_log_util被swarm-api模块调用，
             向MongoDB的对应log集合中插入|更新内容。
 
             想了想，python logging 记录的信息太少了，
             只有一个等级一个信息，信息还整个是个str。
             干脆直接写个封装，再插入数据库。
 
-            scrapy本身的log在cc-api中控制是否写入一个文本文件
+            scrapy本身的log在swarm-api中控制是否写入一个文本文件
 '''
 import copy
 import logging
@@ -33,7 +33,7 @@ from ScrapySwarm.tools.DBAccess import LogDBAccessUtil
 '''
 
 
-class spider_log_util(object):
+class SpiderLogUtil(object):
     def __init__(self):
         self.logdb = LogDBAccessUtil()
         self.logger = logging.getLogger(__name__)
@@ -67,9 +67,9 @@ class spider_log_util(object):
         logdict['start_time'] = \
             statsdict['start_time']
 
-        logdict['finish_time'] = \
-            statsdict['finish_time']
-
+        if 'finish_time' in statsdict:
+            logdict['finish_time'] = \
+                statsdict['finish_time']
 
         if 'log_count/WARNING' in statsdict:
             logdict['log_count/WARNING'] = \
@@ -93,17 +93,19 @@ class spider_log_util(object):
             if re.search('downloader/response_status_count/', key):
                 logdict[key] = statsdict[key]
 
-        logdict['item_scraped_count'] = \
-            statsdict['item_scraped_count']
+        if 'item_scraped_count' in statsdict:
+            logdict['item_scraped_count'] = \
+                statsdict['item_scraped_count']
 
-        logdict['finish_reason'] = \
-            statsdict['finish_reason']
+        if 'finish_reason' in statsdict:
+            logdict['finish_reason'] = \
+                statsdict['finish_reason']
 
         if self.logdb.updateSpiderFinishStats(logdict):
-            self.logger.info('{0} close log successfully updated'
+            self.logger.info('{0} finish log successfully updated'
                          .format(spider.name))
 
 
-class api_log_util(object):
+class APILogUtil(object):
     def __init__(self):
         logdb = LogDBAccessUtil()
