@@ -109,13 +109,22 @@ class UniqueDBInsertUtil(object):
 
     def commentsUniqueInsert(self, item):
         try:
-            if True:
-                folderpath = "e:\weibo"
-
-                image_path1 = item['comment_user_id'].split("/")[-1] + '.jpg'
-                image_path = os.path.join(folderpath, image_path1)
-                download_pic(item['head_url'], image_path)
-                self.Comments.insert(item)
+            self.Comments.insert(item)
+            # if isinstance(item, items.CommentItem):
+            #     last = self.Comments.find_one({'_id': item['_id']})
+            #     if last:
+            #         # last=last[0]
+            #         print(last)
+            #         if last['']:
+            #             last['crawl_time'].append(item['crawl_time'][0])
+            #             last['like_num'].append(item['like_num'][0])
+            #             last['repost_num'].append(item['repost_num'][0])
+            #             last['comment_num'].append(item['comment_num'][0])
+            #             self.Tweets.update({"_id": last['_id']}, {"$set": last})
+            #
+            #
+            #     else:
+            #         self.Tweets.insert(dict(item))
 
         except DuplicateKeyError:
             # 有重复数�

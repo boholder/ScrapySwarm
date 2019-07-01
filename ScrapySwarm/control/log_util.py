@@ -66,9 +66,9 @@ class spider_log_util(object):
 
         logdict['start_time'] = \
             statsdict['start_time']
-
-        logdict['finish_time'] = \
-            statsdict['finish_time']
+        if 'finish_time' in statsdict:
+            logdict['finish_time'] = \
+                statsdict['finish_time']
 
 
         if 'log_count/WARNING' in statsdict:
@@ -93,11 +93,13 @@ class spider_log_util(object):
             if re.search('downloader/response_status_count/', key):
                 logdict[key] = statsdict[key]
 
-        logdict['item_scraped_count'] = \
-            statsdict['item_scraped_count']
+        if 'item_scraped_count' in statsdict:
+            logdict['item_scraped_count'] = \
+                statsdict['item_scraped_count']
 
-        logdict['finish_reason'] = \
-            statsdict['finish_reason']
+        if "finish_reason" in statsdict:
+            logdict['finish_reason'] = \
+                statsdict['finish_reason']
 
         if self.logdb.updateSpiderFinishStats(logdict):
             self.logger.info('{0} close log successfully updated'

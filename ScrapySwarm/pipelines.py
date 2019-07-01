@@ -48,22 +48,21 @@ class ScrapyswarmPipeline(object):
         #         level=log.DEBUG, spider=spider)
 
         if isinstance(item, items.BaiduSearchItem):
-            self.nor.insert_item(self.Bdsearch, item)
+            self.nor.insert_item( item)
         elif isinstance(item, items.RelationshipsItem):
-            self.nor.insert_item(self.Relationships, item)
+            self.nor.insert_item( item)
         elif isinstance(item, items.TweetsItem):
             self.uni.weiboUniqueInsert(item)
         elif isinstance(item, items.InformationItem):
-            self.nor.insert_item(self.Information, item)
+            self.nor.insert_item( item)
         elif isinstance(item, items.ChinaNewsItem):
             self.uni.newsUniqueInsert(item)
         elif isinstance(item, items.QQNewsItem):
             self.uni.newsUniqueInsert(item)
         elif isinstance(item, items.SinaNewsItem):
             self.uni.newsUniqueInsert(item)
-        else :
-            print('评论被保存')
-            self.uni.commentsUniqueInsert(item)
+        elif isinstance(item, items.CommentItem):
 
+            self.uni.commentsUniqueInsert(item)
 
         return item

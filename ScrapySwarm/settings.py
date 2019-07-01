@@ -35,7 +35,7 @@ COLL_SPIDERS_LOG = 'spiders_log'
 COLL_API_LOG = 'api_log'
 
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
-
+ROBOTSTXT_OBEY = False
 #
 # SPIDER_MIDDLEWARES = {
 #    'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
@@ -86,7 +86,6 @@ ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 # USER_AGENT = 'ScrapySwarm (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32

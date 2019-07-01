@@ -11,19 +11,18 @@ def time_fix(time_string):
     if '分钟前' in time_string:
         minutes = re.search(r'^(\d+)分钟', time_string).group(1)
         created_at = now_time - datetime.timedelta(minutes=int(minutes))
-        return created_at.strftime('%Y-%m-%d %H:%M')
-
+        return created_at.strftime('%Y-%m-%d-%H-%M-%S')
     if '小时前' in time_string:
         minutes = re.search(r'^(\d+)小时', time_string).group(1)
         created_at = now_time - datetime.timedelta(hours=int(minutes))
-        return created_at.strftime('%Y-%m-%d %H:%M')
+        return created_at.strftime('%Y-%m-%d-%H-%M-%S')
 
     if '今天' in time_string:
-        return time_string.replace('今天', now_time.strftime('%Y-%m-%d'))
+        return time_string.replace('今天', now_time.strftime('%Y-%m-%d')).replace(':', '-').replace(' ', '-')+'-00'
 
     if '月' in time_string:
-        time_string = time_string.replace('月', '-').replace('日', '')
-        time_string = str(now_time.year) + '-' + time_string
+        time_string = time_string.strip().replace('月', '-').replace('日', '-').replace(':', '-').replace(' ', '')
+        time_string = str(now_time.year) + '-' + time_string+'-00'
         return time_string
 
     return time_string
