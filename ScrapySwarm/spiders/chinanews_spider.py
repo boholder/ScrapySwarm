@@ -21,8 +21,8 @@ class China(Spider):
         'DEFAULT_REQUEST_HEADERS': {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
         },
-        'CONCURRENT_REQUESTS': 16,
-        'DOWNLOAD_DELAY': 3
+        'CONCURRENT_REQUESTS': 15,
+        'DOWNLOAD_DELAY': 2
     }
 
     def __init__(self, *args, **kwargs):

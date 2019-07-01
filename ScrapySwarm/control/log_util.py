@@ -7,14 +7,14 @@
 @Author : Boholder
 
 @Function : 两个类，spider_log_util被爬虫调用，
-            cc_log_util被swarm-api模块调用，
-            向MongoDB的对应log集合中插入|更新内容。
+            cc_log_util被swarm-api模块调用�
+            向MongoDB的对应log集合中插入|更新内容�
 
-            想了想，python logging 记录的信息太少了，
-            只有一个等级一个信息，信息还整个是个str。
-            干脆直接写个封装，再插入数据库。
+            想了想，python logging 记录的信息太少了�
+            只有一个等级一个信息，信息还整个是个str�
+            干脆直接写个封装，再插入数据库�
 
-            scrapy本身的log在swarm-api中控制是否写入一个文本文件
+            scrapy本身的log在swarm-api中控制是否写入一个文本文�
 '''
 import copy
 import logging
@@ -66,7 +66,7 @@ class SpiderLogUtil(object):
 
         logdict['start_time'] = \
             statsdict['start_time']
-
+        if 'finish_time' in statsdict:
         if 'finish_time' in statsdict:
             logdict['finish_time'] = \
                 statsdict['finish_time']

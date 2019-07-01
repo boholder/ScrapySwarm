@@ -27,7 +27,8 @@ class WeiboSpider(Spider):
                "&sort=time&page="
     custom_settings = {
         # 请将Cookie替换成你自己的Cookie
-        'DOWNLOAD_DELAY' : 5,
+         'CONCURRENT_REQUESTS': 16,
+        'DOWNLOAD_DELAY': 1,
         'COOKIES_ENABLED':False,
         'DEFAULT_REQUEST_HEADERS' : {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
@@ -144,10 +145,15 @@ class WeiboSpider(Spider):
 
     def parse_information(self, response):
         """ 抓取个人信息 """
+        body = response.body
+        body = body.decode("utf-8")
+        selector = Selector(text=body)
+        head_url = selector.xpath('//img[@alt="头像"]//@src').get()
         information_item = InformationItem()
+        information_item["head"] =head_url
         information_item['crawl_time'] = int(time.time())
         selector = Selector(response)
-        information_item['_id'] = re.findall('(\d+)/info', response.url)[0]
+        information_item['_id'] = response.meta['id']
 
         # 获取标签里的所有text()
         text1 = ";".join(selector.xpath('body/div[@class="c"]//text()').extract())
@@ -189,11 +195,12 @@ class WeiboSpider(Spider):
         if labels and labels[0]:
             information_item["labels"] = \
                 labels[0].replace(u"\xa0", ",").replace(';', '').strip(',')
-        request_meta = response.meta
-        request_meta['item'] = information_item
-        yield Request(self.base_url + '/u/{}'.format(information_item['_id']),
-                      callback=self.parse_further_information,
-                      meta=request_meta, dont_filter=True, priority=1)
+        yield information_item
+        # request_meta = response.meta
+        # request_meta['item'] = information_item
+        # yield Request(self.base_url + '/u/{}'.format(information_item['_id']),
+        #               callback=self.parse_further_information,
+        #               meta=request_meta, dont_filter=True, priority=1)
 
     def parse_further_information(self, response):
         text = response.text
@@ -231,21 +238,21 @@ class WeiboSpider(Spider):
         body = response.body
         body = body.decode("utf-8")
         print(body)
-        # if  response.url.endswith('page=1'):
-        #     # 如果是第1页，一次性获取后面的所有页
-        #     all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
-        #     if all_page:
-        #
-        #         all_page = all_page.group(1)
-        #         all_page = int(all_page)
-        #         print('获取到了页数',all_page)
-        #         if all_page>=99:
-        #             all_page=220
-        #         for page_num in range(2,93):
-        #             page_url = response.url.replace(
-        #                 'page=1', 'page={}'.format(page_num))
-        #             yield Request(page_url, self.parse_tweet,
-        #                           dont_filter=True, meta=response.meta)
+        if  response.url.endswith('page=1'):
+            # 如果是第1页，一次性获取后面的所有页
+            all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
+            if all_page:
+
+                all_page = all_page.group(1)
+                all_page = int(all_page)
+                print('获取到了页数',all_page)
+                if all_page>=99:
+                    all_page=99
+                for page_num in range(2,all_page):
+                    page_url = response.url.replace(
+                        'page=1', 'page={}'.format(page_num))
+                    yield Request(page_url, self.parse_tweet,
+                                  dont_filter=True, meta=response.meta)
         """
         解析本页的数据
         """
@@ -275,6 +282,8 @@ class WeiboSpider(Spider):
                     tweet_item['tool'] = create_time_info.split('来自')[1].strip()
                 else:
                     tweet_item['created_at'] = time_fix(create_time_info.strip())
+
+
 
                 like_num = tweet_node.xpath('.//a[contains(text(),"赞[")]/text()')[-1]
                 tweet_item['like_num'] = []
@@ -445,9 +454,9 @@ class WeiboSpider(Spider):
             like_num = comment_node.xpath('.//a[contains(text(),"赞[")]/text()')[-1]
             comment_item['like_num'] = int(re.search('\d+', like_num).group())
             comment_item['created_at'] = time_fix(created_at_info.split('\xa0')[0])
-            people_url='https://weibo.cn/u/'+comment_item['comment_user_id']
-            yield Request(people_url, self.parse_head,
-                                      dont_filter=True, meta=comment_item)
+            people_url='https://weibo.cn/'+comment_item['comment_user_id']+'/info'
+            yield comment_item
+            yield Request(people_url, self.parse_information ,meta={"id":comment_item['comment_user_id']} )
 
     def parse_head(self, response):
         body = response.body

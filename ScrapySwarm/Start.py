@@ -20,7 +20,9 @@ def startCrawl(keyword):
     #     time.sleep(6)
 
     # #同时运行所有爬虫
-    os.system(("scrapy command  weibo_spider  -a q=" + keyword ))
+    while True:
+        os.system(("scrapy command  weibo_spider   -a q=" + keyword ))
+        time.sleep(60*50)
 
 
-startCrawl("蔡徐坤")
+startCrawl("cc")
