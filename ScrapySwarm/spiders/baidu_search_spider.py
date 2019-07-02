@@ -50,6 +50,11 @@ class BaiduSearchSpider(scrapy.Spider):
         yield scrapy.Request(url, self.parse)
 
     def parse(self, response):
+
+        # if no result, quit spider
+        if response.xpath('//div[@class=\'content_none\']'):
+            return
+
         # ===get info from every result===
         for oneresult in response.xpath('//div[@class=\'result c-container \']\
                                     /h3/a/@href'):
@@ -109,8 +114,8 @@ class BaiduSearchSpider(scrapy.Spider):
     @staticmethod
     def baidusearchurlGen(querystr, site, pagenumber):
         # 注意https 有一个防爬虫机制，脚本加载真正数据，只能爬个壳。
-        return "http://www.baidu.com/s?wd=" \
-               + querystr + " site:" + site + "&pn=" + str(pagenumber)
+        return "http://www.baidu.com/s?wd=\"" \
+               + querystr + "\" site:" + site + "&pn=" + str(pagenumber)
 
     '''
     获取搜索时的原站点网址 exm: news.qq.com
@@ -143,6 +148,6 @@ class BaiduSearchSpider(scrapy.Spider):
     @staticmethod
     def getOrigKeyword(resurl):
         # 's?wd="{keyword}" site'
-        index = re.search('wd=.*%20', resurl).span()
+        index = re.search('wd=%22.*%22%20', resurl).span()
         # '{keyword} in url(ascii for url), decode'
-        return urllib.parse.unquote(resurl[(index[0] + 3):(index[1] - 3)])
+        return urllib.parse.unquote(resurl[(index[0] + 6):(index[1] - 6)])

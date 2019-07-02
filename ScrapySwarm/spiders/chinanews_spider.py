@@ -148,7 +148,7 @@ class China(Spider):
         yield item
 
 
-if __name__ == "__main__":
-    process = CrawlerProcess(get_project_settings())
-    process.crawl('chinanews_spider')
-    process.start()
+# if __name__ == "__main__":
+#     process = CrawlerProcess(get_project_settings())
+#     process.crawl('chinanews_spider')
+#     process.start()
