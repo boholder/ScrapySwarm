@@ -1,7 +1,6 @@
 *.bat
 *.jl
 .idea
-ScrapySwarm/log/*
 ScrapySwarm/spiders/__pycache__
 ScrapySwarm/tools/__pycache__
 ScrapySwarm/__pycache__
@@ -11,4 +10,3 @@ Stiky.txt
 /ScrapySwarm/spiders/test.py
 main.py
 scrapylog.txt
-*.log

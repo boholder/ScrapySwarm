@@ -1,0 +1,1067 @@
+2019-07-02 15:09:58 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'ScrapySwarm', 'COMMANDS_MODULE': 'ScrapySwarm.control', 'LOG_FILE': './log/2019-07-02-15-09-57-all-spider.log', 'NEWSPIDER_MODULE': 'ScrapySwarm.spiders', 'SPIDER_MODULES': ['ScrapySwarm.spiders']}
+2019-07-02 15:09:58 [scrapy.extensions.telnet] INFO: Telnet Password: 8031109c469a9851
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled item pipelines:
+['ScrapySwarm.pipelines.ScrapyswarmPipeline']
+2019-07-02 15:09:58 [scrapy.core.engine] INFO: Spider opened
+2019-07-02 15:09:58 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-07-02 15:09:58 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-07-02 15:09:58 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'ScrapySwarm', 'COMMANDS_MODULE': 'ScrapySwarm.control', 'LOG_FILE': './log/2019-07-02-15-09-57-all-spider.log', 'NEWSPIDER_MODULE': 'ScrapySwarm.spiders', 'SPIDER_MODULES': ['ScrapySwarm.spiders']}
+2019-07-02 15:09:58 [scrapy.extensions.telnet] INFO: Telnet Password: 4a9ef8e2eefeb6c0
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-07-02 15:09:58 [scrapy.middleware] INFO: Enabled item pipelines:
+['ScrapySwarm.pipelines.ScrapyswarmPipeline']
+2019-07-02 15:09:58 [scrapy.core.engine] INFO: Spider opened
+2019-07-02 15:09:58 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-07-02 15:09:58 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6024
+2019-07-02 15:09:58 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_start
+2019-07-02 15:09:58 [ScrapySwarm.control.log_util] INFO: baidusearch start log successfully created
+2019-07-02 15:09:58 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_start
+2019-07-02 15:09:58 [ScrapySwarm.control.log_util] INFO: baidusearch start log successfully created
+2019-07-02 15:09:58 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0> (referer: None)
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=5zOn6SomydfGHqjloEp5RZBPwUkojFvDaCOp6FSd6AUdFvhHIQoLoE8CGnYUJ9EoEEJOPPpZEvaiANPkxpsYiK_rthCFVC-B8xp0gMm-fdG',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=GCsZX2QxpZg3ndtCvXgVbBdORbqj70mA3qQ9oZTe6k_nkmvRCmmkTnp8VvOtAYUoF_iTLRzkk3lKdhPfSF2OtMyumb_hlnh4MXEHef2J8ri',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=5j6PUF8ocbre_NQztMmSwmxGCTov61CKhzCmGya2xbxY_Yj70mSvbwYyZ6pyp-_nQKc4TIPfw1zHSanrK4khFa',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=EMbEn3mi7mjWI-KKbtC_3fo9aUXg-Py5PNX2pdqdttX62_F2WmfWcaokFCmGyFjCT8pujPeZdCIREMVOLyQLZr8qHXrZeol9tJOcmfXAmtW',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=SQSHbTAIcaIqQW5OtbS3e5D3vP_N42TWmlT4H7UtWGXtJ2z5zEmdfv9FXJWmK1UMJbt2yCuwZF1jPlfyTFtzO2koBQDs1JRmE5eMPskomPm',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=-tmIYGdfJ9NbUT3EN45qLG6wXLKyDsah1Y53-74dyRxikr6TNaAvBXTBW3TqWzv-zA6CQKGSobYZw72raGPEU7q0RiIovhSiESO_oRuizD3',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=c5xj6R3dsmtZ1o-MCtocvBFDmzoHov9h5PW55aMW6Jt5TTfU7UAjD_SZMCKvuRUj-FDtFBmt1MWtkDirX5jlly9SonUV1CdmOacrTS_8wt3',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=r2XZWFsKG0lfKbyzHMNNWp3KhvMS6u1pB4zTiBkjcPbDOji7OR_qxCH4YkZiPHeewt9FL207UsfqAckkKG6KWh6hcNPjcRnJbi4HGuSAuGO',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=pISfY_fgnfeO2-Wu0BoRrqn_XxiTUV46wfn1HZI5wc4DiTxwgBT3loo8998fbMyT3tz7-8GATFkJ3hcbzl7b6nP-yRcmmuEWuQO43cgvz_q',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=m2ntPQsKIVOnoPwvca7Hak8VB1nTnNo0JV420yC5BXELpMlbZwWdHgDThpiyVRJ9Urt20Pv3El_tX5vkgb7IhtkQBdG55aUBkxSmHxMap7q',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0> (referer: None)
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=I27WOA0dRp_ZZz6wP4mfoUwGysLuCMXTLbWMxPTIgpOTfGhtksKLIYBkdltJAj8QYDZsbGC0sO9blKFSjj59J_',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=Jga6MdD6v-KsIa0OBIyfVNYQuuLZXOa7zk1yM1DrgmIoE-iJMgyODSwowgo-qxKOatAgpAk2_GpZ_jenPxYv0q',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=dztODR1IzBuRV2VYZwhXQpFvypeTPVvVkTXeNsG79ZApja0Cz1K0YBpnJqfVn_NZyaHwDuDJvlsPZDA0XJQqLK',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=LM2_OLhmWzpZH7HU2jd_ultnl0Pjrvn_eGMjppDGpOi-cyY4CC039ZNX80owMgu0KCsdRUcdft7Am_DEFO9aa_',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=VoD8mREl75C5yv3A3jqLDrwSGq-SwmfrCggG-Jd-U1FBlGvQSK_9WUr7M74EvoUFlz7XwjWgdNrl6GzE1n45lBF3qd1ArXrzitxc_dKeTaW',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=ac6ADigm1ftRo5Dfg5gZD3zUD7Ixl7hUH7Psk4PXah8HDonBv49exYG3kMXSfirbmieGzlzmGasW9A8mnvuUkq',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=U-hDmUxHa4ivIcP96I4G0uJXLqw_4E5hL79h11ur-hr1WxP23sb9hdwiqrNKqrwwIvRhuoBn2oXuqPjWtK2QlK',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=KkKE51X1MgfdLqalWt-mxirYVMDEfgMgFS6KvIIv91z90dMUo3EDhKJkwH2ZPmXILhd9XRY0Y4ZHWCxDDrMxK_',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=BWF6TJTdltZJPYnnPwls-OqPYCc5jZMqJF79bTe5gxuvBklP3I0UteXDp-VMKF8yeMRYa74G5-FLF_HqLXPkb-4qbtg15ffVjdABqfqJL3W',
+ 'waste': 0}
+2019-07-02 15:09:58 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0>
+{'crawl_time': 1562051398,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=Ujf2hvrd27k_3407C1CPzpcsP4PPnwb7bShIKtP03ASYvKwv-QcenA1zgfP2HQmyCcJfH34BFgKJcaDR_6YSJK',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10> (referer: http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=0)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=PoiCZQRjITOWQ-IwWzPlGunLsZZhRG3MDS0SkXQ1fKNX0w3PTBKUcE5bumXAyQEmZkYqsXyPLpwgf_-Zry-Udq',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=KALu0jNESbp8IgYhbLIC501IDFf48ujvnXBAtkvAHTGt0MmfQfMWXbeTZayomhIZEyMPlpi_BjjHB7n828tpS_',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=HRdl-wnCgJM7gwWQzJDFqRygLToRMc85xhUrQ5JHo2V2PAwNVnlwVz215hhC0R3FSwhJL-uC0d2ZIBr-XoxlBK',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=W5KXg9-XewgUVWsQORnvFuwK2q90C0IdajuyD-efSQKSKiGakSymJiN_U6Dk8phV7j6SfZLP4JGbLaWynhZPha',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=0rpswHnflzMMwxpyGWjKTLZ5D87k10jTk_vw4yuDJwWp4IfbZ_udgktUqepBdHUsmJW4-jLBRT9Ya2BZ5VPJ9a',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=fvGSBq5NeKyy7mgnEN4MdjKWLyU8tXBWzRrJosc7j-jQ8M3GIknCmwZwkP_AMyoE7h96DAAGHr2c9aXOFF95Z_',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=iaeAdQMCu7jI20gbl-hJkVE5s855cII9q8WLURSf4eHZGI355KYbB2SRXBOP3Jq20WPdWQyRYgLxDZhcicmATq',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=6DBR933vrQMPvYu95pksWwM5uf3kvVnWWp3j9ZBWx6mDPt3_oEZxD7VZPIabVhPe_BQ8jm3wHgC9gOiUIJEZgh27BQcSsZxKhh3E5nK5g_3',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.qq.com&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.qq.com',
+ 'url': 'http://www.baidu.com/link?url=qQMQcJWtMg2lRKcHRHpTzdCtWKLcyaymBCYzXxkOyOrZRPRPwSFupXOrepmFmL-mf8HO5OSqo3n73uZYG9mX-_',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10> (referer: http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=0)
+2019-07-02 15:09:59 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-07-02 15:09:59 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_finish
+2019-07-02 15:09:59 [ScrapySwarm.control.log_util] INFO: baidusearch finish log successfully updated
+2019-07-02 15:09:59 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 905,
+ 'downloader/request_count': 2,
+ 'downloader/request_method_count/GET': 2,
+ 'downloader/response_bytes': 119124,
+ 'downloader/response_count': 2,
+ 'downloader/response_status_count/200': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 7, 2, 7, 9, 59, 280802),
+ 'item_scraped_count': 19,
+ 'log_count/DEBUG': 33,
+ 'log_count/INFO': 24,
+ 'request_depth_max': 1,
+ 'response_received_count': 2,
+ 'scheduler/dequeued': 2,
+ 'scheduler/dequeued/memory': 2,
+ 'scheduler/enqueued': 2,
+ 'scheduler/enqueued/memory': 2,
+ 'start_time': datetime.datetime(2019, 7, 2, 7, 9, 58, 525831)}
+2019-07-02 15:09:59 [scrapy.core.engine] INFO: Spider closed (finished)
+2019-07-02 15:09:59 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'ScrapySwarm', 'COMMANDS_MODULE': 'ScrapySwarm.control', 'LOG_FILE': './log/2019-07-02-15-09-57-all-spider.log', 'NEWSPIDER_MODULE': 'ScrapySwarm.spiders', 'SPIDER_MODULES': ['ScrapySwarm.spiders']}
+2019-07-02 15:09:59 [scrapy.extensions.telnet] INFO: Telnet Password: e8d671d45d3c3872
+2019-07-02 15:09:59 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-07-02 15:09:59 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-07-02 15:09:59 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-07-02 15:09:59 [scrapy.middleware] INFO: Enabled item pipelines:
+['ScrapySwarm.pipelines.ScrapyswarmPipeline']
+2019-07-02 15:09:59 [scrapy.core.engine] INFO: Spider opened
+2019-07-02 15:09:59 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-07-02 15:09:59 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6025
+2019-07-02 15:09:59 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_start
+2019-07-02 15:09:59 [ScrapySwarm.control.log_util] INFO: qqnews start log successfully created
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160128/027037.htm> from <GET http://www.baidu.com/link?url=Jga6MdD6v-KsIa0OBIyfVNYQuuLZXOa7zk1yM1DrgmIoE-iJMgyODSwowgo-qxKOatAgpAk2_GpZ_jenPxYv0q>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160107/058170.htm> from <GET http://www.baidu.com/link?url=U-hDmUxHa4ivIcP96I4G0uJXLqw_4E5hL79h11ur-hr1WxP23sb9hdwiqrNKqrwwIvRhuoBn2oXuqPjWtK2QlK>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20170707/052636.htm> from <GET http://www.baidu.com/link?url=I27WOA0dRp_ZZz6wP4mfoUwGysLuCMXTLbWMxPTIgpOTfGhtksKLIYBkdltJAj8QYDZsbGC0sO9blKFSjj59J_>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20100220/000753.htm> from <GET http://www.baidu.com/link?url=dztODR1IzBuRV2VYZwhXQpFvypeTPVvVkTXeNsG79ZApja0Cz1K0YBpnJqfVn_NZyaHwDuDJvlsPZDA0XJQqLK>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160308/022460.htm> from <GET http://www.baidu.com/link?url=ac6ADigm1ftRo5Dfg5gZD3zUD7Ixl7hUH7Psk4PXah8HDonBv49exYG3kMXSfirbmieGzlzmGasW9A8mnvuUkq>
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=k9Bt6QZDRRIsn9zWTj_Pvno2mICApmxSJD5bjEMctsIIeKUSbDVqIP1tXhmu0VOFDGPxGiHPBUwr2m0qDfHnwmjj_Vb_WTQ7javIYPGH-y_',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=3EpPL-3rVGQfpqnctTNFQBNR-6tzTUW5_BF0dzXAHuvPXCTKuyxMuL4jiFgiwA_Mr0Uaa3zcDdENhPJjtOwdcLJW0icFtW0MxViW1PAEJe3',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20100902/002038.htm> from <GET http://www.baidu.com/link?url=PoiCZQRjITOWQ-IwWzPlGunLsZZhRG3MDS0SkXQ1fKNX0w3PTBKUcE5bumXAyQEmZkYqsXyPLpwgf_-Zry-Udq>
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=FXg6g_TrJnJXsfs62dXjdlZNzx_j7QqjUUDRBum8ps-dXfWRV6-U5TFWZcHTa-U6co15NCsjEVWTJA9hUIc7r5FqPEf82hfiT9bgRMvM4cK',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=el2Nq7M0DM9q03aDCizaFhbjohRR5yDs8F3HncFChEsJwhm9nAchxXG6Sfai6wVyL1p6b9P_oHTZp8CI75Vzlp-TTeiEzkiQXMtLrC1Py-m',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=VKoNbO7uUGO-i6kuv58JOJN2RyOf9dUdnr132o9ys5HXD5TY08timu2qkdWaGdmHxyuMvtArj9ZZQNHvDAGTt08BINlARk1Sqjz3c2BKT73',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=O6xVRzgj1fPXQdMtHkj7K7eY4ycFW2OADo2P94f-SSlo6rmHI7ZoLdCj1JcCWOHPgi98YlCLRGBg57BI5TVF5x5mk-o3MnweTAnaWeHOSdK',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=rFU207KLzB-ofBzL9OKIvfjwAUFLU_ZzbrTZX_HWs4Av9bYe1kJIBv8yGmqbYet36tLRoFqCPZekXesj51huJ7cv5iipkctoSaIJs5l_Pl_',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=3VOAthO_wDf1jTGdsFAaKj6m4E94cz17WZDvINSlohGr0n23UY6ivF38QCCSM2snhUEhKz3ClxgA1hkdXweHaivzT5JWBIdjT-VKsq4smHS',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=XnKR8Wn1CyPowzE_YHnbAdtCensoo8V1lrIvEOfYXPXdRR2cojtHk21p352HroVoXXJ7VVZQmoGSez8EuRWH4OQn4KfAtZvIgNBRP_cNMAa',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=SxPQ0Jrmj5sj0euxCtDiuwAgZZ3toWmL_VZ3G_bcK8t8-2-J6e1DYq1ygaAOSMNB-ujfVj-0rKNnYEpS6ph0bPoJ3_5gg8eko-dwplmxi_y',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20130530/019273.htm> from <GET http://www.baidu.com/link?url=W5KXg9-XewgUVWsQORnvFuwK2q90C0IdajuyD-efSQKSKiGakSymJiN_U6Dk8phV7j6SfZLP4JGbLaWynhZPha>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/b/history/index20150513am.shtml> from <GET http://www.baidu.com/link?url=Ujf2hvrd27k_3407C1CPzpcsP4PPnwb7bShIKtP03ASYvKwv-QcenA1zgfP2HQmyCcJfH34BFgKJcaDR_6YSJK>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20170706/050066.htm> from <GET http://www.baidu.com/link?url=KkKE51X1MgfdLqalWt-mxirYVMDEfgMgFS6KvIIv91z90dMUo3EDhKJkwH2ZPmXILhd9XRY0Y4ZHWCxDDrMxK_>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20170908/002097.htm?qqcom_pgv_from=aio> from <GET http://www.baidu.com/link?url=BWF6TJTdltZJPYnnPwls-OqPYCc5jZMqJF79bTe5gxuvBklP3I0UteXDp-VMKF8yeMRYa74G5-FLF_HqLXPkb-4qbtg15ffVjdABqfqJL3W>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.qq.com/a/20160303/014942.htm?pc> from <GET http://www.baidu.com/link?url=fvGSBq5NeKyy7mgnEN4MdjKWLyU8tXBWzRrJosc7j-jQ8M3GIknCmwZwkP_AMyoE7h96DAAGHr2c9aXOFF95Z_>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20100207/001233.htm> from <GET http://www.baidu.com/link?url=KALu0jNESbp8IgYhbLIC501IDFf48ujvnXBAtkvAHTGt0MmfQfMWXbeTZayomhIZEyMPlpi_BjjHB7n828tpS_>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20171024/008108.htm> from <GET http://www.baidu.com/link?url=HRdl-wnCgJM7gwWQzJDFqRygLToRMc85xhUrQ5JHo2V2PAwNVnlwVz215hhC0R3FSwhJL-uC0d2ZIBr-XoxlBK>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20180611/007256.htm?tdsourcetag=s_pcqq_aiomsg> from <GET http://www.baidu.com/link?url=VoD8mREl75C5yv3A3jqLDrwSGq-SwmfrCggG-Jd-U1FBlGvQSK_9WUr7M74EvoUFlz7XwjWgdNrl6GzE1n45lBF3qd1ArXrzitxc_dKeTaW>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20121211/001023_all.htm> from <GET http://www.baidu.com/link?url=LM2_OLhmWzpZH7HU2jd_ultnl0Pjrvn_eGMjppDGpOi-cyY4CC039ZNX80owMgu0KCsdRUcdft7Am_DEFO9aa_>
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160307/063685.htm> from <GET http://www.baidu.com/link?url=0rpswHnflzMMwxpyGWjKTLZ5D87k10jTk_vw4yuDJwWp4IfbZ_udgktUqepBdHUsmJW4-jLBRT9Ya2BZ5VPJ9a>
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160128/027037.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160107/058170.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20100902/002038.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20170707/052636.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20170908/002097.htm?qqcom_pgv_from=aio> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160308/022460.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20> (referer: http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=10)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20171024/008108.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160303/014942.htm?pc> from <GET http://news.qq.com/a/20160303/014942.htm?pc>
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20100207/001233.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160128/027037.htm>
+{'content': '1月26日，美国国务卿克里抵达北京。两天的时间内，他先是与中国外长王毅会谈并共同会见记者，之后又在今天得到了习近平的接见。来北京之前，克里去了老挝、柬埔寨。在老挝，当被问到如何与中国谈论朝鲜问题时，克里称，期待与中方就“这个星球上最危险的议题之一”的朝核问题进行严肃的对话。而他此行的目的，就是要“探讨大家今后如何以聪明和深思熟虑的方式行动，以便在朝鲜核问题上获得结果”。从月初朝鲜进行核试验并声称自己拥有氢弹以来，韩国、美国、中国已经分别就此表态。这个“最危险的议题”，还有没有解决的方法？侠客岛（微信：xiake_island）与岛友复旦大学朝鲜与韩国中心主任郑继永就此展开了探讨。侠客岛：朝鲜核试验之后，各方立场一致，坚决反对朝鲜拥核。但耐人寻味的是两件事：第一，7号，克里称“中国以往对待朝鲜的政策是失败的，必须改变”；第二，13号，朴槿惠在青瓦台发表讲话，呼吁中国政府能参与进来，并“坚信中国会为制裁朝鲜发挥作用”。为什么美韩会有这样的说法？郑继永：说实话，美国和韩国现在对于朝鲜核试验拿出的解决方案并不多，因此就把怨气和问题的原因都归结到了中国身上，所谓“外交失败论”、“中国要付出更多责任”等，都是这样。中国已经说了，朝鲜半岛的和平、稳定、无核化是三个战略目标，所有的解决方案都要围绕这个来。但是美韩在此问题上的应对是什么？用更大的军事威胁来应对朝鲜核威胁，这种不恰当的手段，才使半岛安全局势不断上升和恶化。这是军事、制裁手段的失败，而不是中国提出的对话和和平谈判解决方式的失败。事实上，中国在六方会谈的“919声明”和通过214决议、遏制朝核问题发展上，起到了非常关键的作用。萨德系统可能引发中俄不安侠客岛：中方的表态也很明确。华春莹对克里的说法表示“不敢苟同”、“半岛核问题的由来和症结不在中国”；王毅的说法则是“中国的立场是光明磊落的”、“不会受一时一事影响，不会因喜怒哀乐而改变”；而新华社的英文评论则指出，半岛局势的恶化，“终究都可以归结于山姆大叔毫不妥协的敌意，从针对朝鲜声誉不间断的诋毁，对该国的制裁、孤立和激怒，让朝鲜感受到深深的不安，并由此将这个国家推向核问题上的一意孤行”。在您看来，问题的症结到底在哪里？郑继永：回顾历史可以看到，凡是在朝鲜半岛最紧张的时候，美国方案往往是非常硬的方案，不是为了解决某个具体问题本身，往往是由一个小问题，造成了更多的问题。比如1994年，当时美朝达成了核框架协议之后，那是解决半岛核问题的最佳时机，因为朝鲜已经承诺弃核。但后来，美国一换政府，觉得协议执行起来困难大，朝鲜政权又岌岌可危，于是就没有诚心诚意解决问题，反而走向军事制裁、军事打击，让朝鲜觉得美国没有诚意解决问题，在这个最佳时机之后，反而问题更严重了。到了第二次核危机，朝鲜已经把宁边的反应堆都炸了，当时已经比较良性了，但是美国突然又提出搞金融制裁。这对朝鲜的刺激很大，最后一刻又没有解决。可以说，在双方都没有履行协议的情况下，半岛的危机不断推升。就责任本身来说，包括美朝、美韩，可以说责任相当，不能单独怨某一方。现在美韩又在讨论在韩国部署萨德反导系统的问题。在我看来，首先，萨德解决不了核问题；更重要的是，萨德可能引发中俄不安。如果萨德系统在半岛落地，对东北亚的安全维系，对中美俄三个大国的安全架构来说冲击会非常大，甚至可能远远超过核问题本身，因此韩国要非常慎重地考虑这件事。如果这件事成行，不仅造成中国安全关注、战略关注的点移到半岛，俄美之间的战略对抗前沿也可能到这里。我们知道，对俄罗斯的战略压力，西方和美国在波兰的反导系统，已经让俄罗斯往西走的路堵上了；这次在东边部署反导体系，则可能进一步刺激俄罗斯。事实上，根据朝中社报道，最近金正恩在表彰核爆实验人员时就已经说了，“美国和其追从势力正在制裁朝鲜，美军向半岛出动了战略力量，导致半岛紧张局势不断升温，让半岛笼罩核战争的乌云”。侠客岛：西方媒体有种说法，认为作为与朝鲜关系较为密切的国家，正是中国在背后支持朝鲜，才让朝鲜在国际制裁的背景下走到了现在。他们甚至举出数据说，朝鲜的对外贸易额有90%来自中国。您怎么看？郑继永：把正常的贸易说成是“支持”，本身就是一种政治性的说法。由于制裁，美日韩对朝的贸易额比较少；但无论中国的贸易额有多大，都不能表示我们放松了对朝鲜的制裁。从第一次核试验到第三次核试验，到联合国所有决议本身，我们都忠实地履行了决议。同时要注意到，根据韩国的初步统计，中朝大概有60-70亿美元的贸易额，这是正常的贸易投资额。一者，这个数字并不大；第二，这也不是朝鲜的纯收入，只是贸易额，是中朝双方、个人企业相互得利的一种正常往来，完全在联合国决议范围内，并不能说明中国放松了对朝的制裁，没有逻辑关系。可以看到，1990年代中期，朝鲜称之为“苦难的行军”时，中朝贸易额非常小，那时南北之间的交易更多，而那也是核危机最开始的时候，但是朝韩方面的贸易却没有停止，总不能说当时的韩国支持了朝鲜对吧？把市场之间的贸易说成是对政权的支持，这本身就很可笑。别夹带私货侠客岛：“我和克里国务卿在这个问题上的讨论是充分、深入和有益的，增进了双方相互了解。我们达成的主要共识是，安理会可就朝鲜核试验做出反应，通过新的决议。同时，制裁不是目的，关键是要重启对话谈判。中美在这一大方向上是一致的。双方愿继续就此加强协商合作。”这是王毅的表态。从中可以看出中美在这个问题上有什么可能的方案吗？郑继永：克里访华，大家在表面上讲，都想达成实质性的答案出来，但实际上非常困难。在我看来，首先，在解决核问题的时候，要把问题单纯化，不能夹带私货太多；我们是为了解决朝鲜核问题，而不是中美重构在东北亚地区的对抗。如果中美形成对抗，对解决问题的阻碍会非常大。可能朝鲜会提出很多过高要求，但是有合理的成分在，比如对和平的呼吁。如果美国有意解决问题的话，应该适时听取合理性的成分，吸纳过来，以对话的方式解决，在东北亚建立起某种和平架构和机制，而非以更大的军事压力应对。最近美国在提倡“五方会谈”，把朝鲜排除在外，中美俄韩日五方谈。我对此并不看好。之前六方会谈，本来就起步于中美朝三方；六方会谈中，双边、三四五方都搞过。这次美国的五方会谈，本身就要推翻以前六方会谈达成的协议，那么新的五方会谈也很难有实质性成果。尤其是，本来朝鲜的对立情绪就很严重，现在美国的这种提法，就是冲着搞死搞垮朝鲜来的，达成的协议，更加不可能让朝鲜接受，不是么？换句话说，美韩对中国建议了很多，无论是一揽子方案还是制裁清单，但这些问题的本身不能放在搞乱搞死搞垮朝鲜的出发点上，而应该放在解决问题上。这样只会让朝鲜更加没有安全感。也就是说，我们要跳出“保护某个政权”、“设置缓冲区”这样的原始地缘政治思维。从中国的根本利益、中朝双边的利益看，在中国周边，中朝边界属于相对比较稳定的地区，这也是我们非常珍视的比较稳定的环境。其次，从地区来讲，稳定的半岛局势，对朝鲜半岛，对“一带一路”，都是比较有利的，因此中国比较重视平衡稳定。第三，从国际上，无核化的国际责任，中国是要负的，防止核扩散也是中国应该做的。因此，中国的立场是肯定的。以前达成的制裁方案、朝鲜没有履行的责任，一定要继续推进；第四次核试验对中国的影响比较大，中国会作出适当的反应，但不会做出过度的反应。我们也会有某种措施，避免朝鲜有更多的核试验、做出更多出格的事，但这些措施的出发点，都是上面三点，也就是王毅说的“坚持半岛无核化，坚持半岛和平稳定，坚持通过对话协商解决问题”。要做到这一点，美国必须和中国“相向而行”，而非夹带私货地进行博弈。采写／公子无忌',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '侠客岛微信公众号',
+ 'time': '2016-01-28-10-38-00',
+ 'title': '“最危险的议题”：中国真的不愿制裁朝鲜？',
+ 'url': 'https://news.qq.com/a/20160128/027037.htm'}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160107/058170.htm>
+{'content': '发言人2016年1月7日外交部发言人华春莹主持例行记者会。答：我们已多次表达了中方对当前中东地区形势的关切。中方希望有关方面保持冷静和克制，通过对话和协商妥善解决分歧。中方始终致力于促进中东和平与稳定。目前，中国外交部副部长张明正在沙特访问并将访问伊朗，他将就地区形势同两方深入交换意见。中方在北京也同有关国家进行了沟通。我们希望地区形势朝着缓和的方向发展。答：昨天中国政府已经通过外交部声明表达了对朝鲜再次进行核试验的立场。中国外交部领导也已向朝鲜驻华使馆负责人进一步阐述了中方的立场。答：我们注意到国际社会对于朝方再次进行核试验作出了强烈反应，我们对当前局势表示关注，对事态发展表示忧虑。正如我昨天介绍的，中方一直为推动实现半岛无核化目标积极努力，我们将继续坚定推进半岛无核化目标，坚持通过六方会谈框架解决半岛核问题。半岛核问题由来已久，错综复杂。中方一贯主张，在六方会谈框架下，通过对话解决各方合理关切，实现半岛无核化和长治久安。探戈需要两人跳，六方会谈需要六方共同努力。半岛实现无核化、东北亚实现和平稳定符合有关各方共同利益，也是有关各方的共同责任，需要各方为此作出共同努力。有关各方都应从地区和平稳定大局出发，尽快回到通过六方会谈解决半岛核问题的正确轨道上来。答：1月7日，安理会举行紧急会议审议朝鲜核试验问题并发表主席新闻谈话，中方建设性地参与了审议。作为安理会常任理事国，中方将参与安理会下步讨论，同有关各方一道，致力于推进半岛无核化目标，防止核扩散，维护东北亚和平与稳定。答：我们注意到有关报道，中方欢迎一切有助于巴印关系改善的举措，支持巴印加强反恐合作。作为巴印共同的邻居和朋友，中方真诚希望双方通过对话与合作，冷静妥善处理有关问题，保持两国关系改善势头，共同致力于地区稳定和发展。答：朝核问题出现反复的这几年，恰是六方会谈陷入停滞的几年。当前事态发展恰恰证明了各方共同努力、尽快重启六方会谈的重要性、必要性和紧迫性。事实证明，六方会谈仍然是唯一有效和现实的解决半岛核问题的平台和途径。我们希望各方能够共同努力，继续坚定致力于通过六方会谈解决彼此之间的合理关切，寻求实现半岛无核化和长治久安的根本之策。答：关于第一个问题，这次朝鲜进行核试验，事先没有通报中方。关于第二个问题，中方坚持半岛无核化的立场是一贯和明确的。我们反对朝鲜进行核试验。朝鲜此举不利于中朝关系的正常发展。答：我不敢苟同你提问里的观点。昨天我已经说过，中方不管是在言语上还是政策上还是行动上，一直在为妥善解决半岛核问题及东北亚和平与稳定做最大程度努力，中方的努力是建设性的，也是有目共睹的。半岛核问题由来已久，错综复杂，需要有关各方在六方会谈框架通过对话协商来解决彼此合理关切，找到解决半岛核问题，实现半岛长治久安的根本之策。我刚才也说了，探戈需要两个人来跳，六方会谈需要有关六方共同来谈。解决朝鲜半岛核问题这么一个复杂的问题，需要有关各方共同做出努力。那些指责中国做的不够的人应该扪心自问，他们做了多少建设性的努力。在当前形势下，各方更应相向而行，真正从维护地区和平稳定大局出发，推动各方尽快回到六方会谈的框架下。中方将会继续履行应有的国际义务，同国际社会共同努力，推进半岛无核化目标。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '外交部网站',
+ 'time': '2016-01-07-20-22-00',
+ 'title': '外交部回应西方批中国对朝政策：不敢苟同',
+ 'url': 'https://news.qq.com/a/20160107/058170.htm'}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20121211/001023_all.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20100902/002038.htm>
+{'content': '新华网长春9月2日电 题：东北亚各国合作步入“加速期”记者\u3000马扬\u3000'
+            '王猛东北亚各国间的合作正步入“加速期”。2日于长春市开幕的第六届东北亚投资贸易博览会上，蒙古、俄罗斯、日本、韩国、朝鲜和中国等国纷纷推出自己的重点项目，以寻求与其他国家之间展开务实合作。俄罗斯此次派出了10个州的16个代表团，在12个展位中，涉及的合作项目涵盖了食品、建材、物流、资源开发等行业。俄罗斯总统驻西北联邦区副全权代表叶弗卢基扬诺夫说，最近几年，俄罗斯远东地区经济发展很快，与中国的关系也在不断加强。叶弗卢基扬诺夫表示，目前实施的“波罗的海明珠”项目是俄中之间的最大项目，经过共同努力，一定能使俄中合作得到更广阔的发展空间。蒙古此次也推出了矿产开发、食品加工等一系列重点合作项目。在2日举行的第四届东北亚经贸合作高层论坛上，蒙古第一副总理纳阿拉坦呼雅格说，从2009年9月至今，蒙古政府已批准的采矿、交通及能源等部门的一些大项目，都涉及未来东北亚区域的发展。他说：“蒙古希望在改善铁路与公路等交通基础设施建设之后，能够扩大东北亚区域的经济规模，使蒙古国内外的投资总额与世界水平接轨。”近年来，图们江区域国家合作开发形势发生了明显变化，中、俄、朝、韩、蒙、日各成员国均加强了务实开发的力度。 '
+            '目前，由中国珲春到俄罗斯哈桑的“路港关”工程建设合作项目进展顺利，中俄贸易不断呈现快速增长的态势；中朝贸易也稳步增长，连续5年刷新纪录。朝鲜与中国吉林省合作的亚洲最大铜矿项目、会宁金矿等项目正在洽谈中。朝鲜还制定了将罗先特区建设成为世界性加工贸易区、转口贸易区的远景规划，并正为实现这一规划进行行政及法律的准备。日本企业近年来将中国东北作为生产和市场开发的据点，以大连为先导的民间团体之间的合作逐步发展。在中国吉林省，以汽车产业为中心的日本企业开展了大规模的投资；韩国也加快了参与图们江流域开发的产业合作进程。中国吉林省、日本鸟取县、韩国江原道、俄罗斯滨海边疆区和蒙古中央省还建立了“环日本海地方政府首脑会议”制度，每年举行一次会议，商讨区域合作与发展问题。种种迹象表明，中国在图们江区域合作进程中，正扮演着越来越重要的角色。在应对世界金融危机中，中国国务院制定发布了关于进一步实施东北地区等老工业基地振兴战略的若干意见，使东北地区经济增长速度高于全国平均水平，外商投资跃居全国前列。2009年，中国国务院正式批复《中国图们江区域合作开发规划纲要——以长吉图为开发开放先导区》，这是中国政府迄今为止批准的唯一一个沿边开发开放的区域规划。中国国家发改委副主任解振华说：“这一先导区建设横贯中蒙大通道，向外辐射东北经济区、大图们江经济圈和东北亚经济区，建成后有望成为中国乃至东北亚地区一个新的经济增长极。” '
+            '朝鲜贸易省副相具本泰认为，当前，东北亚地区已具备了推进各国间经济协作和贸易合作及投资的充分条件，这个地区具备了现代技术和众多人才、丰富的自然资源、庞大的市场和有利的地理条件。因此，只要这些国家之间在互利互惠的原则下，加强交流与协作，就可以实现国家和地区的新发展与共同繁荣。尽管如此，当前的交通问题仍是阻碍东北亚区域发展的瓶颈。中国商务部副部长易小准指出，随着区域经济合作进程的推进和合作规模的扩大，区域间国际物流通道建设已严重滞后于国际合作开发的需要，加之区域内已有的交通资源没有实现好的整合，通道不通问题已成为东北亚区域合作开发的重要限制因素。他认为，目前东北亚区域合作的稳步发展，为国际物流通道建设提供了新的契机。目前，东北亚地区已形成了较具影响力的物流通道基本框架，主要包括“中蒙国际贸易通道”“中俄交通走廊”、“中朝交通走廊”以及“环日本海港口－腹地物流系统”等。易小准说：“国际物流通道的建设和不断完善，将带动区域整体经贸活动的进一步升级。”此外，地区安全也是近年来困扰东北亚各国合作的难点。具本泰说，目前，东北亚地区要加快生产和建设步伐，就必须在这个地区营造安定与和平的氛围。他呼吁东北亚各国为进一步扩大和发展互相之间的信任与协作而共同努力。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '新华网',
+ 'time': '2010-09-02-20-49-00',
+ 'title': '经济观察：东北亚各国合作步入“加速期”',
+ 'url': 'https://news.qq.com/a/20100902/002038.htm'}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20180611/007256.htm?tdsourcetag=s_pcqq_aiomsg> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20170706/050066.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/b/history/index20150513am.shtml> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20170707/052636.htm>
+{'content': '[]中国外交部新闻发言人回应称：如果有任何人、任何组织在中国违反安理会有关决议，中方会依法依规处理，这是毫无疑问的。一、应国家副主席李源潮邀请，赤道几内亚共和国副总统曼格将于7月10日至15日对中国进行正式访问。二、应长王毅邀请，第72届大会主席米罗斯拉夫·莱恰克将于7月13日至14日访华。答：我们注意到有关报道，具体情况我不掌握。需要强调的是，南海的航行和飞越自由不存在任何问题。中方一贯尊重和支持各国依据国际法在南海享有的航行和飞越自由，但坚决反对个别国家打着“航行和飞越自由”的旗号，炫耀武力，损害中国主权和安全。答：关于中韩两国领导人会晤的情况，我们已经发布了消息稿，你可以查阅。我想，中韩两国元首在二十国集团领导人峰会期间进行会晤，就双边关系和共同关心的问题，特别是半岛局势交换意见，符合两国利益，有助于两国关系的改善和发展，同时也有助于维护东北亚和半岛地区的和平与稳定。答：第72届联大主席、斯洛伐克外长莱恰克访华期间，中方领导人将予以会见，王毅外长将与他举行会谈。双方将就联大工作、落实2030年可持续发展议程等国际和地区问题以及中国与联合国合作交换意见。中方高度重视联合国在应对全球威胁和挑战方面发挥重要作用，将积极支持联大工作，并深化与联合国各领域合作。答：关于中朝经贸往来的具体情况，特别是有关具体数字的问题，建议你向商务主管部门了解。昨天我已经说过，作为邻国，中朝之间保持着正常的经贸往来。与此同时，作为联合国安理会常任理事国，中方一直全面、准确、认真、严格执行安理会有关涉朝决议，履行我们的国际义务。答：我们注意到有关事态的最新进展。中方希望有关国家在阿拉伯、海湾国家框架内，通过对话协商妥善解决分歧，希望海湾局势尽早恢复稳定。答：关于第一个问题，我们多次说过，我们对有关国家之间发展正常关系、开展正常合作不持异议，希望这种关系与合作不针对第三方，有利于维护地区的和平与稳定。关于三国交界点的问题，我们之前已经回答过，我可以重申一下。所谓三国交界点，顾名思义是一个点，而不是一条线或一个区域。1890年《中英会议藏印条约》中有明确规定，中印边界锡金段的东起点是吉姆马珍雪山。此次印军非法越界的地点位于中印边界锡金段的边界线上，距离吉姆马珍雪山约有2000多米之远，与三国交界点问题没有关系。印方无视边界条约的规定，把整个洞朗地区说成是三国交界点的范围，显然是别有用心。印度在此次事件中引入三国交界点概念，并企图将三国交界点扩大为一个区域概念，是在混淆视听。答：首先，在半岛核问题上，中美之间保持着沟通与协调，双方的渠道是畅通的，对彼此的立场也是了解的。第二，关于中朝经贸合作问题，我们已经多次说过，中方全面、准确、认真、严格执行安理会有关决议，履行我们的国际义务。中方作出的努力有目共睹。如果有任何人、任何组织在中国违反安理会有关决议，中方会依法依规处理，这是毫无疑问的。第三。我们也多次说过，中方反对任何国家依据其国内法对别国进行所谓的“长臂管辖”。答：前不久，习近平主席同特朗普总统通话，当时两国元首同意在德国汉堡进行会晤。有关会晤的具体安排，双方还在协调之中。我想两国领导人届时将就中美关系和共同关心的国际和地区问题交换意见。我们认为，中美两国领导人通过各种方式保持沟通很有必要，也非常有意义，它有助于双方增进互信并就有关问题及时交换意见。我们期待两国领导人汉堡会晤能就双方深化合作、管控分歧进一步达成共识，推动中美关系健康稳定向前发展。答：三国交界是一个点，而不是一条线，也不是一个区域。印方企图将三国交界点扩大为区域概念，这是别有用心的。1890年《中英会议藏印条约》明确规定：中国西藏地方与锡金的边界线沿分水岭而行，边界线东起“支莫挚山”，西至与尼泊尔交界处，沿分水岭而行。这应该是清楚明确的。答：印度政府多次明确承认1890年《中英会议藏印条约》的有效性。中国西藏地方和锡金的边界是由1890年《中英会议藏印条约》划定的。边界条约一经签署，不论政府更迭、国体改变，都不影响其合法性和有效性。所以，条约的有效性和你提到的时间节点没有关系。答： '
+            '我刚才说过了，这与1962年这个时间节点没有关系。边界条约一经签署，其合法性和有效性与政府更迭和时间变迁没有关系。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '外交部网站',
+ 'time': '2017-07-07-19-52-00',
+ 'title': '美方试图收缴丹东的一家公司涉朝贸易资金 中方回应',
+ 'url': 'https://news.qq.com/a/20170707/052636.htm'}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20170908/002097.htm?qqcom_pgv_from=aio>
+{'content': '[]韩国的背后是美国，美国口口声声谈“朝鲜威胁”，实则利用半岛局势紧张实现其战略目的。9月7日凌晨，4辆“萨德”发射车进入韩国星州基地。当天，韩国国防部宣布萨德系统按暂定计划已部署完成，并称这是为应对“朝鲜威胁”的紧急措施。中方敦促美韩重视中国等地区国家的安全利益和关切，立即停止有关部署进程，已向韩方提出了严正交涉。中方向韩方交涉绝非庇护朝鲜。中国一直坚定推动半岛无核化目标，反对朝鲜发展核导能力。在中国支持下，安理会已通过多项涉朝决议，决议中包含了对朝制裁内容。中国也全面、认真、严格执行有关决议。中朝贸易额连续两年持续下跌，尤其今年2月起中国暂停进口朝鲜原产煤炭后，4月、5月自朝鲜进口分别同比下降41%和32%。制裁施压只是解决问题的半把钥匙，而另外半把钥匙是对话谈判，只有将两者合二为一，才能真正打开半岛核问题之锁。问题的关键在于，“萨德”入韩并不能真正解决半岛核问题，既无益于减少韩国安全威胁，也无助于半岛和平稳定。韩国的背后是美国，美国口口声声谈“朝鲜威胁”，实则利用半岛局势紧张实现其战略目的。给盟友送上“定心丸”。美国总统特朗普屡屡就防卫费问题向盟友发难，如要求韩国“承担义务”，甚至暗示韩方若不分摊更多军费，驻韩美军即有可能撤离。韩国自然对美亚太战略走向产生忧虑，担心美弱化同盟体系，降低对盟友的安全承诺。面对亚太盟友离心倾向，美开始将半岛局势作为重要工具：一面渲染朝核“威胁”，促使盟友聚拢在美周围寻求保护；另一面则展现出保护者姿态，以强硬言辞谴责朝鲜，不断重申对盟友的安全承诺，以部署“萨德”等方式给盟友送上“定心丸”。维护美军工复合体的利益。从特朗普的团队看，退役将领占据重要职位，代表着军工复合体的诉求，美政府致力于推动军售大单。白宫已发布消息称，美总统赞成取消对部署在韩国所有弹头重量的限制，并“原则上同意”向韩出售价值数十亿美元的更高精尖的武器和装备。当前，美韩正在商讨军售细节。美终极追求仍是地区霸权。美亚太战略多次强调地区“领导力”，谋求垄断地区安全事务，侵害其他国家正当权益。“萨德”部署显然严重损害包括中俄在内的域内国家战略安全利益。美精心设计的政策背后仍是冷战思维，美借军事同盟体系针对第三方的意味昭然若揭。这与当今世界和平与发展的时代主题相悖。面对美国的“小九九”，中国犀利发声，俄罗斯也早已亮明态度。俄副外长里亚布科夫称，美国在俄边界部署“萨德”系统后，莫斯科将把自己的针对性军事反应提上日程。不要指望中俄吞下苦果，两国必强化战略协调，共同应对域外国家介入对地区局势造成的负面影响。半岛核问题，美方搅局，中国维稳。中国推动“双轨并行”思路和“双暂停”倡议，以及防扩散和劝和促谈两方面都要加强的“双加强”建议，照顾各方利益和关切，促进从根本上解决分歧。中国与俄加强合作，强调通过对话协商和平解决朝核问题，反对任何导致紧张和加剧矛盾的言行，避免半岛生乱生战。国际社会针对朝鲜采取任何新的行动，都应当在立足于遏阻其核导开发的同时，有助于推动尽快重启对话谈判。而谁才是维护地区和平稳定的负责任大国，明眼人一看即知。（作者为国际问题专家）',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '人民日报海外版',
+ 'time': '2017-09-08-04-49-00',
+ 'title': '人民日报海外版：半岛核问题上美方搅局 中国维稳',
+ 'url': 'https://news.qq.com/a/20170908/002097.htm?qqcom_pgv_from=aio'}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20130530/019273.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160307/063685.htm> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160308/022460.htm>
+{'content': '中国网3月7日讯 '
+            '据网站消息，外交部发言人洪磊今日在例行记者会上表示，安理会第2270号决议决议应该得到全面、平衡执行，不能刻意突出其中的某一方面，而忽视其他领域。同时，执行安理会决议是国际社会的共同责任，问：有评论认为，中朝贸易额约占朝鲜对外贸易总额的90%。执行安理会第2270号决议的责任主要在于中国。你对此有何评论？答：安理会第2270号决议指向明确，就是要阻遏朝核导计划，同时不影响朝鲜的民生和人道需求。决议中也写入要求重启六方会谈、以政治和外交方式缓和东北亚局势等重要内容，这是解决朝核问题的根本之道。因此，这个决议应该得到全面、平衡执行，不能刻意突出其中的某一方面，而忽视其他领域。同时，执行安理会决议是国际社会的共同责任，不是哪一家的事。中国会认真、全面执行决议。我们希望各方都切实、全面执行安理会决议，包括在重启六方会谈、不采取导致紧张局势行动等方面发挥积极作用。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '中国网',
+ 'time': '2016-03-08-08-49-00',
+ 'title': '中国外交部：中国会认真全面执行联合国对朝制裁',
+ 'url': 'https://news.qq.com/a/20160308/022460.htm'}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=JSXPtg4YqI3qz-kup2J_s1RGJChtgCs-vJVDmf6CfJ94l5jTC0fygG5RVy09kXbj0gzDRupvFhFs_QczVLxjHl9hHDCsyfaGpnKVNkjgqd7',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=Y2TH6yn0eaDGyk0b9kCD-ORGnvdgbXUpQNSp-R_6n3Lxj6tEAYUYbGFMU8Z-0ee4HAZ3rIMP0TcvH9GhsMgI5c67IArBBybIadzTNBdDYBO',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=ZFCrzssdmATRcgxbQaMYCNIg8kvluSx0ZyAQrcyidrzCu7XCF_GeZDS65YidFrXTH6RFPRdoU9pSb02uvEpwUa',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=4y-VHF2QE7zlcRYUoUJ348VGsxNdiEmZljMFiFNgb1B8vz-jnsbnF427eYgsHDMnl_iXhVHThkza4xSJAsjnUmDMQocHN1aSyfNLnhQZTRi',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=4XfeoN8Iau02nOvWz8Xna0Y4OOmGe5eVtiJKtSEXwnYB8t8YJwtSNFk5awBJZ9vPAHIE0Pv3dKAYP6wITfiW2zxU61KjRpWmEnuWaPQMTsO',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=U1vP818XbTXr4PjohuvE6QeUyP967fZe-EzWUiN4AKmdElfQWKsp2kFCfNz2pvDKKDuds1O5iN-TH7zpaj-7HESbI7xhYBHSEOAorcPOKcG',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=DclraMj5BsrshuzPoHkmDf-v-xI5DvzFH8mjmQxJKU8RkhIUXfK1mJy0suyTiPZj4QR5LP25H__9DZDk5SGr4A1k0NpQerTR2D6gu7RAVk3',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=BF38DQEQ3mhktUIjmERTx0gTqy736IoHafRVlAt7fn0HDJCjoaRl8XzC8LzWoF5Alr5EvySstFVa10WowVI07SjjTcXaCWQv121skO7f34K',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=Y7LYY6BF8QrJ8OCVqhYvmY-mqTOZg78CCtMqIkGqOeNFWKjBxRJZiag5umWhOAnzVXtYBWaP0VSrzTqOBeU-hRaZlH7hMyxCsxckZEZZTXC',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20>
+{'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=IcAOZDMa3nj6G_pGFqMs7Q2ZABg6ooNobNolr9kYcEpU47fY0K7BRdcZ6454GfO7ugSBsA1PE0s9FUKXRfX36HKv1teOXdA_-EvODb3xIWa',
+ 'waste': 0}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20171024/008108.htm>
+{'content': '答：我们赞同拉夫罗夫外长的有关表态。事实上，坚持通过对话协商和平解决半岛核问题是国际社会的普遍愿望与期待，也是安理会有关涉朝决议的要求，这最符合有关各方及国际社会的共同利益，也是中方的一贯立场。我想再次强调，在半岛问题上，军事手段解决不了问题，只会制造更大的麻烦，留下严重的后遗症，不应成为选项。中俄两国在半岛核问题上立场一致，一直保持着密切的沟通协调。中俄以“双轨并行”思路和“双暂停”倡议以及分步走设想为基础提出的共同倡议，是充分考虑并努力平衡兼顾了各方关切的合情合理的方案，有助于摆脱当前困境，并为复谈找到突破口。我们再次呼吁有关各方认真考虑，积极响应，共同为推动半岛核问题重回对话协商解决的正确轨道作出实实在在的努力。答：首先，中方一贯全面、准确、认真、严格地执行联合国安理会通过的涉朝决议，履行我们应尽的国际义务，这一点毋庸置疑。第二，中朝作为近邻，两国之间保持着正常交往与合作。第三，我想强调的是，安理会在通过有关决议时也指出，有关制裁措施无意对朝鲜民生和人道需求产生不利后果，也无意对经济活动与合作、粮食和人道主义援助等决议未禁止活动产生不利影响。我提请各方注意上述事实。答：我们注意到日本众议院选举结果。中方重视发展中日关系，希望日方恪守中日四个政治和四点原则共识，采取实际行动推动两国关系稳定改善。同时我们希望日本继续走和平发展道路，为地区和平稳定发挥建设性作用。答：中方坚决反对任何国家、组织或个人，在任何情况下、出于任何目的使用化学武器，这是中方在化武问题上的一贯、明确立场。我们支持禁化武组织—联合国联合调查机制根据安理会决议授权，就化武事件展开全面、公正、客观调查，并基于确凿证据得出经得起历史和事实检验的结论。安理会正在磋商美方散发的调查机制延期决议草案。我们希望有关各方从维护安理会团结出发，耐心协商，争取达成一致，为妥善解决叙利亚化武问题创造良好条件，也为下阶段政治解决叙利亚问题营造积极氛围。答：中国对南海诸岛及其附近海域拥有无可争辩的主权。中方坚定维护领土主权和海洋权益。同时，我们始终致力于同直接有关当事国通过谈判协商和平解决有关争议，始终致力于同东盟国家共同维护南海地区和平稳定。我想重申，中国在自己的领土上开展正常的设施建设，这是国际法赋予主权国家的正常权利。至于你提到的具体问题，我不了解。如果你非常感兴趣，可以向国防部询问。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '外交部网站',
+ 'time': '2017-10-24-08-45-00',
+ 'title': '中国计划继续扩大在南海军力部署？外交部回应',
+ 'url': 'https://news.qq.com/a/20171024/008108.htm'}
+2019-07-02 15:09:59 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160303/014942.htm?pc> (referer: None)
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20100207/001233.htm>
+{'content': '新华网平壤2月7日电 （记者高浩荣 '
+            '姚西蒙）正在朝鲜访问的中共中央联络部部长王家瑞7日在平壤与朝鲜劳动党中央国际部部长金永日举行了工作会谈。王家瑞说，去年是两国建交。双方围绕“中朝友好年”所展开的一系列友好交流活动，极大地丰富了中朝传统友谊的内涵，拓展了各领域互利合作的外延。回顾中朝关系的发展历程，一条宝贵经验就是双方始终坚持从战略高度把握两党、两国关系的发展方向，在复杂多变的国际形势下不断增进政治互信。王家瑞建议，两党国际部们应继续密切合作，进一步发挥好双方战略沟通交流的重要渠道和各领域友好合作重要平台的作用。金永日在会谈中强调，相近的历史遭遇、共同的政治选择和毗邻而居的地缘条件，使朝中关系远远超出一般的双边关系。由两国老一代革命家共同缔造、历届领导人精心培育的朝中传统友谊，推动双方不断巩固了睦邻友好关系，促进双方开辟出了互利合作的新领域。在谈到国内情况时，金永日说，在金正日总书记和朝鲜劳动党的坚强领导下，朝鲜经济整体呈现出向上发展的态势。双方还就其他共同关心的问题交换了意见。中国驻朝鲜大使刘晓明等会谈时在座。王家瑞一行是6日抵达平壤开始对朝鲜进行友好访问的。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '新华网',
+ 'time': '2010-02-07-19-18-00',
+ 'title': '中联部部长称政治互信是中朝关系发展经验',
+ 'url': 'https://news.qq.com/a/20100207/001233.htm'}
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20150825/014136.htm?edjn8> from <GET http://www.baidu.com/link?url=iaeAdQMCu7jI20gbl-hJkVE5s855cII9q8WLURSf4eHZGI355KYbB2SRXBOP3Jq20WPdWQyRYgLxDZhcicmATq>
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20121211/001023_all.htm>
+{'content': '[]在过去的一年，朝鲜经历了重大的变化。2011年12月17日，朝鲜最高领导人金正日辞世，年轻的金正恩成为继任者。这个邻国陆续传来的各种消息和变化，在中国，乃至整个国际社会都引起广泛关注。环球杂志第24期封面一年，在历史长河中不过一瞬；但在历史上，一年也可能蕴含着诸多的变数。在过去的一年，朝鲜经历了重大的变化。2011年12月17日，朝鲜最高领导人金正日辞世，年轻的金正恩成为继任者。这个邻国陆续传来的各种消息和变化，在中国，乃至整个国际社会都引起广泛关注。这一年中，在这片神秘国土上，开始出现一些引人注目的变化。金正恩指示将发展经济列为头号目标，他将经济管理权力集中到内阁，朝鲜农业管理体制正酝酿新的调整……金正恩夫人李雪主的频频亮相，也令许多人为之耳目一新。朝鲜春季国际商品博览会上的人潮，秋季首次增加的投资说明会，罗先经济特区紧锣密鼓的大建设……种种迹象也表明朝鲜正在加快发展经济，并积极对外招商引资。普通朝鲜人的生活也在发生变化，不管是咖啡厅里味道醇香的卡布奇诺，还是三室两厅两卫的宽敞新居，抑或是街头姑娘时髦的罗马鞋和百褶裙……似乎都让人们隐隐感觉到一场“时尚转型”正悄然来临。《环球》杂志记者在平壤的街头、在国际电影节的现场、在罗先建设中的港口……记录下朝鲜这一年中发生的一系列新变化。街头的短裙、松糕鞋，餐厅里的披萨，咖啡店里的卡布奇诺，向记者招手的百姓，国际电影节引发的观影潮……平壤这个有些神秘的城市掀起了面纱《环球》杂志记者/杜白羽(发自平壤)漫步今年夏天的平壤街头，不时有手撑阳伞、脚踏复古松糕鞋、身着粉白色职业裙装的女子从你身边飘过。她们略施淡妆，披波浪卷发，散发出清纯的时尚气质。平壤是朝鲜的一个缩影。生活中的很多细节，正在不知不觉中出现新变化。平壤市中心的夜色，开始变得灯光璀璨；新改造的仓田街，随着一家家特色饭店、百货店陆续装修开业，霓虹炫目，从大同江对岸望去，好似朝鲜的“小浦东”、“小国贸”。街边商业建筑错落有致，多用蓝色和茶色玻璃，富有现代气息，还有不少情调浪漫的西式咖啡厅。大同江畔，新建成的绫罗人民游乐园，10月的秋阳普照欢快戏水的人群，男女老少欢乐地在水上乐园享受冲浪、划艇带来的刺激。面对相机，他们一改从前的“镜头恐惧”与羞涩，冲记者招手、欢呼……短裙和松糕鞋如今，人们时常可以在平壤街头瞥见衣着入时的年轻女子，从头到脚都与国际正流行的“复古风”接轨：大波浪卷发搭配罗马高跟鞋，裸色衬衫搭配海蓝色百褶裙，蕾丝花色连衣裙……都在不经意间演绎出颇具个性的时尚。近年来的时尚界可谓长裙当道，但朝鲜女子的裙子却有逐渐短上膝盖的流行趋势。夏日里，以含蓄为美的朝鲜女子不再穿肤色丝袜，而是大胆地露出小腿。“第一夫人”李雪主的衣着风格，甚至她的短发，都成为年轻女子学习的榜样。姑娘们更是在“脚上”费尽心思，朝鲜厚底松糕鞋的流行跨越年龄和职业，从“大妈”到中学生清一色地脚踩高跟鞋。朴素的中学生虽身着统一的白短衫高腰百褶裙校服，却有高跟鞋张扬个性。这些鞋子款式多样、色彩缤纷，从水晶防水台到木质粗跟，从黑白色拼接到渐变色应有尽有。这样的鞋子在凭票供应的百货店是没有的，掀起流行的地方是熙熙攘攘的集贸市场，那里有最街头的时尚。华丽的阳伞也是平壤女性夏日出行的必需品，一如朝鲜传统服装色彩明艳的风格，朝鲜女子撑起的阳伞也是色彩斑斓。淡妆不出门的朝鲜女子，为拥有物美价廉的国产品牌化妆品而骄傲。“春香”和“银河”等国民品牌，在许多商场设有专柜，原料天然，人气颇旺。比起俏丽的女性，朝鲜男人在着装上依然执著于推崇多年的“将校呢”和灰蓝色汗衫，但年轻小伙已经开始在头顶做起文章。理发店里最受欢迎的造型就是金正恩的“元帅”发型——后脑勺剪得干净清爽，上面的头发打上发蜡，派头立现。布朗尼蛋糕和卡布奇诺朝鲜餐厅提供的食品，也正变得日益琳琅满目。以朝鲜最高领导人金正恩曾视察过的平壤日出餐厅为例，《环球》杂志记者在采访中看到，餐厅一层设有超市，从新鲜水果、巧克力、饮料和零食，到现场制作的北京烤鸭、紫菜包饭，各国食品琳琅满目，品尝台上，还摆着椰枣。几名朝鲜年轻人正在导购员的介绍下购买速冻鱼丸、促销的鸭肉。顾客可乘电梯来到二层，餐厅外有“外国特色料理推荐牌”，上写披萨、牛排等菜品。餐厅里干净明亮，环境幽雅。营业员款款笑意走上前来，为顾客引路。日出餐厅的菜肴颇具“混搭”特色：日本生鱼片、三明治、薯条、沙拉、冷面、牛尾汤，还有类似于中国火锅的“神仙炉”。以前，朝鲜餐馆通常分为外事接待餐厅和朝鲜人家常饭馆，前者装修西式现代，价格较贵，收取外汇；后者曾经昏暗狭小，价格便宜，以朝币结算。但近期，记者发现，这两者间的界限正在模糊。在一些较高档的涉外餐厅里，记者经常可看到也有朝鲜家庭和情侣就餐；而街边的朝鲜家常菜馆也翻修一新，对外国人也可以收取朝币。日出餐厅旁，则是一家蛋糕店。柜台里摆放着布朗尼蛋糕、裱花生日蛋糕、牛角面包和泡芙等西点，两位穿着时尚的朝鲜姑娘自选好面包后正在结账、打包。蛋糕店右侧是一家咖啡厅，甚至可看到英文书写的“咖啡”招牌。咖啡厅里摆放着舒适的软沙发，格调浪漫，灯光温柔。咖啡厅中，有正在聊天的情侣，也有正在享用西餐的朝鲜家庭，耳边是舒缓优美的外国音乐。相比之下，在金日成广场边上第一家由外国人开的维也纳咖啡厅，其简单的装饰和桌椅反倒显得“山寨”了。菜单上有卡布奇诺、摩卡等各式咖啡和三明治，记者点了杯卡布奇诺，标价460朝币，约合0.7元人民币。咖啡杯精致，咖啡味道醇香，蛋糕亦松软可口。据咖啡厅服务员说，该店的蛋糕师从新加坡学成归来，用的咖啡机是意大利进口的，且已从10月1日起开始全天24小时营业。记者注意到，近期在参加一些活动和采访时，朝鲜人端上来的不再是人参茶或大麦茶，而是速溶咖啡。一些餐厅和机关单位也安装了咖啡机。在仓田街上，恩情茶社、儿童百货商店等也已陆续开业，正在装修中的还有洗衣房、音像店、药店等其他服务设施。据朝鲜媒体报道，仓田街是为迎接金日成诞辰100周年，由朝鲜已故领导人金正日亲自发起建设。仓田街紧邻平壤万寿台领袖铜像，距人民大学习堂、金日成广场几步之遥。金正恩多次前来视察。国际电影节一票难求伴随着平壤国际电影节在9月开幕，看电影成为金秋时节朝鲜的热门话题，平壤国际电影会馆、大同门电影院、东平壤大剧场、凯旋电影院等平壤市近10家影院，纷纷张贴出“今日上映”的最新手绘海报。电影票价由此水涨船高，从往常的200朝币(约合人民币0.33元)“暴涨”到了5000朝币(约合人民币8.25元)。然而《环球》杂志记者发现，人们依旧排起长队，买票决心坚定。门口“清凉饮料”冷饮店周围，坐着、站着久等的人群，年轻男女干脆席草地而坐，喝上啤酒吃起烧烤，驻守影院，只等一票到手。谈及票价上涨原因，朝鲜电影进出口公司的吴社长说，朝鲜电影的主要功能是教育人们要为社会主义建设做奉献，因而便宜，而电影节期间上映的外国影片，“并不存在教育民众的目的”。变化不仅体现在票价上，本届国际电影节的开幕式也展现出逐步与国际接轨的趋势。传统民族服装的朝文主持，搭配身着斜肩桃红短裙的英文主持，主持词一改此前“开会”式的呆板程式化，轻松自然。以往，国际评审团评委以及致辞者，通常都是从后台走上T型舞台；但这次，来自德国、俄罗斯、中国、朝鲜和澳大利亚等国的嘉宾，都“接轨”国际惯例，从观众席中起身上舞台。礼仪小姐走入观众席，逐一“秀”出各大奖项奖杯。朝鲜方面特邀中国电影人李水合“揭开电影节序幕”。闭幕式延续了开幕式上活泼的主持风格，两位朝鲜主持人带领观众跟随LED大屏幕上精心剪辑的参赛片集锦，回顾本届电影节的优秀影片和电影节期间各国电影人的旅游观光实录。这些以前都不曾有过，对朝鲜人来说颇为新颖。朝鲜文化省副相、朝鲜电影总局总局长朴春男也曾表示，只要电影的主题好，内容健康，有利于教育年轻一代和促进国际友谊，朝鲜愿意积极同外国进行文化交流合作，接受合作和定制电影，并欢迎好电影来朝鲜放映。然而比起仪式上逐渐与国际接轨的姿态，记者在采访中还是可以发现组织方的某些不足。比如，记者提前提出的配合采访要求，始终没有得到批复和安排，因而无法接触到相关负责人和各国影片参展嘉宾；而组委会印发的影片介绍需要记者自掏腰包购买，较缺乏宣传意识和办事效率；有外国人抱怨，观看电影节电影，需要前往羊角岛酒店这一唯一指定售票点购票，购票退票十分不便。“五没有”曾几何时，商店货架上没有商品、吃饭找不到餐厅吃饭，是一些外国人对平壤的印象。这些“没有”其实在近几年已发生了变化，但是朝鲜依旧保持着一些别样的“没有”——有些人也将之称为“五没有”，但“五没有”细节中也蕴含着些微的变化。第一是“没有防盗网的楼房”。朝鲜楼房不安防盗网，鲜有偷盗，街道黑黢黢却也不怕独自走夜路。在这里，代替防盗网的是家家户户摆放在窗台上的鲜花。平壤市高层住宅楼多配有电梯，建筑造型讲究，色彩鲜艳，粉白、鹅黄、暖绿、月蓝、淡紫，体现了朝鲜民族的艺术审美。平壤入夜早，地铁通常到10点，公交车只开到9点就结束了。平壤极少人有私家车，外国人夜晚出行时，不时可以看到有朝鲜人站在路口招手搭顺风车。然而，待车开近时，朝鲜人若看到是外国车，就不敢继续招手了。按照习惯，朝鲜人是不得与外国人“同车”的，不过这一不成文的规定也在渐渐打破。近来，面对友好国家的陌生朋友，也听说多了些“胆敢”上车的“女杰”。第二是“没有自行车的街道”。平壤作为首都，其宽广的街道上鲜能看到骑自行车的人，据说这里有不许在大路上骑自行车的规定。尤其是女性骑自行车，长期以来被视作是“伤风败俗”、有损道德形象，于是常可以看到平壤女人(农村妇女倒是可以骑车)推着，而不是骑着自行车负载大包小包的行李。《环球》杂志记者曾向朝鲜女盟的干部求证了“朝鲜将从9月起放开限制，允许女人骑自行车”的传闻，得到了肯定的答复，细问下得知“各单位里都通知了”。第三是“没有广告的城市”。没有广告是平壤最大的特点之一，道路两边店铺标牌少，显得道路干净整洁。门牌上只有统一的名称，如餐饮就叫“餐厅”、“清凉饮料”等，前面通常以山川等地名开头，如大同江、普通江、万景台、牡丹峰等。朝鲜特色的标语口号在街上占据着最重要的位置。不久前有西方媒体报道说“平壤惊现英文广告CNC”，其实不必大惊小怪，这既不是中国网通的广告牌，也不是新华社到仓田街抢占先机打出中国电视新闻网CNC的品牌。这里的CNC(Computer '
+            'Numerical '
+            'Control)是数控机床之意，在朝鲜象征着“突破尖端科技”。第四是“没有喧哗的街道”。朝鲜的城镇普遍都很安静，没有车水马龙的街道和拥堵的交通。在平壤市中心闭上眼睛，宛若公园小径，行人并肩低语交谈。记者参加过朝鲜许多的大型集会活动，惊叹于朝鲜人动静结合的转换功力。记者好奇地询问朝鲜人，“朝鲜人何以在欢歌热舞之后迅速‘散热’，是社会习俗还是组织者的要求？”得到的回答是，“家庭教育吧，家长会从小教育子女不要在公共场合大声喧哗。”第五是“没有拥挤的排队”。平壤市民出行的交通工具有地铁、有轨电车和公交车等，也有少量的出租车。记者多次乘坐朝鲜地铁和公交车，总能发现他们规矩地排好并列的两三排长队。目前平壤市的公交车正在逐步更新，今年更换了一批蓝白或粉白相间的新公交车，看上去不再那么不堪重负。记者在车站排队等待了15分钟后，跟随人群“拥而不挤”地乘上一辆破旧的公车，虽然车里的座椅、扶手都很沧桑，却丝毫不觉得脏。朝鲜的主旋律电影《环球》杂志记者/杜白羽(发自平壤)上世纪70年代的朝鲜影片《卖花姑娘》《金姬和银姬的命运》和《摘苹果的时候》，曾是中国“60后”“70后”集体记忆中的“那些年”。然而近一二十年，朝鲜电影似淡出了中国观众的视线。现在的朝鲜人看什么电影，喜欢哪些演员，外界更无从知晓。其实，朝鲜人并没有远离电影。在平壤街头，常常能看到写有“牡丹”字样的DVD影碟出售亭前，买碟的人络绎不绝。窗口上写着最新热卖的朝鲜歌曲，中国大陆、香港电影电视剧，以及俄罗斯、古巴的影片。朝鲜中央电视台日前热播的电视剧《惩罚》，其DVD位列畅销榜首位。近期的电影《白玉》《愿望》《惩罚》《没有破不了的档案》也在其中。一张DVD的价格是3000到5000朝币不等(约合0.8~1.2美元)，但不向外国人出售。若将朝鲜电影分类，可大致按照鲜明的时代特色分为革命片、新建设片、反特片等。但也并非没有一些批判现实主义作品，如《空中舞台》就批判了官僚主义工作作风等。朝鲜处于“先军”时代，电视上电影里讲述的都是如何忠诚领袖为国奉献的主旋律。艺术电影制片厂综合科主任说：“先军朝鲜的电影特色是要体现先军时代人们的美德和精神。”这位接受采访的主任说，他接到的精神实质，金正恩曾指出“要加强对朝鲜电影制作的投入，引进更多、更先进的设备，创作反映当下人民生活、拍出更多反映‘先军’时代朝鲜军民风貌的好电影”。作为具体落实，“我们计划在近几年内展现朝鲜电影艺术的新面貌，实现从设备的现代化到电影内容与形式的革新。”主任介绍说。据了解，该电影制片厂正在制作三部新影片，“目前暂命名为《将它赶回去》《山林里的回音》《间的幸福》，分别讲述美国间谍潜入朝鲜，金正恩元帅对年轻一代的关爱，以及金正日将军如何呕心沥血解决粮食问题等。”造访朝鲜纺织劳模的新家《环球》杂志记者/杜白羽(发自平壤)金秋的平壤满目葱郁，仓田街上矗立着一幢幢蓝白相间的高层公寓楼，平壤纺织女劳模文康顺的新家便在这里。《环球》杂志记者不久前参观了文康顺家。主客席地盘腿而坐，说起这套令人羡慕的新房，她的丈夫打趣说：“都是托妻子的福呢。”文康顺今年30岁，已有12年工龄。她的丈夫33岁，毕业于平壤金策工业大学，现在纺织厂搞技术革新。婚前，文康顺被评为纺织厂史上第17位“劳动英雄”。结婚两个月后，这对新人从工厂集体宿舍搬到了位于仓田街的新家。这里原来是一片5层的旧住宅楼，去年年初，旧楼被拆除，今年6月，新的高层住宅楼小区落成入住。陪同记者采访的平壤市人民委员会对外事务部工作人员金龙先说：“这里居住的都是普通百姓，我们都是国家提供住房。”据介绍，迁入仓田街新房的，除原住户外，还有像文康顺这样排队等房的新婚夫妇以及急需改善住房条件的家庭等，他们包括军属、工人、教师，家中都按统一标准配备了家具。文康顺的新家面积约100平方米，有三室两厅两卫加阳台。夫妻卧室里有一台工厂赠送的电脑，丈夫向记者演示了如何阅览已安装的领袖著作电子学习软件，不过，电脑“是不上网的”。梳妆台上摆着文康顺日常用的“春香”牌化妆品。另外两间卧室里摆放着两个盛满新婚绸缎棉被和衣物的大衣柜，还摆放着同事送的塑料花束。这两个房间是他们留给父母和未来孩子住的。9月初，朝鲜最高领导人、朝鲜人民军最高司令官金正恩携夫人李雪主访问了新入住仓田街新居的居民家庭，其中就包括文康顺家。家里客厅摆放的一摞摞崭新的儿童图书和阿里郎牌42寸液晶电视，就是当时金正恩夫妇送的。“当金正恩同志问我们打算要几个孩子时，我说想要一个儿子和一个像纺织英雄母亲的女儿。”文康顺的丈夫骄傲中略带羞涩地说，“我的父母远在咸镜南道北清郡，他们在电视上看到金正恩元帅亲自来到我们家，自豪地说也要坐火车来住一住。”走进展厅，平壤广告公司、信用银行、合营公司等各色广告牌林立，大大小小的展台前挤满了人，显出与一墙之隔的平壤街头截然不同的商贸气息。《环球》杂志记者/杜白羽(发自平壤)春季国际商品博览会上的人潮，秋季首次增加的投资说明会，罗先经济特区紧锣密鼓的大建设……一系列的迹象都说明，朝鲜试图通过积极向世界招商引资，促进本国经济更快发展。春季展览会人潮涌动今年5月举行的平壤春季国际商品展览会，是朝鲜最大规模的国际商品展览会。展会吸引了来自朝鲜、中国、德国、英国、澳大利亚、意大利等16个国家和地区的270多家企业参展，展出了机床、电气电子产品、轻工业产品、食品和医药制品、化学制品、运输器材等2100多种产品。走进展厅，平壤广告公司、信用银行、合营公司等各色广告牌林立，大大小小的展台前挤满了人，显出与一墙之隔的平壤街头截然不同的商贸气息。设在一层的“中国馆”总面积达到1080平方米，中国知名企业如格力电器、澳柯玛公司、新飞电器、都有亮相，引来很多询问的朝鲜百姓和企业代表。不少朝鲜民众更拥到华硕等电脑厂商展台前，体验中国企业推出的新科技产品。据中国展览团团长、中国国际贸易促进委员会资产管理中心主任翁仁生介绍，除了这些中国知名企业外，许多变压器、压缩机、光谱色相分析仪企业也要求参展，因为它们看到了在朝鲜的商机，另有一家箱包生产公司，已计划到朝鲜投资设厂。展会上，诱人的奥地利巧克力芝士蛋糕价格为每块1美元；排队品尝的朝鲜民众听说还有维也纳咖啡，很多人绽放笑颜。奥地利投资商赫尔穆特介绍说，他已将朝鲜首家外国咖啡馆开在了位于平壤市金日成广场的国家博物馆()内。“我曾于2006年第一次随团访问朝鲜，发现这里商机巨大。我们作为奥地利的中型企业，成功抢占市场，并计划逐渐扩大经营范围，包括开超市等。虽然审批程序复杂、耗时长，但我很幸运地得到了朝鲜相关方面的支持。”赫尔穆特对自己在朝鲜的生意经津津乐道。《环球》杂志记者在采访中发现，大批中国中小企业也希望通过展会探路，打通合作渠道，加快在朝投资兴业步伐。现场演示产品生产过程的大连塑料机械厂，自2009年起连续参展并积极开拓朝鲜市场，研究适销对路商品，目前已成长为开拓朝鲜塑料机械市场的先行者和收获者，在朝鲜业界颇有名气。主办方朝鲜国际展览社社长金文正说，平壤春季国际商品展览会是朝鲜开展对外经济贸易合作与交流的平台，朝鲜将坚持平等互惠原则，同外界进一步加强经济往来。秋季首增投资说明会在9月24日至27日举办的平壤秋季国际商品展览会期间，朝鲜合营投资委员会还首次召开了投资说明会，为前来参加展览会的外国企业详细介绍朝鲜投资环境。这是迄今八届秋季展会上的“增加动作”。《环球》杂志记者在朝鲜合营投资委员会召开的投资说明会上获得了主办方对朝鲜投资环境的详细介绍。朝鲜合营投资委员会副局长崔光明在说明会上说，朝鲜的外资政策包括合营企业、合作企业以及外商独资企业等投资形式，奖励外国投资科技开发、先进技术、基础设施、进出口生产等部门。但崔光明也强调，朝鲜限制或禁止投机、不经加工自然资源直接出口、超过环境污染标准浪费资源等行为，此外，朝鲜还禁止教育、文化、保健、通讯及邮件等领域外国独资。崔光明说，为让外资来得放心安心，朝鲜已制定了20多部外资相关法规并正不断补充修改，《朝鲜外国投资法》将保障外国投资者和外国投资企业的合法利益及经营活动条件。此外，朝鲜已与28个国家签订投资奖励及保护协定，与15个国家签订防止双重征税协定。对受鼓励的外国投资给予优惠政策，免除销售税、登记税、资本税，对投资经营用物资免除关税。针对投资者关心的税率问题，崔光明在说明会上强调：“朝鲜税金少，税率低”。根据他的介绍，朝鲜企业所得税是结算利润的25%，这一税率在罗先经济特区则为14%，鼓励外国投资的部门为10%。合营投资委员会还首次详细公布了“购买房屋和办公室的价格”：平壤地区为70~180欧元/平方米，其他地区55~155欧元/平方米。进一步改善投资环境最近一段时间以来，朝鲜积极吸引外来投资的态度非常明确。朝鲜合营投资委员会相关负责人尹英锡今年3月就表示，朝鲜将进一步改善投资环境，为外国投资者经营企业创造良好机会。尹英锡说，朝鲜经济正在迅速发展，政府加大投入开办新企业、工厂和兴建发电站等基础设施。他强调，“在不断加强独立自主民族经济基础的前提下，扩大发展同各国的经济合作关系”，这是朝鲜政府的“一贯政策”。他还解释说，根据朝鲜基本国情和国际惯例，朝鲜去年年底采取了一些鼓励外来投资的措施，比如，对外国人投资法、合营法、合作法、外国投资企业及外国人税法等相关法律进行了修改补充。在尹英锡看来，朝鲜的整体投资环境正在朝积极有利的方向发展，目前签订合营合作合同的件数也在持续增加。朝鲜合营投资委员会将继续致力于保护外国投资者利益并提供便利，同相关国家政府、投资促进团体和企业进一步加强交流与合作。据介绍，朝鲜已设有朝鲜对外贸易仲裁委员会、朝鲜海事仲裁委员会、朝鲜软件仲裁委员会等法律服务机关，以及朝鲜合营投资委员会、朝鲜对外经济投资协力委员会、朝鲜对外贸易促进委员会、海外经贸代表部等咨询服务单位。此外，为更积极地招商引资，朝鲜目前已设有38家海外经贸代表部，所在地包括中国的北京、广州、沈阳、大连、长春、丹东等六个城市，俄罗斯的四个城市，以及德国、法国、巴西，印度、印尼等国的首都。东北亚博览会上的朝鲜展台《环球》杂志记者/杜白羽(发自平壤)姚湜(发自长春)在办好国内的博览会、招商展同时，朝鲜企业还积极“走出去”，努力将特色产品打入国际市场。在9月举行的第七届“中国·吉林东北亚投资贸易博览会”上，《环球》杂志记者就看到，朝鲜特色产品相当受外界关注。比如，在传统的高丽人参保健品、朝鲜限量版邮票、“平壤”香烟展台前，前来问询和购买的中外参观者络绎不绝。“难得在国内买到朝鲜产的商品，刚才看到纯天然人参提取的化妆品，打算买来试一下，送朋友也是独特的礼物。”远道而来的浙江客商林辉说。据朝鲜组织方朝鲜国际展览社社长金文正介绍，此次是朝鲜企业代表团第四次前来参加东博会，规模和产品数量，比前几次都有很大提高。他表示希望借助东博会的平台，把朝鲜的特色商品展示给友好邻邦中国，同时“以开放的姿态欢迎世界各国的朋友，了解朝鲜投资朝鲜”。来自朝鲜的罗先白虎贸易公司社长宋良德说：“我们的领导人对罗先的开发开放高度重视，倾全力将罗先打造成为世界贸易汇集的中心地，罗先的发展需要中国的合作，我们很高兴得到大家的关注。”罗先经济特区亲历记根据朝方的计划，到2030年，罗先特区将建设成为一个人口达100万的国际贸易中心和世界性港口城市。《环球》杂志记者/张利(发自罗先)罗先特区被誉为“朝鲜经济发展前沿地带”，对外界一直蒙着神秘面纱。今年8月，《环球》杂志记者借一次采访机会，专程从平壤出发，花了三天时间翻山越岭，终于抵达罗先一睹其全貌。罗先经济特区以豆满江(图们江)为界与中国、俄罗斯为邻，并靠着朝鲜东部海域，地理位置优越，用“鸡鸣啼三国，花开香三疆”来形容恰如其分。1991年朝鲜宣布设立罗津、先锋自由贸易区。2010年，罗先又升格为特别市，直接归中央管辖。2011年，中朝举行“中朝共同开发和共同管理罗先经济贸易区”项目启动仪式，给罗先经济特区的发展又注入了新的动力。中国投资客一进入罗先市区，《环球》杂志记者最强烈的感觉，就是中国元素遍布各处。路边正在建设的饭店，如“东北亚饭店”、“图们江饭店”等等，无不传达出浓厚的中国气息；市区内中国牌照的车辆随处可见，其中以“吉H”牌照最多；随便走进一家餐馆、饭店、加油站，无不以人民币作为通用货币；市区内的道路标牌在朝文下面都标出中文名称；从政府官员到普通百姓，很多都能说几句汉语。作为朝鲜最早的经济特区，到这里投资办厂做生意的中国人很多。在罗先主要道路旁，几乎都可看到大兴土木的迹象。“罗先国际商品贸易中心”的中文大广告招商牌格外引人注目。在罗津一处由延吉商人投资的综合商用楼里，记者看到，这里包括汽车零配件商店，服装、制冷设备等商店和餐厅。老板来自吉林，在此经营了6年，餐厅一位工作人员则说已经干了11年。当被问起效益如何时，他们笑答，“不赚钱早就不干了。”在交谈中，他们无不对最近朝鲜要推出新的经济措施的传闻非常感兴趣。他们说，希望罗先特区以及朝鲜经济取得大发展，而自己的生意能越做越大，越做越好。在记者就餐的几家饭店，朝鲜厨师做的中国菜口味十分地道。大的道路和景点的标牌都同时附有中文；饭店、参观、加油站均以人民币结算，餐馆内随意翻开菜单满眼是“锅包肉”、“松仁玉米”等中文菜名。随行的罗先市外事局指导员崔英华说，罗先经济特区为来此投资和旅游的中国人提供了极其便利的条件，中国人同朝鲜人一样可以到任何一家餐馆就餐，中国自驾游游客可以在区内自由旅行，不受限制。他还说，在罗先还是人民币最为通用。为了找一家能收欧元的加油站，崔英华带着记者转了好几个地方，终于在一家中国女老板开办的加油站如愿以偿。据这位女老板说，她已经在此投资了15年，不仅开加油站，而且开办液化气站，同朝方合作建路，开饭店。在罗先的短短几天时间里，这位毕业于平壤外国语大学中文系、操一口流利汉语的罗先外事局指导员跟这里的中国人显得非常熟悉，到处都有人跟他打招呼。市场很繁荣由于特殊的经济政策，罗先特区在朝鲜可以说是一个非常特殊的存在。一方面，这里同朝鲜其他地方一样，街头有各种标语口号、宣传画；另一方面，在朝鲜别处无法见到的街头餐馆、穿梭往来的众多中国货运车辆、来往的众多中国游客等，又时刻提醒着人们，这是一个非常活跃和具有诱惑力的城市。罗先市的旅游资源十分丰富。在罗先市北部的豆满江火车站附近，就是朝、中、俄三国的交界地区。从朝方的一处“战胜阁”放眼望去，三国风景尽收眼底。通过望远镜可以看到，珲春防川中国边防哨所上的“祖国利益高于一切”八个大字异常醒目，游客和车辆络绎不绝。中朝以图们江为界，但中国领土到了距朝俄铁路桥100米就已经到头，再有十多公里，就是日本海。与“战胜阁”相对的俄方边境地区，一个球形的建筑正在收尾，旁边有很多军车，甚至雷达都清晰可见。作为经济特区，罗先允许外国人短期免签进入，因此吸引了大批游客，其中很多是来这里体验朝鲜风土人情的中国游客。据说在整个中朝边境地区，罗先的入境手续最为简单，游客头天下午去旅行社报名，第二天一早便可以出发。据介绍，旅行社对罗先两日游的报价为700多元人民币。罗先特区的旅游经济，也由此让人刮目相看。在罗先的著名风景区琵琶岛，餐厅里出售海参、鲍鱼、海胆等各种海鲜。入夜后，罗先海岸公园旁边的海洋馆外的露天餐厅灯火通明，人满为患，游客们推杯换盏。以记者所住的琵琶饭店为例，很多吃露天烤串的客人兴致很高，一直到下半夜依然可见喧嚣声。而在琵琶岛海边的英皇娱乐酒店，大厅内基本满座，前台服务生抱歉地说，酒店已爆满了。而在市区很多地方，可看到绚烂的霓虹灯。建设正火热罗先经济特区发展迅速，与先天条件有关，比如，这里临近中俄，交通便利，渔业资源很丰富，三大港口——罗津、先锋、雄尚为天然不冻港；也与特殊政策有关，特区积极欢迎外来投资，并给予投资者短期出入境免签证以及各种优惠政策。据相关方面的统计，目前罗先地区已经有100多家外资企业和14个外商企业办事处从事经营活动。在罗先三大港口中，罗津港的条件最好。这里水深，且没有大的风浪，是个理想的不冻港，总占地面积为37.5公顷，有三个突出码头的10个岸堤，可供1万吨货轮9艘和7000吨级货轮4艘同时停靠，年吞吐量可达300万吨。先锋港年现吞吐能力为300万吨，主要处理石油和散装货物。雄尚港吞吐能力为50万吨。朝方计划将这三个港口的吞吐能力分别提高到940万吨、500万吨、500万吨。今年2月15日，外电报道中国获得朝鲜罗先特区三个码头的建设权和50年的使用权。在罗津港，罗津港外事科科长金春日对记者说，目前罗津港有3个码头，1、2号码头都归中方使用，3号码头则由俄罗斯于2008年出资1.8亿美元从朝鲜租借49年。另外中方还将在这里修建4、5、6号码头。在1号码头，记者见到了能容纳8000吨煤的大型仓库。这座1995年建成、用于装卸俄罗斯运来的化肥的仓库，自上世纪90年代后期由于各种原因空置了15年。4年前，中国企业对其进行重建并于去年重新投入使用，去年从这里出口到中国的煤炭就达8万吨。2号码头旁边停靠的一艘中国货轮，正在装运这个季节朝鲜出产最多的鱿鱼，另外运送中国游客到金刚山旅游的“万景峰”号客货两用轮船也静静地停靠在码头边。据介绍，自去年开通中国游客自珲春入境从罗津坐船到朝鲜名胜金刚山旅游线路以来，至今已经运行6次，在中国游客中反响很好。目前这艘客货两用轮船正处于检修状态。在俄方正在改造的3号码头，俄罗斯工人正在工作。金春日介绍说，在罗津港各码头中，俄罗斯租借的3号码头条件最好，也最具开发潜力，其水深达到9米，长度达到505米，无论是水深和码头长度都在各码头中首屈一指。俄方还计划将水深挖至12米，这样3号码头就能容纳10万吨级货轮停靠。除了正在兴建的三个码头，根据连接朝鲜和俄罗斯西伯利亚的国际运输线形成大规模计划，罗津至俄罗斯哈桑铁路正在改造之中。在罗津至豆满江的54公里路段铺设混合铁轨的改建工程于2008年10月启动，目前朝方路段和俄方路段已经基本完毕，2010年10月，双方还进行了罗津-哈桑铁路试运行。朝鲜铁道省东海铁道联运公司副社长林山浩介绍说，除了罗津港内路段，朝俄铁路朝方路段已经完全铺设完毕。《环球》杂志记者沿途看到，在朝俄边境的朝鲜图们江火车站，俄罗斯铁路股份公司以活动房屋和集装箱房屋组成的工作区十分显眼。据介绍，朝俄铁路朝鲜段所需枕木、铁轨等所有材料都由俄方提供。目前连接朝俄铁路的铁桥上的铁轨尚未铺设，预计将于明年朝俄铁路全线贯通并正式投入使用。记者还驱车从罗先市到边境的元汀口岸实地察看了公路建设情况，这条罗津至元汀的公路是中朝共同开发、共同管理项目之一。这条公路改建项目于2011年6月正式启动。记者看到，公路为水泥路，双向两车道，全长约50公里，目前已投入使用，但部分路段的栏杆还未设置完毕。据朝方人员介绍，这条公路将于近期验收并正式投入使用。根据朝方的计划，罗先特区将建设成为国际性转口、运输、贸易、投资、金融、旅游、服务基地和世界性港口城市。其中包括，罗津港将被建成年吞吐量达1亿吨的综合物流港，先锋港将被建成年吞吐量达2000万吨的工业港口，雄尚港则成为年吞吐量达500万吨的散货港。到2030年，罗先将成为人口达100万的国际贸易中心和世界性港口城市。罗先经济贸易区和黄金坪、威化岛经济区大事记罗先市也称罗津先锋市，位于朝鲜东北部，临近朝鲜与中国和俄罗斯两国交界处。朝鲜于1991年宣布建立罗津先锋自由贸易区。2010年1月4日，朝鲜最高人民会议常任委员会发布政令，将罗先市升级为特别市(直辖市)。2010年5月，朝鲜国家领导人金正日访华期间，两国元首就中朝共同开发和共同管理罗先经济贸易区和黄金坪、威化岛经济区两个经济区达成共识。2011年6月，中国和朝鲜举行中朝罗先经济贸易区和黄金坪、威化岛经济区开发合作联合指导委员会第二次会议。双方明确了“政府引导、企业为主、市场运作、互利共赢”的开发合作原则。2011年12月3日，朝鲜最高人民会议常任委员会通过朝鲜黄金坪和威化岛经济区法，同时通过了经过修改补充后的朝鲜罗先经济贸易区法，增加了对投资基础设施建设、高新技术产业以及生产具有国际竞争力产品的企业给予特别奖励等内容。2012年8月14日，中朝罗先经济贸易区和黄金坪、威化岛经济区开发合作联合指导委员会第三次会议在北京召开并宣布，由中朝两国共同管理的中朝罗先经济贸易区和黄金坪、威化岛经济区管理委员会成立。2012年9月7日，中朝两国政府在长春首次举行中朝罗先经贸区暨黄金坪、威化岛经济区投资说明会，中朝两国的合作正式进入到招商引资的实质性开发阶段。在参与朝鲜经济复兴时，我国企业宜优先选择东北为基地。在可预见的未来，除了朝鲜国内消费等行业之外，港口及转口贸易、采矿、加工贸易应当具有较大潜力。梅新育()自从年轻的新领导人金正恩接替最高权力以来，陆续传来一系列朝鲜国内政策取向、机构设置、建设方向等发生变化的消息，在中国国内和国际上引起了广泛关注，东北亚区域内各国对此尤为重视：金正恩在朝鲜党和政府最高会议上指示将发展经济列为头号目标；农业管理体制正在酝酿和实施调整；朝鲜将经济管理权力集中到内阁……连金正恩夫人李雪主的频频亮相，也令许多人为之耳目一新。根据这些消息，许多人判断，朝鲜正在走向优先发展经济的道路；那么，朝鲜到底是在怎样变化？发展对朝经贸应从哪些方面着手？经济复兴在望根据对华贸易数据等侧面迹象，我们可以判断，就总体而言，朝鲜已经走出了经济最困难的时期，经济复兴在望。一般说来，一国经济增长提速也意味着进口提速，发展中国家尤其如此，因为此时该国对进口技术装备、原料、能源的需求都会增多。中国是朝鲜最大、最可靠、最重要的贸易伙伴，韩国银行专门研究员崔志英8月30日发布的《近日朝鲜对外经济政策变化》报告称，对华贸易占朝鲜贸易总额比重已从2000年的20%提高到2011年的89%，因此，中朝贸易在相当程度上可以代表朝鲜对外贸易总体形势。考察中朝贸易，可以发现，2002~2012年间，中朝贸易额和中国对朝鲜出口(即朝鲜从中国进口)增速高于我国贸易总额和出口总额增速。2002~2011年，中国进出口贸易额从6207.66亿美元上升至36418.64亿美元，增长487%，同期中朝贸易额从7.3851亿美元上升至56.3940亿美元，增长664%；中国出口总额从3255.96亿美元上升至18983.81亿美元，增长483%，同期中国对朝出口从4.6771亿美元上升至31.6476亿美元，增长577%。特别是2007年以来，中国对朝鲜出口(即朝鲜从中国进口)和从朝鲜进口增长数次均快于全球贸易额增幅，在2009年的全球危机时期，降幅也小于中国外贸和全球贸易总额降幅，根据这些迹象，可以判断朝鲜经济正在提速。进一步考察朝鲜居民生活。2010年4月世界卫生组织(WHO)总干事陈冯富珍在朝鲜首都平壤并未看到营养不良问题的明显迹象；而且，与以前不同，近3年多以来，我们从国内外媒体上陆续看到了一系列关于朝鲜普通居民如何追赶时尚之类的报道。由于这是一个高度平均主义的国家，既然出现了相当大面积的追赶时尚现象，那么，可以判断，这个国家经济已经走出了最困难阶段，即使还没有完全步入快速增长轨道，至少也应该是接近经济复兴起点了。发展极具潜力朝鲜原来相当深入地参与了前社会主义阵营国际分工，也因此而受益不浅。在工业方面，朝鲜化纤工业曾长期领先于中国。朝鲜著名的咸兴二八维尼纶厂于1961年投产，到1970年化纤就占纺织品70%以上。直到1980年代末，笔者的同学中还有人被派往朝鲜留学，学习轻工专业。在农业方面，根据中国学者温铁军(曾被请到朝鲜担任农业顾问)提供的数据，到1980年代，朝鲜已经装备了6万台拖拉机，从而全面实现了农业机械化，70%的人口城市化，粮食人均800斤，年人均收入900美元。由于苏联东欧剧变，朝鲜原来参与的国际分工体系崩溃，这个国家才陷入如此经济危机。特别是建立在石油基础上的农业现代化使得朝鲜人丢掉了传统的农业技术，一旦苏联东欧剧变导致其外部石油来源大部分断绝，朝鲜农业顿时陷入全面困境，饥荒蔓延。尽管如此，朝鲜仍然在航天和核技术开发方面取得了相当进展，显示了这个国家在渡过难关、实现与西方大国关系正常化之后具有经济复兴的潜力。更重要的是，朝鲜的人力资源基础相当不错，这是一个继承了上千年儒家文化和社会主义国家重视普及教育与医疗卫生保障双重传统的国家，一贯重视教育，实行免费教育制度。加上朝鲜政府拥有强大的动员能力，待到朝鲜彻底度过经济危机、国际环境正常化之后，这个教育普及、人民勤奋守纪、劳动力成本低廉的国家完全有可能成为外向型制造业领域的一支强劲新军。对朝经贸何处着手中国企业要开发朝鲜变化中的经贸契机，宜从何处入手？根据我国和朝鲜的经济规划布局，在参与朝鲜经济复兴时，我国企业宜优先选择东北为基地。在可预见的未来，除了朝鲜国内消费等行业之外，港口及转口贸易、采矿、加工贸易应当具有较大潜力。根据我国《海关统计》，新世纪以来，我国进口中进口来源地为国内的金额每年都增长较快，从2002年的150亿美元上升到了2011年的1226亿美元，今年前7个月为725亿美元，同比增长8.1%。这部分从本国国内进口一部分是来自保税区等境内关外地区，还有一部分实际上是国内跨省沿海贸易。而吉林省和整个东北北部地区由于陆路货运距离较长，在很大程度上难以参与这个繁荣的国内跨省沿海贸易。而朝鲜的天然良港罗津-先锋、清津有望成为未来吉林，乃至整个东北东部的出海口和加工贸易基地，为东北经济社会未来发展发挥重大作用。同时，我国东北地区充裕的物流供给、我国已经跻身世界前列的港口技术装备和管理水平(我国港口装卸效率为世界之冠)也为中国企业切入朝鲜市场这一领域创造了有利条件。在港口和面向中国国内市场的转口贸易得到一定发展的基础上，中国企业未来可以进一步利用罗先的区位优势发展加工贸易。采矿是中国投资者可在朝鲜优先选择的第二个领域。朝鲜矿产资源比较丰富，与我国能够形成互补。韩国统计厅《朝鲜主要统计指标》的报告显示，朝鲜的主要矿产蕴藏量为：黄金2000吨，白银5000吨，铜290万吨，铅1060万吨，锌2110万，铁5000亿吨，钼5.4万吨，石墨200万吨，石灰石1000亿吨，磷灰石1.5亿吨，菱镁矿60亿吨，无烟煤45亿吨，褐煤160亿吨，……在实践中，中国企业已经拿下了朝鲜茂山铁矿50年开采权等项目。朝鲜加工贸易也有着巨大的发展潜力。事实上，中国和韩国企业向朝鲜企业分包加工业务已有数年，朝鲜政府方面也意识到了自己的这项潜在优势并力图发扬，在2010年9月的长春第四届东北亚经贸合作高层论坛上，朝方代表、贸易省副相具本泰表示将把罗先经济贸易区建设成为世界性加工贸易区和转口贸易区，就表明了这一点。对于中国产业来说，利用勤奋、有纪律、有文化的朝鲜劳动力，能够在相当程度上抵消国内成本上升给传统劳动密集型制造业带来的压力，延长传统劳动密集型产业的生命周期，与朝鲜这支潜在的外向型制造业新军携手共进实现互利，避免其成为我们的竞争对手。在近期，有实力、敢于承担风险的中国投资者可以一开始就深入朝鲜内地，为避险起见，谨慎的中国企业可以更多地利用丹东的工业园区招纳朝鲜工人在此劳动，或是进驻中朝共同开发的黄金坪、威化岛两个经济区，在积累了更大实力、取得了较多经验、开辟了更广泛关系网络，朝鲜投资环境也进一步开放改善之后进一步进入朝鲜内地。(作者系国际贸易经济合作研究院研究员)',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '新华网',
+ 'time': '2012-12-11-14-23-00',
+ 'title': '金正恩执政一年朝鲜的变化：平壤街头出现短裙',
+ 'url': 'https://news.qq.com/a/20121211/001023_all.htm'}
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20180611/007256.htm?tdsourcetag=s_pcqq_aiomsg>
+{'content': '[]辽宁社科院朝鲜研究会副会长兼秘书长吕超认为，朝鲜劳动力资源丰富，中国有巨大的消费市场，如果中朝合作顺利，边贸和加工业可以很快发展起来。东北师范大学中国东北研究院常务副院长宋玉祥认为，这其中，丹东和珲春有望成为东北沿边开放的桥头堡，第三产业会得到较大发展。本报记者 '
+            '定军 北京报道编者按东北振兴须突破“开放”的短板。中国(海南)改革发展研究院院长迟福林曾撰文表示，东北经济增长乏力、 '
+            '民营经济活力不足， 市场化水平不仅低于东部省市， 而且低于很多中西部省区。这不仅反映东北市场活力和增长动力的缺失， '
+            '也反映东北对外开放水平的滞后。2016年《中共中央国务院关于全面振兴东北地区等老工业基地的若干意见》也提出，东北发展的矛盾和问题归根结底是体制机制、产业结构和经济结构问题。“全面深化改革、扩大开放是振兴东北老工业基地的治本之策”。可见，处于内陆的东北地区如何借助国际市场完成技术积累和实现产能的全球整合能力，是发展的关键之一。中央及东北地区地方政府，近年对东北的开放持续展开了战略性布局。近期东北亚地区局势呈现好转态势，给东北的开放带来了新机遇。东北如何抓住机遇，构建开放新棋局，受到广泛关注，也是本期专题重点关注内容。（吴红缨）导读目前，东北三省面向东北亚的国际合作的大平台、大通道，通过近几年的布局建设，已见雏形。沈阳，长春，哈尔滨、大连等城市，近期均提出了打造东北亚区域中心城市的目标。东北三省有望在新一轮东北亚合作发展中迎来新机遇。6月8日到10日，俄罗斯总统普京将结合出席上海合作组织青岛峰会对华进行国事访问。中国外交部发言人华春莹在6月5日的例行记者会上介绍，两国元首今年年内首次会晤，对规划中俄关系发展、推动两国各领域合作具有重要意义。根据惯例，双方将发表重要政治文件，签署一系列各领域合作协议。此前的5月，第七次中日韩领导人会议在东京举行，三国领导人发表了联合宣言，重申将进一步加速中日韩自贸区谈判。朝鲜半岛局势也出现好转态势：朝鲜、韩国领导人实现会谈，朝鲜半岛无核化出现重大转机。下一步，朝美两国领导人峰会有望在6月举行。中国东北地区地处东北亚中心，毗邻日韩，接壤俄、蒙、朝三国，在东北亚区域合作中具有重要战略地位。2016 '
+            '年出台的《中共中央国务院关于全面振兴东北地区等老工业基地的若干意见》提出，全面深化改革、扩大开放是振兴东北老工业基地的治本之策。文件明确提出“努力将东北地区打造成为我国向北开放的重要窗口和东北亚地区合作的中心枢纽”。目前，东北三省面向东北亚的国际合作的大平台、大通道，通过近几年的布局建设，已见雏形。沈阳、长春、哈尔滨、大连等城市，近期均提出了打造东北亚区域中心城市的目标。不过，几乎所有接受访问专家均认为，由于东北亚局势的复杂性，与中国互联互通的合作仍存在很大的不确定性。但对于东北而言，坚持改革开放的道路在任何情况下都不能动摇。东北亚地缘政治和地缘经济格局的变化，给东北振兴发展带来良好的外部环境。吉林智库秘书长刘庶明对21世纪经济报道记者表示，东北亚局势的好转，对于东北三省尽管不可能很快带来GDP上百亿、上千亿的增量，但“东北的东部经济带将受益很大，长白山系的开放将激活。”实际上，中央政府一直将扩大东北地区对外开作为振兴东北的重要战略。近年已逐渐形成新区为核心的新的改革开放格局。2014年6月，国务院设立大连金普新区。这是东北三省第一个国家级新区，其任务是引领辽宁沿海经济带加速发展，带动东北地区振兴发展，进一步深化与东北亚各国各领域的合作。2015年12月，国务院批复同意设立东北第二个国家级新区哈尔滨新区，其定位是中俄全面合作重要承载区、东北地区新的经济增长极、老工业基地转型发展示范区。2018年6月7日，新区管委会正式挂牌，当地媒体称，这标志着哈尔滨新区建设进入新阶段。长春新区设立于2016年2月，作为中蒙俄经济走廊的重要节点，长春新区的重要定位是“深化图们江区域合作开发”，加强与东北亚各国的经贸合作，深化与俄罗斯远东地区的全方位合作。2016年8月，辽宁自由贸易试验区获批，包括沈阳、大连、营口三个片区，其发展目标是建设成为提升东北老工业基地发展整体竞争力和对外开放水平的新引擎。同年11月，国务院出台《关于深入推进实施新一轮东北振兴战略加快推动东北地区经济企稳向好若干重要举措的意见》，提出规划中俄、中蒙、中日、中韩产业投资贸易合作平台以及中以、中新合作园区。毋庸置疑，这些国家级新区和平台，现在和未来都将在东北开放中担当重要角色。在大通道建设方面，辽宁正在打造三条面向欧洲的综合交通运输大通道，一条是以大连港、营口港为起点， '
+            '途经满洲里再到俄罗斯乃至欧洲各地的“辽满欧”通道，另一条是以锦州港、丹东港为起点，途经蒙古国再到达欧洲各地的“辽蒙欧”通道。第三条“辽海欧”也称北极东北航道，以大连港为起点，至白令海峡向西航行，到达挪威北角附近，再前往欧洲各港口。辽宁社科院副院长梁启东认为，不只是货运线路，客运线路也可发展。辽宁目前有多个往欧洲发货的专列线路，韩朝货物通过丹东进入中国大陆，再往西前往欧洲都没问题。吉林方面规划了贯穿中、蒙、朝等大图们江国际通道，即蒙古货物可以向东经过阿尔山、白城、长春、珲春，再出海。长春、珲春的商品，也可通过连接俄罗斯西伯利亚大铁路，向西进入到欧洲。黑龙江的重要是推进东部陆海丝绸之路经济带的发展，也是中蒙俄经济走廊的重要组成部分，主要打造绥芬河一满洲里一俄罗斯一欧洲的铁路和绥芬河一俄远东港口陆海联运为主的战略通道。这些通道都极具价值，但部分推进还有过程。除了大平台、大通道建设，城市群的协同发展对构建东北地区对外开放的新格局也有非常巨大的作用。东北振兴战略推进以来，东北已形成四大城市群，包括以辽宁沿海城市群、辽宁中部城市群、吉林中部城市群和哈大齐城市群。另外，黑龙江东部城市群也在规划建设中。这四大城市群中的四个副省级城市，哈尔滨、长春、沈阳、大连，面对东北亚地区的新机遇，也开始谋划城市转型，提出建设国际化城市目标。5月7日，黑龙江省委常委、哈尔滨市委书记王兆力主持召开会议，在听取新一轮城市总体规划（2018—2035年）编制工作汇报时提出，要把黑龙江省第十二次党代会对哈尔滨作出的发展定位，贯彻到新一轮城市总体规划中，不断提升城市的承载力和竞争力。此前黑龙江第十二次党代会提出，把哈尔滨建设成为东北亚具有重要影响的现代化城市和哈长城市群核心城市。2017年12月召开的中共沈阳市第十三届委员会第六次全体会议对沈阳也提出新的定位：到2030年，率先实现老工业基地全面振兴，走在东北振兴发展前列，建成东北亚国际化中心城市、科技创新中心、先进装备智能制造中心、高品质公共服务中心。2017年的长春市第十三次党代会明确提出，未来五年要突出建设东北亚区域性中心城市。 '
+            '在今年5月10日，长春市政府对外发布了《长春市建设东北亚区域性中心城市国际指标体系》，提出了30项具体发展指标。长春方面表示，通过中心城市的建设工作，增强服务东北亚的城市意识，扩大对这个区域的影响，凸显服务作用、辐射作用和依存作用。大连方面，在今年4月份完成了《大连市新一轮城市总体规划编制工作方案（讨论稿）》。大连在新一轮城市总体规划中将全面对标上海，对标国际一流城市。长期以来大连地区的进出口贸易额、对外开放度、GDP等经济指标在辽宁乃至整个东北地区一直处于领先地位。在2017年国务院批复的《大连市城市总体规划(2001-2020年)(2017年修订)》中，提出逐步把大连建设成为东北亚国际航运中心、国际物流中心。这四个东北地区重要中心城市的崛起，对于东北地区的振兴有重要意义，同时也有利于为沿边开放提供腹地支撑。不过，要成为东北亚的区域中心城市，对四个城市都具有挑战性。长春上述指标体系主要对标国际城市的通用标准。长春日报的报道显示，长春部分指标已经达到东北亚区域性中心城市的初级阶段，少数几个指标处在初级和中级之间，但大部分指标还处在初级前期。“这意味着未来我市在创建东北亚区域性中心城市方面还有很长的路要走。”统计数据显示，2017年哈尔滨、长春、沈阳、大连的经济总量分别为6355亿元、6530亿元、5865亿元、7363亿元。大连经济总量最大，长春次之，然后是沈阳和哈尔滨。21世纪经济报道记者了解到，目前整个东北地区经济增速仍比较低。以一季度为例，黑龙江、吉林、辽宁的经济增速分别为5.6%、2.2%、5.1%，在全国靠后。1-4月三地规模以上工业增速分别为4.4%、0.4%、9.3%。辽宁具有恢复性增长的因素，但是黑、吉仍偏慢。三地一季度社会消费品零售额增速分别为6.3%、5%、7.8%，比全国要低数个百分点。如果从人口情况来看，东三省常住人口都是负增长状态，2017年分别净流出了7万多到近17万不等。正因为此，东北师范大学中国东北研究院常务副院长宋玉祥认为，东北经济好转，还待东北根本性体制转变。东北大学中国东北振兴研究院副院长李凯认为，朝鲜集中力量发展经济，尤其有利于东北的东部地带开放，为此有必要制定新的区域发展战略，促进边贸发展。过去辽宁只有沿海经济带，现在加上一个东部沿边经济带，可以延伸向北，一直与黑龙江的沿边经济带连接。根据2015年《国务院关于支持沿边重点地区开发开放若干政策措施的意见》 '
+            '，东北东部地区的丹东和珲春、图们、龙井、和龙、集安、临江市等地被列为沿边重点地区。其中珲春、和龙、丹东都设有边境经济合作区。在跨境经济合作区内可以从事功能齐全的边境贸易、商品交易、出口加工、国际物流等工作。辽宁社科院朝鲜研究会副会长兼秘书长吕超认为，朝鲜劳动力资源丰富，中国有巨大的消费市场，如果中朝合作顺利，边贸和加工业可以很快发展起来。东北师范大学中国东北研究院常务副院长宋玉祥认为，这其中，丹东和珲春有望成为东北沿边开放的桥头堡，第三产业会得到较大发展。当然，半岛局势仍存不确定性。对此，东北大学中国东北振兴研究院副院长李凯认为，不管朝鲜如何开放，东北要实现经济大发展，仍需要以自身开放为抓手，进而改变产业结构偏重的情况，同时大力发展中小企业和民营经济，这才有出路。总体而言，受访专家认为，东北振兴和东北亚区域合作是相互促进的。东北亚区域合作为东北振兴提供了契机，而新一轮振兴东北战略也将给东北亚区域合作注入活力。目前，东北三省与东北亚部分国家的合作正在推进。比如今年7月9日至12日， '
+            '由商务部、黑龙江省人民政府与俄罗斯联邦经济发展部、工业贸易部、斯维尔德洛夫斯克州共同主办的第五届中国—俄罗斯博览会将在俄罗斯叶卡捷琳堡国际展览中心举办。6月6日，长春市长刘长龙会见了韩国驻沈阳总领事馆总领事林秉镇一行。据当地媒体报道，刘长龙表示，希望推进长春与韩国合作交流，让更多的韩国企业和各界人士来长旅游、交流、合作，实现共同发展。林秉镇则表示，从当前形势看，中韩特别是韩国与中国东北的关系一定会更加密切。韩方希望将本国战略与中国的国家战略及东北地方战略相结合，携手发展，共谋未来。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '21世纪经济报道',
+ 'time': '2018-06-11-08-33-00',
+ 'title': '东北开放棋局：不管朝鲜如何开放 东北经济要大发展',
+ 'url': 'https://news.qq.com/a/20180611/007256.htm?tdsourcetag=s_pcqq_aiomsg'}
+2019-07-02 15:09:59 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/newsgn/zhxw/shizhengxinwen.htm?vd7yl> from <GET http://www.baidu.com/link?url=6DBR933vrQMPvYu95pksWwM5uf3kvVnWWp3j9ZBWx6mDPt3_oEZxD7VZPIabVhPe_BQ8jm3wHgC9gOiUIJEZgh27BQcSsZxKhh3E5nK5g_3>
+2019-07-02 15:09:59 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20170706/050066.htm>
+{'content': '[]中国外交部新闻发言人回应：作为邻国，中朝之间保持着正常的经贸往来。我想提醒大家，安理会有关涉朝决议明确指出，安理会实施的有关措施无意对朝鲜民生和人道主义需求产生不利影响。答：博尔顿先生发表这样的言论并不奇怪，也挺符合他一贯的风格。但我想大家还是应该更多关心美国现任常驻联合国代表黑利的表态。在昨天联合国安理会就朝鲜射导问题举行的紧急会议上，黑利表示，美将保卫自身和盟友安全，但并不倾向采取军事手段。我想这代表了美官方立场。与此同时，韩国总统文在寅在对朝近日举动表示关切的同时也强调，绝不能允许朝鲜半岛再次爆发战争，须寻求通过对话与和平手段解决问题。俄罗斯外长拉夫罗夫也表示，任何以安理会决议为借口、为军事决定寻找正当理由的企图都是不能接受的。上述这些表态清楚地表明，实现半岛无核化，维护半岛和平稳定，是有关各方在朝核问题上的最大公约数，符合有关各方的共同利益。我们已经就朝鲜近日射导行为表明了反对态度，并强烈敦促朝方严格遵守安理会决议，同时呼吁有关各方保持冷静克制，不采取可能进一步加剧半岛紧张的言行，共同为缓和局势作出积极努力。日前，中俄两国就半岛问题发表了联合声明。声明指出，军事手段不应成为解决朝鲜半岛问题的选项。两国还在声明中以中方提出的“双轨并行”思路和“双暂停”倡议和俄方分步走设想为基础，提出了双方共同倡议，旨在标本兼治，综合施策解决半岛问题。这是客观公正、合情合理、现实可行的方案。我们希望有关各方与中方一道，发挥应有的作用，承担应有的责任，早日把半岛问题重新纳入通过对话协商以和平方式解决的正确轨道。答：我们已经多次回答过类似问题。中方作为安理会常任理事国，一贯全面、准确、认真、严格执行安理会有关涉朝决议，履行应尽的国际义务。与此同时，我们也坚决反对任何国家根据其国内法对别国实施所谓的“长臂管辖”。在这一问题上，中方的立场是明确的，美方对此也是清楚的。答：关于第一个问题，中国坚定维护在南海的领土主权和海洋权益，坚决反对任何国家、企业和组织在中方管辖海域实施单方面的非法油气活动。希望有关国家从维护地区和平稳定大局出发，不采取使局势复杂化的行动。关于第二个问题，中方对有关国家间发展正常的双边关系、开展正常合作不持异议，同时我们希望这种关系与合作不针对第三方，有利于维护地区的和平与稳定。答：对于朝鲜进行的导弹发射活动，我们已经表明了反对立场。中方正在收集有关情况，跟踪形势发展并进行研判。答：在习近平主席对俄罗斯进行国事访问期间，中俄两国外交部就朝鲜半岛问题发表了联合声明。联合声明体现了国际社会在半岛问题上要缓和不要紧张，要对话不要对抗的呼声，体现了中俄双方对半岛问题的共同立场和关切。我们希望有关各方能够重视中俄两国的立场和共同倡议，予以积极回应，为解决半岛问题开辟现实途径。至于朝方的反应，无论是中方还是俄方，都与朝方保持着正常的接触和交往，相互之间的外交渠道是畅通的。朝方对中俄在半岛核问题上的立场是非常清楚的。答：关于习近平主席在出席二十国集团领导人汉堡峰会期间的双边会晤情况，如果有消息，中方会及时发布。关于中印两国领导人在峰会期间是否有会晤安排，我目前没有可以提供的信息。需要指出的是，近日印度边防人员在中印边界锡金段非法越过边界线进入中方境内，阻挠中方在洞朗地区的正常活动。印方此举侵犯了中国的领土主权，损害了双边关系政治基础和整体气氛。中方要求印方尊重边界条约规定，尊重中国的领土主权，立即将越界边防部队撤回到边界线印方一侧，维持中印边界地区的和平与安宁。这是中印之间开展任何有意义对话的前提。据我了解，金砖国家领导人非正式会晤将于当地时间7月7日举行。答：我刚才已经说过了，习近平主席在出席二十国集团领导人汉堡峰会期间的双边会晤情况，如果有消息，中方会及时发布。答：第一，中方在半岛核问题上“三个坚持”的立场众所周知。第二，作为安理会常任理事国，中方一贯全面、准确、认真、严格地执行安理会有关涉朝决议，履行应尽的国际义务。中方作出的努力有目共睹。第三，作为邻国，中朝之间保持着正常的经贸往来。第四，我想提醒大家，安理会有关涉朝决议明确指出，安理会实施的有关措施无意对朝鲜民生和人道主义需求产生不利影响。答：我们注意到印度方面的有关表态。我们多次说过，此次印度边防部队非法越过双方共同承认的中印边界锡金段已定边界，与以往双方边防部队在未定界地区发生的边境摩擦对峙有本质区别。印方越界闯入中国境内，改变了现状。只有印方撤出，现状才能恢复。中方有通过外交方式和平解决问题的意愿，也珍视边境地区的和平安宁，但这一切的前提条件是印方越界人员无条件撤回。至于印度官员关于中方进入所谓不丹“领土”的表态，中方多次强调，洞朗地区历来属于中国，一直在中方有效管辖之下，不存在争议。中国和不丹于1980年代开始边界谈判，迄今已举行24轮。两国虽尚未正式划界，但双方对边境地区的实际情况和边界线走向存在基本共识。中方一直严格遵守中不之间相关协定。中方在该地区的有关活动不存在违反协定、破坏现状的情况。事实上，正是印度方面打着所谓“保护不丹”的幌子，为其越界侵犯中国领土“正名”，企图制造洞朗地区争议，阻止并牵制中不边界谈判进程。我们再次敦促印方立即将所有越界边防部队撤回边界线印方一侧，以避免发生更加严重的事态，造成更加严重的后果。答：我不明白印方所谓“中方的修路行动给印方带来严重安全风险”的依据是什么。中方在自己的领土上修路，这是主权国家的正当行为，合法合理。任何一个了解国际关系基本准则的人都应该知道，印方以所谓的“安全关切”为由越过已定边界线进入邻国领土，无论从事什么活动，都不会为任何一个主权国家所容忍，这也不符合中印两个邻国正常的相处之道。所谓中方修路给印度带来安全风险的借口是非常荒谬的。过去几十年来，恰恰是印方在中印边界锡金段大量修建设施，大量部署军队，甚至在有些地方骑线、越线修建碉堡等军事设施，不断地改变边界地区的现状。不知印方这么做时有没有考虑中方的安全关切？印方此次挑起事端的目的是明确的，那就是以所谓“安全关切”为借口，打着所谓“保护不丹”的幌子，悍然越过过去双方均承认的《中英会议藏印条约》划定的锡金段边界，进入毫无争议的中国洞朗地区，通过制造洞朗地区争议，阻止并牵制中不两个主权国家的边界谈判进程。相信越来越多的人会看清这一点。',
+ 'crawl_time': 1562051399,
+ 'keyword': '中朝贸易',
+ 'source': '外交部网站',
+ 'time': '2017-07-06-19-07-00',
+ 'title': '外交部：印方挑起事端目的非常明确 牵制中不两国谈判',
+ 'url': 'https://news.qq.com/a/20170706/050066.htm'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.qq.com/a/20160308/001174.htm?mi25x> from <GET http://www.baidu.com/link?url=qQMQcJWtMg2lRKcHRHpTzdCtWKLcyaymBCYzXxkOyOrZRPRPwSFupXOrepmFmL-mf8HO5OSqo3n73uZYG9mX-_>
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20100220/000753.htm> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20130530/019273.htm>
+{'content': '专稿：据日本共同社28日报道，中国在时隔约一个半月之后重启朝鲜旅游。在位于中朝边境的丹东市，有关部门在10天前向各旅行社下达了旅游解禁的通知，各旅行社已开始向朝鲜发送团体游客。在朝鲜劳动党第一书记金正恩的特使访问中国期间，此前一度紧张的边境形势也开始缓和。“3宿4日游，2350元”，丹东市内多家旅行社恢复了“招牌产品”赴朝旅游，前来咨询的人员络绎不绝。从丹东坐车到朝鲜，游览平壤、妙香山、开城。日本人也可以参加，但费用却要猛涨到7000元。朝鲜在4月上旬通知驻平壤的各国使馆“如果发生战争，将无法保证外国人的人身安全”，针对这一情况，中国政府通过中国国际旅行社中止了各旅行社的赴朝鲜旅游。此次尽管重新开放，但中国的公务人员、韩国人、居住在韩国的外国人、新闻记者等入境仍会受到严格限制。与此同时，在贸易额占中朝贸易70%的丹东，货物往来似乎仍未恢复。一季度中国对朝出口同比下降13.8%。在横跨鸭绿江的中朝友谊桥上，只有零星的卡车通过。',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '国际在线',
+ 'time': '2013-05-30-14-50-00',
+ 'title': '日媒称中方重启赴朝旅游项目 货物往来仍未恢复',
+ 'url': 'https://news.qq.com/a/20130530/019273.htm'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160307/063685.htm>
+{'content': '新华社北京3月7日电 '
+            '（记者靳若城）发言人洪磊7日表示，安理会第2270号决议应得到全面平衡执行，执行这一决议是国际社会的共同责任，中国会认真全面执行。当日例行记者会上，有人问：有评论认为，中朝贸易额约占朝鲜对外贸易总额的90%。执行联合国安理会第2270号决议的责任主要在于中国。你对此有何评论？洪磊说，安理会第2270号决议指向明确，就是要阻遏朝核导计划，同时不影响朝鲜的民生和人道需求。决议中也写入要求重启六方会谈、以政治和外交方式缓和东北亚局势等重要内容，这是解决朝核问题的根本之道。因此，这个决议应该得到全面、平衡执行，不能刻意突出其中的某一方面，而忽视其他领域。“同时，执行安理会决议是国际社会的共同责任，不是哪一家的事。中国会认真、全面执行决议。”洪磊说，希望各方都切实、全面执行安理会决议，包括在重启六方会谈、不采取导致紧张局势行动等方面扮演积极的角色。',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '新华网',
+ 'time': '2016-03-07-18-24-00',
+ 'title': '外交部：中国会认真全面执行安理会2270号决议',
+ 'url': 'https://news.qq.com/a/20160307/063685.htm'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/newsgn/zhxw/shizhengxinwen.htm?vd7yl> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160303/014942.htm?pc>
+{'content': '人民网3月3日电 '
+            '哈尔滨市松北区人民政府网站2日晚间发布消息，针对在“天价鱼”事件中相关责任部门和责任人员存在的监管缺失、执法不规范等问题，松北区依据相关法律法规进行问责。通报称，给予松北区市场监督管理局局长孙柏森行政记大过处分；给予松北区市场监督管理局副处级干部罗瑶行政记过处分；给予松北区市场监督管理局松北所所长赵立刚行政记过处分；对松北区城市管理局副局长贾红军、韩林娜诫勉谈话；给予松北区城市管理局市容科负责人赵兴和警告处分；给予松北区城市管理局市容科工作人员赵亚范通报批评；责令松北区市场监督管理局、松北区城市管理局领导班子做出深刻检查，对存在的问题进行认真整改。同时，松北公安分局对松北公安分局太阳岛派出所所长刘刚诫勉谈话；给予松北公安分局太阳岛派出所民警张晓雨、解宇常行政警告处分。2016年2月发生在哈尔滨市松北区的社会热点事件，起因是一名常州游客在哈尔滨被导游带去一家叫“北岸野生鱼村”的饭店，两桌吃了1万多块钱。2月14日，哈尔滨市松北区政府成立专项调查组开展调查。15日，调查组公布了阶段性调查进展情况，引起公众质疑。16日，哈尔滨市政府召开会议，专题研究部署“天价鱼”事件调查工作，责成市相关部门立即介入指导，要求松北区政府充实加强调查力量，依法、公正、客观地开展调查取证，尽快完成调查处理工作。2月19日，“天价鱼”涉事饭店被曝出餐饮许可证过期等问题后，有游客投诉该饭店使用手撕发票真伪不明、公章不全。黑龙江省地税局稽查局调查涉事饭店的税务状况。2月21日，松北区“天价鱼”事件专项调查组已完成对相关问题的调查，认定这是一起严重侵害消费者权益的恶劣事件，做出吊销涉事饭店营业执照，对店主罚款50万元等处罚决定，同时启动对相关部门负责人及工作人员的问责程序。',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '人民网',
+ 'time': '2016-03-03-08-34-00',
+ 'title': '哈尔滨通报天价鱼问责结果 多名官员民警被处分',
+ 'url': 'https://news.qq.com/a/20160303/014942.htm?pc'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20150825/014136.htm?edjn8> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=30> (referer: http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=20)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.qq.com/a/20160308/001174.htm?mi25x> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20150825/014136.htm?edjn8>
+{'content': '资料图：阅兵排练【环球网综合报道】日本《产经新闻》8月24日报道称，日本内阁官房长官菅义伟在24日上午的记者会上正式发表声明称，日本首相安倍晋三“目前并没有访华计划”。菅义伟还表示，安倍希望中方的阅兵不是“抗日”性质的活动。对此，中方此前已多次强调，中国纪念世界反法西斯战争胜利暨中国人民抗日战争胜利70周年，不针对任何国家，目的是铭记历史、缅怀先烈、珍爱和平、开创未来，体现与世界各国人民一道共同维护世界和平的坚定立场。中国政府将于9月3日举行“抗日战争胜利纪念日”的阅兵活动，菅义伟就此表示，安倍也没有要“故意避开3日进行访华”的意思。关于暂缓考虑访华一事，菅义伟称此举是基于“日本国会日程考虑”，“安倍希望中方的阅兵不是抗日性质的活动”。同时他强调虽然接受了中国方面的诸多说明，但并未以安倍出席为前提进行行程安排。菅义伟针对今后的中日关系阐述道，“将会继续利用国际会议，创造各国首脑能够畅所欲言的对话机会，并为中日两国关系的进一步发展做出努力”，他表示会朝中日关系改善方向作出努力。此前，菅义伟就曾针对中国纪念抗战爆发78周年有关活动在记者会上称，中方过于强调抗日并将历史问题国际化的做法不利于地区和平稳定，日中以面向未来的态度共同应对国际社会面临的共同挑战极为重要。事实上，中国对此曾多次指出，中国和国际社会共同隆重纪念世界反法西斯战争胜利暨中国人民抗日战争胜利70周年，目的是为了铭记历史，缅怀先烈，珍爱和平，开创未来，坚定不移地维护世界和平。只要是诚实坦荡面对历史并真正致力于和平发展的人，不会对此提出任何异议。中国外交部发言人华春莹曾强调称：“在今年国际社会都在以各种方式纪念世界反法西斯战争胜利70周年之际，我们再次敦促日方以诚实和负责任的态度正视和反省历史，以实际行动取信于亚洲邻国和国际社会。这才是真正的面向未来的应有之义。”此外，在8月21日下午举行的中国国务院新闻办公室新闻发布会上，阅兵领导小组办公室副主任、总参作战部副部长曲睿也强调，日本军国主义给中国人民带来了深重灾难，也给日本人民带来了深重灾难。中国反对法西斯、反对军国主义，相信爱好和平的日本人民一定会理解和支持。这次阅兵，中国不针对任何国家，目的是铭记历史、缅怀先烈、珍爱和平、开创未来，体现与世界各国人民一道共同维护世界和平的坚定立场。中国强调牢记历史不是为了延续仇恨，而是要以史为鉴、面向未来，让世界各国人民珍爱和平，永享太平。(实习编译：袁航 '
+            '审稿：马丽)',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '环球时报',
+ 'time': '2015-08-25-08-30-00',
+ 'title': '安倍望中国阅兵不针对日 中方强调不针对他国',
+ 'url': 'https://news.qq.com/a/20150825/014136.htm?edjn8'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=30>
+{'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=77_IuQlQWA3sIRR-C8hW0MQLj1JdRc2VMimR1qlwtQJap4dPNE-YK2Y_h7M7Nb5SOu-Du2kH8lyTaiZ6l_wzGLXaZWO6ZdluHHf0Sux18v_',
+ 'waste': 0}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://www.baidu.com/s?wd=%22%E4%B8%AD%E6%9C%9D%E8%B4%B8%E6%98%93%22%20site:news.sina.com.cn&pn=30>
+{'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'site': 'news.sina.com.cn',
+ 'url': 'http://www.baidu.com/link?url=yOscLkDm54HrwSPnM5FX_s6yRDAcb85rBcCP_LH1nJxl9kCVc6py-0SDJuNFwWLFH1XN1qTuMgPeJc_BGtT6Q12K3Tr93q0bqzpAEIykIRW',
+ 'waste': 0}
+2019-07-02 15:10:00 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_finish
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: baidusearch finish log successfully updated
+2019-07-02 15:10:00 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 2171,
+ 'downloader/request_count': 4,
+ 'downloader/request_method_count/GET': 4,
+ 'downloader/response_bytes': 226588,
+ 'downloader/response_count': 4,
+ 'downloader/response_status_count/200': 4,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 7, 2, 7, 10, 0, 298508),
+ 'item_scraped_count': 32,
+ 'log_count/DEBUG': 111,
+ 'log_count/INFO': 31,
+ 'request_depth_max': 3,
+ 'response_received_count': 4,
+ 'scheduler/dequeued': 4,
+ 'scheduler/dequeued/memory': 4,
+ 'scheduler/enqueued': 4,
+ 'scheduler/enqueued/memory': 4,
+ 'start_time': datetime.datetime(2019, 7, 2, 7, 9, 58, 546775)}
+2019-07-02 15:10:00 [scrapy.core.engine] INFO: Spider closed (finished)
+2019-07-02 15:10:00 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'ScrapySwarm', 'COMMANDS_MODULE': 'ScrapySwarm.control', 'LOG_FILE': './log/2019-07-02-15-09-57-all-spider.log', 'NEWSPIDER_MODULE': 'ScrapySwarm.spiders', 'SPIDER_MODULES': ['ScrapySwarm.spiders']}
+2019-07-02 15:10:00 [scrapy.extensions.telnet] INFO: Telnet Password: ab89750f29a2f361
+2019-07-02 15:10:00 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2019-07-02 15:10:00 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2019-07-02 15:10:00 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2019-07-02 15:10:00 [scrapy.middleware] INFO: Enabled item pipelines:
+['ScrapySwarm.pipelines.ScrapyswarmPipeline']
+2019-07-02 15:10:00 [scrapy.core.engine] INFO: Spider opened
+2019-07-02 15:10:00 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2019-07-02 15:10:00 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_start
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: sinanews start log successfully created
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.qq.com/a/20160308/001174.htm?mi25x>
+{'content': '答：中方一贯坚决反对美方利用其国内法制裁中国企业。中方敦促美方不要采取此种错误做法，以免损害中美经贸合作和两国关系。答：正如李克强总理在今年的政府工作报告中指出，在国际形势严峻复杂、国内深层次矛盾凸显、经济下行压力加大的背景下，去年中国经济保持了稳中有进而且稳中有好的态势，国内生产总值增长6.9%，在世界主要经济体中位居前列。值得注意的是，6.9%的增长是在经济总量超过60万亿的高基数上取得的，现在国内生产总值每增长1个百分比的增量，相当于5年前1.5个百分点、10年前2.5个百分点的增量。过去一年中，城镇新增就业1312万人，超过全年预期目标。结构调整取得积极进展，服务业在国内生产总值中的比重上升到50.5%，首次占据“半壁江山”。发展新动能加快成长，创新驱动发展战略持续推进，互联网与各行业加速融合，新兴产业快速增长。大众创业、万众创新蓬勃发展，全年新登记注册企业增长21.6%。新动能对稳就业、促升级发挥了突出作用，正在推动经济社会发生深刻变革。在世界经济整体低迷的情况下，中国经济取得的成绩来之不易，令人振奋。李克强总理还阐述了国务院编制的《国民经济和社会发展第十三个五年规划纲要（草案）》提出的今后五年经济社会发展的主要目标任务：保持经济中高速增长，推动产业迈向中高端水平，“十三五”时期经济年均增长保持在6.5%以上。届时，中国经济总量超过90万亿元，发展的质量和效益明显提高。强化创新引领作用，为发展注入强大动力。科技进步对经济增长的贡献率达到60%，迈进创新型国家和人才强国行列。推进新型城镇化和农业现代化，促进城乡区域协调发展。推动形成绿色生产生活方式，加快改善生态环境。深化改革开放，构建发展新体制。持续增进民生福祉，使全体人民共享发展成果。展望今后五年，我们充满必胜信心。中国经济前景将是光明的，我们将为此不懈努力。答：韩美今天起举行联合军演，据称此次军演规模空前，将一直持续到4月底。我们注意到，朝方针对韩美军演反应强烈。中方对上述动向表示严重关切。朝鲜半岛与中国山水相连，中方在半岛保持稳定方面拥有重大关切。中方坚决反对任何在半岛挑事惹事之举，决不允许家门口生战生乱，强烈希望有关各方务必保持克制，不要相互刺激和加剧紧张。答：3月4日，孔铉佑部长助理同俄罗斯副外长莫尔古洛夫在莫斯科举行第二次中俄东北亚安全磋商，双方就朝鲜半岛等东北亚安全形势及共同关心的问题交换了意见。中俄双方对美韩推动在韩国部署“萨德”反导系统均表示严重关切，一致认为美韩此举将加剧地区紧张，破坏地区战略平衡，直接损害中俄战略安全，中俄双方对此坚决反对。答：经商定，中国与东盟国家将于3月9日至11日在菲律宾马尼拉举行落实《南海各方行为宣言》第十六次联合工作组会议。会上，中方将与有关各方就如何全面有效落实《宣言》，推进海上务实合作及制定“南海行为准则”深入交换意见。答：亚洲合作对话（ACD）是目前唯一面向全亚洲的政府间对话与合作机制，现有33个成员国。成立14年来，ACD合作与对话进程不断发展，为增进亚洲各国间了解、合作与友谊发挥了积极作用。中方一直高度重视并积极参与ACD合作进程。近两年，中国作为ACD农业和能源领域合作牵头国主办了相关活动，并围绕ACD发展和“一带一路”建设举办了一系列活动，探讨如何共同助力亚洲区域合作和一体化建设。为体现中方对ACD的重视和支持，外交部刘振民副部长将代表王毅外长出席此次外长会。与会期间，中方将与各方共同探讨加强ACD机制建设、推动重点领域合作和制定ACD愿景规划等议题。中方赞赏主席国泰国为筹办外长会所做工作，将与泰方和有关各方密切沟通，推动会议取得积极成果。答：南希·里根女士致力于中美友好交流，为中美关系发展作出过积极贡献。我们对她逝世表示哀悼，向她的家人表示慰问。答：安理会第2270号决议指向明确，就是要阻遏朝核导计划，同时不影响朝鲜的民生和人道需求。决议中也写入要求重启六方会谈、以政治和外交方式缓和东北亚局势等重要内容，这是解决朝核问题的根本之道。因此，这个决议应该得到全面、平衡执行，不能刻意突出其中的某一方面，而忽视其他领域。同时，执行安理会决议是国际社会的共同责任，不是哪一家的事。中国会认真、全面执行决议。我们希望各方都切实、全面执行安理会决议，包括在重启六方会谈、不采取导致紧张局势行动等方面发挥积极作用。答：需要指出的是，有关国家间的合作应有利于地区和平稳定，不应针对第三方，更不得损害他国主权和安全利益。日本在二战中曾一度非法侵占中国南海诸岛，我们对日本试图军事上重返南海保持高度警惕。答：中方支持“阿人主导，阿人所有”的广泛和包容性的和平和解进程，一贯主张阿富汗国内各派通过政治对话解决彼此分歧，实现持久和平。阿巴中美四方协调组旨在为阿富汗政府重启同塔利班直接和谈创造良好外部条件。协调组成立以来，在凝聚和谈共识、推动和解进程方面发挥了积极作用。塔利班是阿富汗和平和解进程重要的一方。希望和谈有关各方相向而行，切实照顾彼此合理关切，争取早日重启和谈。中方愿在尊重阿富汗主权和各方意愿前提下，继续为重启阿国内和谈发挥建设性作用。',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '外交部网站',
+ 'time': '2016-03-08-00-32-00',
+ 'title': '外交部回应“美国商务部将制裁中兴公司”',
+ 'url': 'https://news.qq.com/a/20160308/001174.htm?mi25x'}
+2019-07-02 15:10:00 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_finish
+2019-07-02 15:10:00 [ScrapySwarm.control.log_util] INFO: qqnews finish log successfully updated
+2019-07-02 15:10:00 [qqnews] INFO: qqnews_spider clock off successful
+2019-07-02 15:10:00 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 10665,
+ 'downloader/request_count': 39,
+ 'downloader/request_method_count/GET': 39,
+ 'downloader/response_bytes': 756357,
+ 'downloader/response_count': 39,
+ 'downloader/response_status_count/200': 19,
+ 'downloader/response_status_count/302': 20,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 7, 2, 7, 10, 0, 355382),
+ 'item_scraped_count': 16,
+ 'log_count/DEBUG': 79,
+ 'log_count/INFO': 30,
+ 'response_received_count': 19,
+ 'scheduler/dequeued': 39,
+ 'scheduler/dequeued/memory': 39,
+ 'scheduler/enqueued': 39,
+ 'scheduler/enqueued/memory': 39,
+ 'start_time': datetime.datetime(2019, 7, 2, 7, 9, 59, 312697)}
+2019-07-02 15:10:00 [scrapy.core.engine] INFO: Spider closed (finished)
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/zx/2016-02-09/doc-ifxpfhzq2652530.shtml> from <GET http://www.baidu.com/link?url=SQSHbTAIcaIqQW5OtbS3e5D3vP_N42TWmlT4H7UtWGXtJ2z5zEmdfv9FXJWmK1UMJbt2yCuwZF1jPlfyTFtzO2koBQDs1JRmE5eMPskomPm>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/2013-12-19/091729026238.shtml> from <GET http://www.baidu.com/link?url=r2XZWFsKG0lfKbyzHMNNWp3KhvMS6u1pB4zTiBkjcPbDOji7OR_qxCH4YkZiPHeewt9FL207UsfqAckkKG6KWh6hcNPjcRnJbi4HGuSAuGO>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/china/2016-02-09/doc-ifxpfhzq2670542.shtml> from <GET http://www.baidu.com/link?url=EMbEn3mi7mjWI-KKbtC_3fo9aUXg-Py5PNX2pdqdttX62_F2WmfWcaokFCmGyFjCT8pujPeZdCIREMVOLyQLZr8qHXrZeol9tJOcmfXAmtW>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-07-06/doc-ifyhvyie0403034.shtml> from <GET http://www.baidu.com/link?url=c5xj6R3dsmtZ1o-MCtocvBFDmzoHov9h5PW55aMW6Jt5TTfU7UAjD_SZMCKvuRUj-FDtFBmt1MWtkDirX5jlly9SonUV1CdmOacrTS_8wt3>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/2017-12-26/doc-ifypwzxq6746719.shtml> from <GET http://www.baidu.com/link?url=GCsZX2QxpZg3ndtCvXgVbBdORbqj70mA3qQ9oZTe6k_nkmvRCmmkTnp8VvOtAYUoF_iTLRzkk3lKdhPfSF2OtMyumb_hlnh4MXEHef2J8ri>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/nd/2018-01-12/doc-ifyqnick9328459.shtml> from <GET http://www.baidu.com/link?url=5zOn6SomydfGHqjloEp5RZBPwUkojFvDaCOp6FSd6AUdFvhHIQoLoE8CGnYUJ9EoEEJOPPpZEvaiANPkxpsYiK_rthCFVC-B8xp0gMm-fdG>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/2013-07-05/003127580064.shtml> from <GET http://www.baidu.com/link?url=FXg6g_TrJnJXsfs62dXjdlZNzx_j7QqjUUDRBum8ps-dXfWRV6-U5TFWZcHTa-U6co15NCsjEVWTJA9hUIc7r5FqPEf82hfiT9bgRMvM4cK>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/2014-01-08/151229188776.shtml> from <GET http://www.baidu.com/link?url=el2Nq7M0DM9q03aDCizaFhbjohRR5yDs8F3HncFChEsJwhm9nAchxXG6Sfai6wVyL1p6b9P_oHTZp8CI75Vzlp-TTeiEzkiQXMtLrC1Py-m>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/2015-01-10/070731383175.shtml> from <GET http://www.baidu.com/link?url=-tmIYGdfJ9NbUT3EN45qLG6wXLKyDsah1Y53-74dyRxikr6TNaAvBXTBW3TqWzv-zA6CQKGSobYZw72raGPEU7q0RiIovhSiESO_oRuizD3>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml> from <GET http://www.baidu.com/link?url=m2ntPQsKIVOnoPwvca7Hak8VB1nTnNo0JV420yC5BXELpMlbZwWdHgDThpiyVRJ9Urt20Pv3El_tX5vkgb7IhtkQBdG55aUBkxSmHxMap7q>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-07-07/doc-ifyhweua4184739.shtml> from <GET http://www.baidu.com/link?url=pISfY_fgnfeO2-Wu0BoRrqn_XxiTUV46wfn1HZI5wc4DiTxwgBT3loo8998fbMyT3tz7-8GATFkJ3hcbzl7b6nP-yRcmmuEWuQO43cgvz_q>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml> from <GET http://www.baidu.com/link?url=3EpPL-3rVGQfpqnctTNFQBNR-6tzTUW5_BF0dzXAHuvPXCTKuyxMuL4jiFgiwA_Mr0Uaa3zcDdENhPJjtOwdcLJW0icFtW0MxViW1PAEJe3>
+2019-07-02 15:10:00 [scrapy.dupefilters] DEBUG: Filtered duplicate request: <GET http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml> - no more duplicates will be shown (see DUPEFILTER_DEBUG to show all duplicates)
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/sd/2010-07-01/000320587749.shtml> from <GET http://www.baidu.com/link?url=k9Bt6QZDRRIsn9zWTj_Pvno2mICApmxSJD5bjEMctsIIeKUSbDVqIP1tXhmu0VOFDGPxGiHPBUwr2m0qDfHnwmjj_Vb_WTQ7javIYPGH-y_>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/2015-11-12/1004843685.html> from <GET http://www.baidu.com/link?url=5j6PUF8ocbre_NQztMmSwmxGCTov61CKhzCmGya2xbxY_Yj70mSvbwYyZ6pyp-_nQKc4TIPfw1zHSanrK4khFa>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/2013-04-17/074926850475.shtml> from <GET http://www.baidu.com/link?url=VKoNbO7uUGO-i6kuv58JOJN2RyOf9dUdnr132o9ys5HXD5TY08timu2qkdWaGdmHxyuMvtArj9ZZQNHvDAGTt08BINlARk1Sqjz3c2BKT73>
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/2017-12-26/doc-ifypwzxq6746719.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET https://news.sina.cn/2016-08-11/detail-ifxuxnpy9218925.d.html> from <GET http://www.baidu.com/link?url=O6xVRzgj1fPXQdMtHkj7K7eY4ycFW2OADo2P94f-SSlo6rmHI7ZoLdCj1JcCWOHPgi98YlCLRGBg57BI5TVF5x5mk-o3MnweTAnaWeHOSdK>
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/nd/2018-01-12/doc-ifyqnick9328459.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/w/zx/2016-02-09/doc-ifxpfhzq2652530.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/china/2016-02-09/doc-ifxpfhzq2670542.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/w/2013-12-19/091729026238.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-07-06/doc-ifyhvyie0403034.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/2014-01-08/151229188776.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/2017-12-26/doc-ifypwzxq6746719.shtml>
+{'content': '参考消息网12月25日报道 '
+            '英媒称，12月23日的数据显示，11月中国同朝鲜的贸易增加到3.88亿美元左右，但依然停留在今年的最低水平附近。严格的制裁措施继续让中国与朝鲜的商业往来放缓。据路透社12月23日报道，中国海关总署发布的数据显示，中朝贸易总额在10月3.3489亿美元的基础上增加了15.9%，但远低于一年前的水平。虽然这些数据显示11月的贸易比10月有所好转，但自9月5日联合国的惩罚措施生效以来，中国同朝鲜的贸易一直在放缓。联合国最近的惩罚措施禁止平壤向海外销售煤、铁矿石、铅、铅矿石和海产品。数据显示，上月中国从朝鲜购买了价值1.0018亿美元的商品，这高于10月的大约0.9亿美元，但低于一年前的2.622亿美元。10月中国从朝鲜的进口额是自2014年1月以来中国政府记录上最低的一个月份。11月的出口总计为2.8784亿美元，而10月为2.442亿美元。今年——尤其2月中国禁止煤炭采购之后，中朝两国间的贸易已经放缓。但两国贸易下降的速度加快了，因为最近的各种限制措施影响了平壤向中国销售一些重要商品的能力。上次禁令是7月朝鲜两次洲际弹道导弹测试之后施加的。联合国估计，该禁令将让朝鲜每年30亿美元的出口收入减少三分之一。资料图片：这是位于丹东鸭绿江上的中朝友谊桥（2014年5月1日摄）。新华社记者 '
+            '姚剑锋 摄点击图片进入下一页',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '参考消息',
+ 'time': '2017-12-25-09-44-00',
+ 'title': '英媒：中朝贸易水平11月仍处于低谷 远低于去年同期',
+ 'url': 'http://mil.news.sina.com.cn/2017-12-26/doc-ifypwzxq6746719.shtml'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-07-07/doc-ifyhweua4184739.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/nd/2018-01-12/doc-ifyqnick9328459.shtml>
+{'content': '[2017年中朝贸易额同比下降逾一成]海关总署12日发布的最新数据显示，2017年全年中国与朝鲜双边贸易额50.6亿美元，同比下降10.5%，其中中国自朝鲜进口下降33%。12月当月，中朝双边贸易额3.1亿美元，和上年同期相比几乎“腰斩”。（记者 '
+            '李晓喻）责任编辑：张岩',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '中国新闻网',
+ 'time': '2018-01-12-10-50-00',
+ 'title': '2017年中朝双边贸易额50.6亿美元 同比下降逾一成',
+ 'url': 'http://news.sina.com.cn/c/nd/2018-01-12/doc-ifyqnick9328459.shtml'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/sd/2010-07-01/000320587749.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/2013-07-05/003127580064.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/w/zx/2016-02-09/doc-ifxpfhzq2652530.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2016-02-09-01-21\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/w/zx/2016-02-09/doc-ifxpfhzq2652530.shtml'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/china/2016-02-09/doc-ifxpfhzq2670542.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '参考消息',
+ 'time': '2016-02-09-13-53-00',
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/china/2016-02-09/doc-ifxpfhzq2670542.shtml'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://tags.news.sina.com.cn/%E7%8E%AF%E7%90%83%E6%97%B6%E6%8A%A5> from <GET http://www.baidu.com/link?url=rFU207KLzB-ofBzL9OKIvfjwAUFLU_ZzbrTZX_HWs4Av9bYe1kJIBv8yGmqbYet36tLRoFqCPZekXesj51huJ7cv5iipkctoSaIJs5l_Pl_>
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/2015-01-10/070731383175.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/w/2013-12-19/091729026238.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/w/2013-12-19/091729026238.shtml'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/2015-11-12/1004843685.html> (referer: None)
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-07-06/doc-ifyhvyie0403034.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-07-06-19-26\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-07-06/doc-ifyhvyie0403034.shtml'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/2014-01-08/151229188776.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/2014-01-08/151229188776.shtml'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2015-09-30/doc-ifxiknzv1717422.shtml> from <GET http://www.baidu.com/link?url=JSXPtg4YqI3qz-kup2J_s1RGJChtgCs-vJVDmf6CfJ94l5jTC0fygG5RVy09kXbj0gzDRupvFhFs_QczVLxjHl9hHDCsyfaGpnKVNkjgqd7>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/china/2016-08-18/doc-ifxvcsrn8555999.shtml> from <GET http://www.baidu.com/link?url=Y2TH6yn0eaDGyk0b9kCD-ORGnvdgbXUpQNSp-R_6n3Lxj6tEAYUYbGFMU8Z-0ee4HAZ3rIMP0TcvH9GhsMgI5c67IArBBybIadzTNBdDYBO>
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-07-07/doc-ifyhweua4184739.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-07-06-22-45\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-07-07/doc-ifyhweua4184739.shtml'}
+2019-07-02 15:10:00 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/w/2013-04-17/074926850475.shtml> (referer: None)
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/china/2016-02-03/doc-ifxnzanm4075625.shtml> from <GET http://www.baidu.com/link?url=4XfeoN8Iau02nOvWz8Xna0Y4OOmGe5eVtiJKtSEXwnYB8t8YJwtSNFk5awBJZ9vPAHIE0Pv3dKAYP6wITfiW2zxU61KjRpWmEnuWaPQMTsO>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/china/2016-04-14/doc-ifxriqqx2384948.shtml> from <GET http://www.baidu.com/link?url=4y-VHF2QE7zlcRYUoUJ348VGsxNdiEmZljMFiFNgb1B8vz-jnsbnF427eYgsHDMnl_iXhVHThkza4xSJAsjnUmDMQocHN1aSyfNLnhQZTRi>
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/sd/2010-07-01/000320587749.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/sd/2010-07-01/000320587749.shtml'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/pl/2006-09-27/115311118638.shtml> from <GET http://www.baidu.com/link?url=XnKR8Wn1CyPowzE_YHnbAdtCensoo8V1lrIvEOfYXPXdRR2cojtHk21p352HroVoXXJ7VVZQmoGSez8EuRWH4OQn4KfAtZvIgNBRP_cNMAa>
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/2013-07-05/003127580064.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/2013-07-05/003127580064.shtml'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/w/2018-07-02/doc-ihespqry8561174.shtml> from <GET http://www.baidu.com/link?url=SxPQ0Jrmj5sj0euxCtDiuwAgZZ3toWmL_VZ3G_bcK8t8-2-J6e1DYq1ygaAOSMNB-ujfVj-0rKNnYEpS6ph0bPoJ3_5gg8eko-dwplmxi_y>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/2017-09-28/doc-ifymkxmh7604824.shtml> from <GET http://www.baidu.com/link?url=3VOAthO_wDf1jTGdsFAaKj6m4E94cz17WZDvINSlohGr0n23UY6ivF38QCCSM2snhUEhKz3ClxgA1hkdXweHaivzT5JWBIdjT-VKsq4smHS>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/2015-12-14/1111846456.html> from <GET http://www.baidu.com/link?url=ZFCrzssdmATRcgxbQaMYCNIg8kvluSx0ZyAQrcyidrzCu7XCF_GeZDS65YidFrXTH6RFPRdoU9pSb02uvEpwUa>
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml>
+{'content': '原标题：中朝集安-满浦口岸开通，两国游客今后往来将更加便捷[环球时报记者 李司坤 邓孝慈 '
+            '李若菡]8日，中国与朝鲜正式启用集安-满浦公路口岸，并开通连接两座城市的跨境大桥。集安位于中国吉林省，满浦是朝鲜北部边境城市。集安市政府负责媒体事务的一名官员9日向《环球时报》提供的材料显示，该口岸建设时间为2015年至2018年，总投资2.8亿元。“截至9日下午，共有135名游客通过口岸前往朝鲜。”一名集安口岸工作人员9日对《环球时报》记者介绍说。据韩联社报道，在8日举行通车仪式期间，4辆旅游大巴先从朝鲜一侧通过大桥抵达中国境内，一小时后载着游客回到朝鲜。一家旅游公司称，车上的乘客将参观满浦以及周围地区景点。彭博社9日称，集安、丹东与珲春被认为是中朝贸易具有代表性的基地。据集安市政府网站介绍，新口岸预计年进出口货物50万吨、出入境人员达20万人次。集安市出入境边防检查站行政负责人邓志国8日对媒体表示，集安公路口岸是全国对朝口岸中建设规模最大、建设标准最高、查验设备最先进、通关环境最优美的边境口岸。“相较于丹东口岸，从集安口岸通往朝鲜东北部咸镜北道将更加快捷。”中国半岛问题研究专家吕超9日对《环球时报》记者说，咸镜北道矿产资源丰富，是朝鲜重要工业地区，“当然，鉴于朝鲜仍然处于国际制裁之下，煤炭等贸易将受到限制”。据了解，新口岸的主要贸易货物将是农产品、生活必需品等。集安-满浦公路口岸的开通引发关注。彭博社称，尽管朝鲜仍然受国际制裁的阻碍，但中朝依然希望加强经济联系。韩联社也评论说，新口岸为处于当前国际形势下的朝鲜提供了更多对华经济交流可能性。同济大学朝鲜半岛研究室主任崔志鹰9日告诉《环球时报》记者，国际制裁针对的是朝鲜核武开发，正常的经贸与人员往来、对朝援助不应该受影响。“在过去一年多，朝鲜充分展示愿意发展经济和无核化的决心，大桥的开通显示中方希望朝鲜能继续维持和平稳定的局面。”崔志鹰说，中国一直以来都严格遵守联合国安理会框架下的对朝制裁，但同时也会继续推行有利于朝鲜经济发展和民生改善的措施，这是维护半岛和平稳定的重要因素。责任编辑：刘光博',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': '环球网',
+ 'time': '2019-04-10-02-25-00',
+ 'title': '中朝集安-满浦口岸开通 主要贸易货物为农产品等',
+ 'url': 'http://news.sina.com.cn/w/2019-04-10/doc-ihvhiqax1342257.shtml'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/2015-01-10/070731383175.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '\n        2015年01月10日07:07 ',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/2015-01-10/070731383175.shtml'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/2015-11-12/1004843685.html>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/2015-11-12/1004843685.html'}
+2019-07-02 15:10:00 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/w/2013-04-17/074926850475.shtml>
+{'content': '',
+ 'crawl_time': 1562051400,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/w/2013-04-17/074926850475.shtml'}
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/2017-12-25/doc-ifypwzxq6300229.shtml> from <GET http://www.baidu.com/link?url=U1vP818XbTXr4PjohuvE6QeUyP967fZe-EzWUiN4AKmdElfQWKsp2kFCfNz2pvDKKDuds1O5iN-TH7zpaj-7HESbI7xhYBHSEOAorcPOKcG>
+2019-07-02 15:10:00 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml> from <GET http://www.baidu.com/link?url=Y7LYY6BF8QrJ8OCVqhYvmY-mqTOZg78CCtMqIkGqOeNFWKjBxRJZiag5umWhOAnzVXtYBWaP0VSrzTqOBeU-hRaZlH7hMyxCsxckZEZZTXC>
+2019-07-02 15:10:01 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-11-24/doc-ifypacti7630174.shtml> from <GET http://www.baidu.com/link?url=IcAOZDMa3nj6G_pGFqMs7Q2ZABg6ooNobNolr9kYcEpU47fY0K7BRdcZ6454GfO7ugSBsA1PE0s9FUKXRfX36HKv1teOXdA_-EvODb3xIWa>
+2019-07-02 15:10:01 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0902902.shtml> from <GET http://www.baidu.com/link?url=DclraMj5BsrshuzPoHkmDf-v-xI5DvzFH8mjmQxJKU8RkhIUXfK1mJy0suyTiPZj4QR5LP25H__9DZDk5SGr4A1k0NpQerTR2D6gu7RAVk3>
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/china/2016-08-18/doc-ifxvcsrn8555999.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0898587.shtml> from <GET http://www.baidu.com/link?url=BF38DQEQ3mhktUIjmERTx0gTqy736IoHafRVlAt7fn0HDJCjoaRl8XzC8LzWoF5Alr5EvySstFVa10WowVI07SjjTcXaCWQv121skO7f34K>
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2015-09-30/doc-ifxiknzv1717422.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/china/2016-02-03/doc-ifxnzanm4075625.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://news.sina.com.cn/c/sd/2009-06-26/093918099693.shtml> from <GET http://www.baidu.com/link?url=77_IuQlQWA3sIRR-C8hW0MQLj1JdRc2VMimR1qlwtQJap4dPNE-YK2Y_h7M7Nb5SOu-Du2kH8lyTaiZ6l_wzGLXaZWO6ZdluHHf0Sux18v_>
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/china/2016-04-14/doc-ifxriqqx2384948.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/2017-09-28/doc-ifymkxmh7604824.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/china/2016-08-18/doc-ifxvcsrn8555999.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2016-08-18-12-10-00',
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/china/2016-08-18/doc-ifxvcsrn8555999.shtml'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://mil.news.sina.com.cn/2015-12-14/1111846456.html> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/pl/2006-09-27/115311118638.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://news.sina.cn/2016-08-11/detail-ifxuxnpy9218925.d.html> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2015-09-30/doc-ifxiknzv1717422.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '\n        2015年09月30日07:01 \n',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2015-09-30/doc-ifxiknzv1717422.shtml'}
+2019-07-02 15:10:01 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (302) to <GET http://mil.news.sina.com.cn/china/2016-04-14/doc-ifxriqqx2384948.shtml> from <GET http://www.baidu.com/link?url=yOscLkDm54HrwSPnM5FX_s6yRDAcb85rBcCP_LH1nJxl9kCVc6py-0SDJuNFwWLFH1XN1qTuMgPeJc_BGtT6Q12K3Tr93q0bqzpAEIykIRW>
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/china/2016-02-03/doc-ifxnzanm4075625.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': '参考消息',
+ 'time': '2016-02-03-12-07-00',
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/china/2016-02-03/doc-ifxnzanm4075625.shtml'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/w/2018-07-02/doc-ihespqry8561174.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/2017-12-25/doc-ifypwzxq6300229.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/china/2016-04-14/doc-ifxriqqx2384948.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': '综合',
+ 'time': '2016-04-14-09-27-00',
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/china/2016-04-14/doc-ifxriqqx2384948.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/2017-09-28/doc-ifymkxmh7604824.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-09-28-14-28-00',
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/2017-09-28/doc-ifymkxmh7604824.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://mil.news.sina.com.cn/2015-12-14/1111846456.html>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://mil.news.sina.com.cn/2015-12-14/1111846456.html'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-11-24/doc-ifypacti7630174.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/pl/2006-09-27/115311118638.shtml>
+{'content': '徐长文近年来，随着朝鲜改革的深化和经济的恢复和发展，中国同朝鲜一般商品贸易逐步增加，中国企业对朝投资也呈持续\r\n'
+            '发展态势。在互补中促贸易增长2001年以来，中朝两国贸易的发展虽然也经历过风风雨雨，但总体呈增长趋势。2001年贸易额只有7.4亿\r\n'
+            '美元，2005年增加到了15.8亿美元，增长了一倍多，五年时间两国贸易以年均28％的速度增长。而且在中国对朝鲜\r\n'
+            '出口增加(已经由2001年的5.7亿美元增加到2005年的10.8亿美元，年均增长21.1％)的同时，中国从朝\r\n'
+            '鲜的进口也持续增长(从2001年的1.7亿美元增加到2005年的5亿多美元，增长了近两倍)(表1)。两国贸易的\r\n'
+            '迅速扩大，最重要的原因是近几年两国都注重经济发展，经济保持持续增长，如近年中国经济年均增长9.5％，朝鲜经济增\r\n'
+            '长也在2％以上。经济增长不仅为各自的出口提供了丰富的货物资源，同时也为扩大进口开辟了广阔的市场，促进了贸易的大\r\n'
+            '幅度增长；另外，两国地理位置相邻，运输便利(特别是某些鲜活产品的运输)，有利于农副产品贸易的发展。经济互补性强中朝贸易的迅速发展，与两国在经济上互补性强有密切关系。中国对朝鲜的出口主要是五大类商品，即矿产品、活动\r\n'
+            '物及动物产品、机电音像设备及零部件、贱金属和纺织原料及制品，占对朝出口总额的55％以上。从朝鲜进口的主要是活动\r\n'
+            '物及动物产品、贱金属、矿产品、纺织原料及制品、木及木制品，占从朝进口总额的75％以上。中国的矿物燃料和工业制成\r\n'
+            '品是朝鲜所需要的，而朝鲜的活动物及动物产品、钢铁和矿物燃料在中国的市场上也有较强的。中国出口商品结构有变化几年来，中国对朝鲜出口的原料性产品虽然也有增长，但是制成品增长更加迅速，如机电音像设备及零部件对朝出口\r\n'
+            '已经从2001年的0.5亿美元增加到2005年的1.3亿美元，钢铁出口也从0.4亿美元增加到0.8亿美元。这表\r\n'
+            '明，随着朝鲜的经济发展和人民生活水平的提高，对制成品和钢铁等的需求扩大。从朝鲜的进口增长加速中国从朝鲜进口增长也很快，进口的商品主要是活动物及产品、贱金属、矿产品、纺织原料及制品、木及木制品。2005\r\n'
+            '年这五大类产品占从朝鲜进口总额的96％，其中活动物及动物产品、贱金属和矿产品三项为最多商品，占进口总额的78％\r\n'
+            '以上(表3)。预计，随着中朝两国经济合作的逐步扩大，中国从朝鲜的进口还将不断增加，从而改变目前的出口多进口少的\r\n'
+            '现状，两国贸易将向着均衡扩大的方向发展。经丹东海关进出朝鲜的贸易最多中国辽宁省的丹东市与朝鲜一江之隔，同朝鲜的经贸关系也最为密切。根据丹东海关统计，2005年经该关与朝鲜\r\n'
+            '的进出口贸易额达8.4亿美元，占中国与朝鲜贸易总额的53.2％。可见，中国同朝鲜贸易的一半以上是通过这里进行的\r\n'
+            '。通过丹东海关，从朝进口的主要是服装及其附属品(占进口总额的31.8％)和水产品等，对朝出口主要是石油(占总出\r\n'
+            '口的30.2％)、机电设备及部件和农产品等。进入朝鲜正当时几年前，中国企业虽然也到朝鲜进行投资合作，但是投资规模小、技术含量不高，大部分是服务行业，如餐馆、百货\r\n'
+            '、娱乐项目等。近年来，随着朝鲜改革政策的深化和经济的逐步恢复，中国企业不仅到朝鲜投资增多，而且投资领域逐步拓宽，投资\r\n'
+            '规模也趋于大型化。投资领域拓宽近年来，已有一些中国企业在扩大对朝鲜制造业的投资，诸如大安友谊玻璃厂、集团的计算机、沈阳五金的\r\n'
+            '车用机油、北京朝华友联的建筑材料等已落户朝鲜。此外，钢铁企业也在探讨如何开发朝鲜茂山铁矿项目，扩大农业领域的合\r\n'
+            '作、共同开发黄海油田项目等也在探讨中。投资规模趋于大型化由于投资向朝鲜的制造业和资源性项目转移，所以投资规模也逐步扩大。几千万元甚至上亿元的投资项目也已经出现\r\n'
+            '，如大安友谊玻璃厂项目，投资金额达1.92亿元人民币。根据日本《朝日新闻》的报道，到2005年2月底，已经有120家中国企业在朝鲜投资，截至2004年的投资\r\n'
+            '额达13.6亿人民币。据商务部统计，2004年到朝鲜投资的中国企业有八家，中方投资额899.88万美元，在朝进\r\n'
+            '行工程承包和劳务合作的合同八份，新签合同金额5371万美元，完成营业额3939万美元。到朝鲜投资的三类商人中国到朝鲜投资的人员较多，但主要由三部分人构成。前两部分是吉林延边朝鲜族自治州的商人和辽宁的朝鲜族商人\r\n'
+            '。他们与当地人的语言、民族相同，容易融入朝鲜社会，便于进行商务合作。据统计，到2004年，吉林在朝鲜的投资金额\r\n'
+            '为2000万美元，主要是烟草、制衣和贸易企业等。第三部分是温州商人，他们是凭借敏感的商业头脑和勇敢的团队精神到\r\n'
+            '朝鲜经商的。投资5000万元人民币、承包平壤第一百货商店10年的老板就是温州人曾昌飚。朝鲜已被温州人视为资金的\r\n'
+            '寻梦地。近几年来，到朝鲜寻找投资机会的香港商人也有所增加，他们主要投资交通运输和贸易等领域。朝鲜市场的优势目前朝鲜的改革实际上也在朝着建设市场经济方向迈进，而且朝鲜特别重视发展与周边国家的关系，这对发展中朝经\r\n'
+            '贸关系十分有利。另外，朝鲜劳动力成本低，一般工人月工资只相当于120元人民币，在那里投资有利于降低成本，商品竞\r\n'
+            '争力会增强。中朝两国地理位置邻近，中国商品可以更便捷地从东北地区直接进入朝鲜市场，做到朝发夕至。朝鲜市场日用消\r\n'
+            '费品短缺，需大量从周边国家进口，而朝鲜改革开放的时间不长，外部对其了解不多，外国企业和商品尚不敢轻易进入其市场\r\n'
+            '。另外，朝鲜政府也希望刺激国内的消费需求，促进经济的发展，这些都非常有利于中国商品进入其市场。目前，朝鲜有3000万人口，在海外还有500万侨民，每年有大量的外汇汇入其国内，潜在购买力不可小视。特\r\n'
+            '别是近年来又涌现出一批高端消费人群，他们由以下几部分构成：以平壤为例，一是侨眷，一般家庭中60～70％是侨眷，\r\n'
+            '以中国、日本和东南亚为主；二是涉外生意人员，主要是同国外做生意的人员和从事旅游工作的涉外人员；三是因公长期驻在\r\n'
+            '朝鲜的外国人。市场风险不可低估与朝鲜企业进行经贸活动和在其国内经商，风险也不可低估。如朝鲜的外部环境严峻，目前仍受到美国的制裁，六方\r\n'
+            '会谈的前途难以预测等。朝鲜国内还存在诸多问题，如：政策不稳定、法律不健全问题；交通、电力、通讯等基础设施配套落\r\n'
+            '后，未开通移动通讯业务致使联系不便；货物积压、拖欠债务严重、信用不好、兑换不合理等。这些都需要在与朝鲜企业\r\n'
+            '进行经贸活动时引起注意，否则将遭受损失。目前韩国、日本和俄罗斯等周边国家的企业有的已经进入朝鲜市场，有的正在寻找到朝鲜投资的商机，今后在朝鲜市\r\n'
+            '场上的竞争将会更加激烈。',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/pl/2006-09-27/115311118638.shtml'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0898587.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 https://news.sina.cn/2016-08-11/detail-ifxuxnpy9218925.d.html>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'https://news.sina.cn/2016-08-11/detail-ifxuxnpy9218925.d.html'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/w/2018-07-02/doc-ihespqry8561174.shtml>
+{'content': '原标题：金正恩访华之后首次公开露面，去了两个撰文 | '
+            '董鑫在结束第三次访华半个多月之后，朝鲜最高领导人金正恩接连有了新动作。据央视新闻援引朝中社报道（以下时间为朝中社发稿时间）：6月30日，金正恩视察了薪岛郡；7月1日，金正恩视察了位于新义州市的新义州化妆品厂；7月2日，金正恩视察了新义州纺织厂和新义州化纤厂。这是访华归国之后，金正恩首次在国内视察。薪岛郡和新义州，两个地方都位于朝鲜的平安北道。更重要的是，它们都与中国边境城市丹东接壤。政知道（微信ID：upolitics）在为大家详解金正恩访华为何会去一所农业科技园的时候，曾经提到过今年4月召开的朝鲜七届三中全会。在那次的会议上，通过了三个决议，其中一个是《关于顺应革命发展新高阶段要求，集中全力进行社会主义经济建设》，还制定了一个战略计划，要全党全国集中一切力量，进行社会主义建设。会议同时提出，朝鲜将集中全部力量发展经济，提高人民生活水平。七届三中全会之后，朝鲜国内，平壤之外，金正恩有过两次视察。第一次，是去位于朝鲜半岛中东部的江原道，视察元山葛麻海岸旅游区。元山是朝鲜江原道首府，东临日本海，是朝鲜重要的贸易港口和工业城市。元山还是一座旅游城市。葛麻半岛则位于元山湾南部，有著名的旅游胜地——“明沙十里”，葛麻机场就坐落在这一地区。按照金正恩的指示，元山葛麻海岸旅游区要建设成为世上独一无二的朝鲜式海岸城市，并要求在明年太阳节（4月15日）完工。第二次，是去位于朝鲜西北部的平安北道。在平安北道，金正恩分别去了薪岛郡芦苇综合农场芦苇第一分场第14田地，和新义州市的新义州化妆品厂、新义州纺织厂以及新义州化纤厂。在这些地方，金正恩主要了解生产及经营管理情况，对自动化生产等现代化改造提出了要求。在新义州纺织厂，得知该厂每年没有完成国民经济计划的情况后，金正恩还表示“极为痛心”。朝鲜要发展经济，先要从何下手？金正恩的两次视察告诉我们一个答案：对外抓旅游经济，对内抓生产建设。平安北道与丹东当然，金正恩的第二次视察应该不止是想抓国内生产建设这么简单。朝鲜的平安北道与中国存在着不可忽视的联系。先看地理位置。新义州是平安北道的首府，也是朝鲜第四大城市，位于鸭绿江下游左岸的冲积平原上。这里还是铁路京义线（首尔-新义州）的北方终点站，沿着铁路通过中朝边境之后就是丹东，丹东和新义州还是友好城市。薪岛郡则是朝鲜最西的领土，由位于鸭绿江口西边绸缎岛、薪岛、绯缎岛、西湖岛、黄金坪岛等小岛组成。其中，黄金坪岛是鸭绿江中的第二大岛，因为河汊多年淤积，它的一部分陆地已经与丹东的浪头镇相连，边境线上的朝方铁丝网就架设在丹东新区公路一侧。再看经济合作。也是因为地理距离近，无论是新义州还是薪岛郡，与中国的“经济距离”曾经也很近。单说旅游，直到现在，如果你在丹东报名朝鲜一日游，也就是等同于新义州一日游。政知道（微信ID：upolitics）搜索发现，早在2011年就有媒体报道过新义州和丹东的经济往来数据。彼时，丹东对朝鲜的出口额占据了中朝贸易的60%以上。而新义州则是中朝贸易过货量80%的口岸城市，丹东有三分之一的对外贸易是通过新义州进入朝鲜。这样的贸易往来让原有鸭绿江大桥不堪重负。2010年2月，中朝双方还签署双边协定，要在原来大桥下游修建四车道的新桥。薪岛郡与中国的经济关系则更为直接。2010年5月，前任朝鲜最高领导人金正日访华期间，与时任国家主席胡锦涛就共同开发和共同管理朝鲜罗先经济贸易区和黄金坪、威化岛经济区达成共识。2011年6月8日，中朝共同开发和管理的黄金坪、威化岛经济区项目正式举行了启动仪式。也是在2011年，时任丹东市委书记戴玉林在接受《中国经济周刊》采访的时候说过：“丹东要利用自己的特殊区位优势和现有条件，在对朝经济区合作中扮演桥头堡和大通道的作用。”但是，“大通道”一度变成了“断头路”。新义州特区从提出后不久就一直搁浅至今。黄金坪岛迟迟没有开发迹象。已经完工的新鸭绿江大桥无法通车，因为朝鲜一侧没有修建连接大桥和城镇的公路，如果从桥上开过去，只能开进一片朝鲜的农田里。当然，我们要用发展的眼光看待问题。时至今日，平安北道与丹东之间的关系又发生了变化。信号早已释放。5月14日，朝鲜劳动党友好参观团抵达北京，带队的是朝鲜劳动党中央政治局委员、中央副委员长朴泰成，他负责朝鲜劳动党科技和教育事务。成员里面，就包括有掌管新义州等中朝接壤地域的朝鲜地方官员。让政知道（微信ID：upolitics）有点意外的是，在金正恩视察平安北道之前一个半月，中国驻朝鲜大使李进军就已经先去过了。5月11日至12日，在金正恩第二次访问中国，也就是大连会晤结束3天之后，李进军率使馆部分外交官考察了朝鲜平安北道，了解当地经济社会发展情况。还与平安北道党政领导干部举行会见会谈，就贯彻落实中朝两党两国最高领导人重要共识，加强两国地方、边境和民间交流合作进行交流。在11日下午，李进军同朝鲜劳动党中央政治局候补委员、平安北道党委员长金能五举行会谈。李进军提到：辽宁省和平安北道、丹东市和新义州市作为两国一衣带水的友好省市，在开展经贸、旅游、文体、卫生防疫和青少年交流等方面具有很大空间和潜力。双方应抓住有利时机，认真学习贯彻落实两国最高领导人重要共识，加强边境省市友好往来与交流合作，拓宽合作领域和渠道，为新时期中朝关系持续健康稳定发展注入新的动力。金能五则表示：平安北道将立足道内经济结构特点，盘活企业研发生产，积极推进各领域建设。在此过程中希望与辽宁省和丹东市加强交流合作，促进平安北道各领域取得长足进展的同时，为推动朝中友好合作关系健康稳定发展做出积极贡献。访问期间，李大使一行还参观了新义州化妆品工厂，听取了朝方有关新义州国际经济区、平安北道清水旅游观光区等经济建设项目的介绍，并就下步开展有关交流合作交换了意见。新义州国际经济区，这是新义州特区在2014年改的名字。新义州化妆品工厂，这是7月1日金正恩去视察的地方。至于平安北道清水旅游观光区，也许不久以后“丹东-新义州一日游”就有新景点了。责任编辑：余鹏飞',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': '北京青年报',
+ 'time': '2018-07-02-21-18-00',
+ 'title': '金正恩访华后去了这两个地方 中国驻朝大使刚去过',
+ 'url': 'http://news.sina.com.cn/w/2018-07-02/doc-ihespqry8561174.shtml'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/c/sd/2009-06-26/093918099693.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/2017-12-25/doc-ifypwzxq6300229.shtml>
+{'content': '参考消息网12月25日报道 '
+            '英媒称，12月23日的数据显示，11月中国同朝鲜的贸易增加到3.88亿美元左右，但依然停留在今年的最低水平附近。严格的制裁措施继续让中国与朝鲜的商业往来放缓。据路透社12月23日报道，中国海关总署发布的数据显示，中朝贸易总额在10月3.3489亿美元的基础上增加了15.9%，但远低于一年前的水平。虽然这些数据显示11月的贸易比10月有所好转，但自9月5日联合国的惩罚措施生效以来，中国同朝鲜的贸易一直在放缓。联合国最近的惩罚措施禁止平壤向海外销售煤、铁矿石、铅、铅矿石和海产品。数据显示，上月中国从朝鲜购买了价值1.0018亿美元的商品，这高于10月的大约0.9亿美元，但低于一年前的2.622亿美元。10月中国从朝鲜的进口额是自2014年1月以来中国政府记录上最低的一个月份。11月的出口总计为2.8784亿美元，而10月为2.442亿美元。今年——尤其2月中国禁止煤炭采购之后，中朝两国间的贸易已经放缓。但两国贸易下降的速度加快了，因为最近的各种限制措施影响了平壤向中国销售一些重要商品的能力。上次禁令是7月朝鲜两次洲际弹道导弹测试之后施加的。联合国估计，该禁令将让朝鲜每年30亿美元的出口收入减少三分之一。资料图片：这是位于丹东鸭绿江上的中朝友谊桥（2014年5月1日摄）。新华社记者 '
+            '姚剑锋 摄责任编辑：张玉',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': '参考消息',
+ 'time': '2017-12-25-09-44-00',
+ 'title': '英媒：中朝贸易水平11月仍处于低谷 远低于去年同期',
+ 'url': 'http://news.sina.com.cn/c/2017-12-25/doc-ifypwzxq6300229.shtml'}
+2019-07-02 15:10:01 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0902902.shtml> (referer: None)
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-11-24/doc-ifypacti7630174.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-11-24-09-40\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-11-24/doc-ifypacti7630174.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0898587.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-12-07-11-06\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0898587.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-07-06-22-45\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/c/sd/2009-06-26/093918099693.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/c/sd/2009-06-26/093918099693.shtml'}
+2019-07-02 15:10:01 [scrapy.core.scraper] DEBUG: Scraped from <200 http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0902902.shtml>
+{'content': '',
+ 'crawl_time': 1562051401,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': '2017-12-07-11-06\t\t-00',
+ 'title': None,
+ 'url': 'http://news.sina.com.cn/o/2017-12-07/doc-ifypnqvn0902902.shtml'}
+2019-07-02 15:10:02 [scrapy.core.engine] DEBUG: Crawled (200) <GET http://tags.news.sina.com.cn/%E7%8E%AF%E7%90%83%E6%97%B6%E6%8A%A5> (referer: None)
+2019-07-02 15:10:02 [scrapy.core.scraper] DEBUG: Scraped from <200 http://tags.news.sina.com.cn/%E7%8E%AF%E7%90%83%E6%97%B6%E6%8A%A5>
+{'content': '',
+ 'crawl_time': 1562051402,
+ 'keyword': '中朝贸易',
+ 'source': None,
+ 'time': None,
+ 'title': None,
+ 'url': 'http://tags.news.sina.com.cn/%E7%8E%AF%E7%90%83%E6%97%B6%E6%8A%A5'}
+2019-07-02 15:10:02 [scrapy.core.engine] INFO: Closing spider (finished)
+2019-07-02 15:10:02 [ScrapySwarm.control.log_util] INFO: calling spider_log_util.spider_finish
+2019-07-02 15:10:02 [ScrapySwarm.control.log_util] INFO: sinanews finish log successfully updated
+2019-07-02 15:10:02 [sinanews] INFO: sinanews_spider clock off successful
+2019-07-02 15:10:02 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 18328,
+ 'downloader/request_count': 62,
+ 'downloader/request_method_count/GET': 62,
+ 'downloader/response_bytes': 987441,
+ 'downloader/response_count': 62,
+ 'downloader/response_status_count/200': 30,
+ 'downloader/response_status_count/302': 32,
+ 'dupefilter/filtered': 2,
+ 'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2019, 7, 2, 7, 10, 2, 495576),
+ 'item_scraped_count': 30,
+ 'log_count/DEBUG': 94,
+ 'log_count/INFO': 20,
+ 'response_received_count': 30,
+ 'scheduler/dequeued': 62,
+ 'scheduler/dequeued/memory': 62,
+ 'scheduler/enqueued': 62,
+ 'scheduler/enqueued/memory': 62,
+ 'start_time': datetime.datetime(2019, 7, 2, 7, 10, 0, 324451)}
+2019-07-02 15:10:02 [scrapy.core.engine] INFO: Spider closed (finished)
