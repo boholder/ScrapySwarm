@@ -9,10 +9,10 @@
 @Function : 
 
 '''
-# from scrapy.cmdline import execute
-# execute()
+from scrapy.cmdline import execute
+execute()
 
-from ScrapySwarm.control.spider_run_control import *
-
-a=MultiSpidersProcessor()
-a.runAll('中朝贸易')
+# from ScrapySwarm.control.spider_run_control import *
+#
+# a=MultiSpidersProcessor()
+# a.runAll('中朝贸易')

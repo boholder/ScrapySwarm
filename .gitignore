@@ -10,3 +10,4 @@ Stiky.txt
 /ScrapySwarm/spiders/test.py
 main.py
 scrapylog.txt
+*.log
