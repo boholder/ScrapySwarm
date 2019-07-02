@@ -10,6 +10,7 @@
             https://docs.scrapy.org/en/latest/topics/practices.html#
 
 '''
+import copy
 import os
 from multiprocessing import Pool
 
@@ -23,7 +24,7 @@ import time
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTimeReadable
 
-from ScrapySwarm.spiders import qqnews_spider
+from ScrapySwarm.settings import LOG_DIR
 
 
 class BDAssistSpiderProcessor(object):
@@ -40,19 +41,19 @@ class BDAssistSpiderProcessor(object):
         elif spidername == 'sinanews':
             site = 'news.sina.com.cn'
 
-        # if log and not settings:
-        #     logfilename = getCurrentTimeReadable() \
-        #                   + '-' + spidername + '.log'
-        #     settings = {
-        #         "LOG_FILE": logfilename
-        #     }
+        if log and not settings:
+            thesettings = copy.deepcopy(get_project_settings())
+            logfilename = LOG_DIR + getCurrentTimeReadable() \
+                          + '-' + spidername + '.log'
+            thesettings['LOG_FILE']: logfilename
+        else:
+            thesettings = settings
 
         # https://docs.scrapy.org/en/latest/topics
         # /api.html#scrapy.settings.Settings
-        configure_logging(settings)
 
         if not runner:
-            therunner = CrawlerRunner(get_project_settings())
+            therunner = CrawlerRunner(thesettings)
         else:
             therunner = runner
 
@@ -86,19 +87,20 @@ class DirectUrlSpiderProcessor(object):
 
     def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
 
-        # if log and not settings:
-        #     logfilename = getCurrentTimeReadable() \
-        #                   + '-' + spidername + '.log'
-        #     settings = {
-        #         "LOG_FILE": logfilename
-        #     }
+        if log and not settings:
+            thesettings = copy.deepcopy(get_project_settings())
+            logfilename = LOG_DIR + getCurrentTimeReadable() \
+                          + '-' + spidername + '.log'
+            thesettings['LOG_FILE']: logfilename
+        else:
+            thesettings = settings
 
         # https://docs.scrapy.org/en/latest/topics
         # /api.html#scrapy.settings.Settings
         # process = CrawlerProcess(get_project_settings())
 
         if not runner:
-            therunner = CrawlerRunner(get_project_settings())
+            therunner = CrawlerRunner(thesettings)
         else:
             therunner = runner
 
@@ -177,7 +179,15 @@ class MultiSpidersProcessor(object):
 
         # windows
         elif os.name == 'nt':
-            runner=CrawlerRunner(get_project_settings())
+
+            settings = copy.deepcopy(get_project_settings())
+            logfile = LOG_DIR + \
+                      getCurrentTimeReadable() + '-all-spider.log'
+            settings['LOG_FILE']=logfile
+
+            configure_logging(settings)
+
+            runner = CrawlerRunner(settings)
 
             for config in runconfiglist:
                 spidername = config['spidername']
@@ -191,35 +201,36 @@ class MultiSpidersProcessor(object):
                 if 'settings' in config:
                     settings = config['settings']
 
-                # it will block every time until return back
                 prog(spidername, keyword, log, runner, settings)
 
             d = runner.join()
             d.addBoth(lambda _: reactor.stop())
+
+            # it will block every time until return back
             reactor.run()
 
-    # This function only generate one log file
-    # All spiders share one settings.
-    #
-    # And note that this method can ONLY active
-    #   direct url spiders like chinanews_spider.
+        # This function only generate one log file
+        # All spiders share one settings.
+        #
+        # And note that this method can ONLY active
+        #   direct url spiders like chinanews_spider.
 
-    # !!!it has error!!!
+        # !!!it has error!!!
+
     def runSameSettings(self, spiders,
                         keyword, log=True, settings=None):
-
-        # if log and not settings:
-        #     logfilename = getCurrentTimeReadable() \
-        #                   + '-run-all.log'
-        #     settings = {
-        #         "LOG_FILE": logfilename
-        #     }
+        if log and not settings:
+            logfilename = LOG_DIR + getCurrentTimeReadable() \
+                          + '-spiders-all.log'
+            settings = {
+                "LOG_FILE": logfilename
+            }
 
         # https://docs.scrapy.org/en/latest/topics
         # /api.html#scrapy.settings.Settings
         configure_logging(settings)
 
-        runner = CrawlerRunner(get_project_settings())
+        runner = CrawlerRunner(settings)
         for spider in spiders:
             runner.crawl(spider, q=keyword)
 
@@ -239,11 +250,6 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-        # 不能一起运行，因为我有些爬虫需要百度先爬。
-        # 但我给你写了个 runSameSettings() 函数，
-        # 如果你想用的话
-
-        # spiders = ['qqnews', 'sinanews']
 
         spiders = ['qqnews', 'sinanews']
 

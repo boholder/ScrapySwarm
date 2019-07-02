@@ -34,6 +34,9 @@ LOG_DB_NAME = 'SwarmLog'
 COLL_SPIDERS_LOG = 'spiders_log'
 COLL_API_LOG = 'api_log'
 
+# log file directory
+LOG_DIR = './log/'
+
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 ROBOTSTXT_OBEY = False
 #

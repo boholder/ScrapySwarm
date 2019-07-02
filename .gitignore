@@ -1,6 +1,7 @@
 *.bat
 *.jl
 .idea
+ScrapySwarm/log/*
 ScrapySwarm/spiders/__pycache__
 ScrapySwarm/tools/__pycache__
 ScrapySwarm/__pycache__
