@@ -65,7 +65,7 @@ class UniqueDBInsertUtil(object):
         # create news collection unique index
         field = [
             ("url", pymongo.DESCENDING),
-            ("time", pymongo.ASCENDING)
+            ("title", pymongo.ASCENDING)
         ]
         self.Chinanews.create_index(field, unique=True)
         self.QQNews.create_index(field, unique=True)

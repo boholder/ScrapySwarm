@@ -57,7 +57,7 @@ class QQNewsSpider(scrapy.Spider):
         # 当爬虫停止时，调用clockoff()修改数据库
         self.slog.spider_finish(self)
         if self.bd.clockoff(self.site, self.keyword):
-            self.logger.info('QQnews_spider clock off successful')
+            self.logger.info('qqnews_spider clock off successful')
 
         super().close(self, reason)
 

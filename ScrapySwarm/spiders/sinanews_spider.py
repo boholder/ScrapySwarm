@@ -54,7 +54,7 @@ class SinaNewsSpider(scrapy.Spider):
 
         # 当爬虫停止时，调用clockoff()修改数据库
         if self.bd.clockoff(self.site, self.keyword):
-            self.logger.info('SinaNews_spider clock off successful')
+            self.logger.info('sinanews_spider clock off successful')
 
         super().close(self, reason)
 
@@ -90,17 +90,70 @@ class SinaNewsSpider(scrapy.Spider):
         item['title'] = response.xpath(
             '//h1[@class=\'main-title\']/text()').get()
 
+        item['time'] = self.trygetPublishTime(response)
+
+        item['source'] = self.trygetPublishSource(response)
+
+        # 正文抽取
+
+        item['content'] = self.trygetContent(response)
+
+        yield item
+
+    @staticmethod
+    def trygetPublishTime(response):
         time = response.xpath(
             '//div[@class=\'date-source\']'
             '/span[@class=\'date\']/text()').get()
-        item['time'] = formatTimeStr(time)
 
-        item['source'] = response.xpath(
+        # http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml
+        # http://mil.news.sina.com.cn/china/2016-04-14/
+        # doc-ifxriqqx2384948.shtml
+        if not time:
+            if response.xpath(
+                    '//span[@class=\'time-source\']'
+                    '//span[@class=\'titer\']'):
+                time = response.xpath(
+                    '//span[@class=\'time-source\']'
+                    '//span[@class=\'titer\']/text()').get()
+            else:
+                time = response.xpath(
+                    '//span[@class=\'time-source\']/text()').get()
+                if time:
+                    time = re.sub(r'<[^i].*?>', '', time)
+
+        if time:
+            time = formatTimeStr(time)
+        return time
+
+    @staticmethod
+    def trygetPublishSource(response):
+        source = response.xpath(
             '//div[@class=\'date-source\']'
             '/a[@class=\'source\']/text()').get()
+        # http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml
+        if not source:
+            source = response.xpath('//div[@class=\'time-source\']'
+                                    '//a/text()').get()
 
-        # 正文抽取
+        # http://mil.news.sina.com.cn/china/
+        # 2016-04-14/doc-ifxriqqx2384948.shtml
+        if not source:
+            source = response.xpath('//span[@class=\'time-source\']'
+                                    '//span[@class=\'source\']'
+                                    '/text()').get()
+
+        return source
+
+    @staticmethod
+    def trygetContent(response):
         content = ''
+
+        def paragraph_process(paragraph):
+            p = paragraph.get().strip()
+            p = re.sub(r'<[^i].*?>', '', p)
+            p = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', p)
+            return p
 
         # /a/ /c/ doc-... /o/
         if response.xpath(
@@ -108,10 +161,7 @@ class SinaNewsSpider(scrapy.Spider):
 
             for paragraph in response.xpath(
                     '//div[@id=\'article\']//p/text()'):
-                paragraph = paragraph.get().strip()
-                paragraph = re.sub(r'<[^i].*?>', '', paragraph)
-                paragraph = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', paragraph)
-                content = content + paragraph
+                content = content + paragraph_process(paragraph)
 
         # some of /o/
         # http://news.sina.com.cn/o/2019-05-14/doc-ihvhiews1782968.shtml
@@ -120,11 +170,12 @@ class SinaNewsSpider(scrapy.Spider):
 
             for paragraph in response.xpath(
                     '//div[@id=\'article\']//div/text()'):
-                paragraph = paragraph.get().strip()
-                paragraph = re.sub(r'<[^i].*?>', '', paragraph)
-                paragraph = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', paragraph)
-                content = content + paragraph
+                content = content + paragraph_process(paragraph)
 
-        item['content'] = content
+        # http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml
+        elif response.xpath('//div[@id=\'artibody\']//p/text()'):
+            for paragraph in response.xpath(
+                    '//div[@id=\'article\']//div/text()'):
+                content = content + paragraph_process(paragraph)
 
-        yield item
+        return content
