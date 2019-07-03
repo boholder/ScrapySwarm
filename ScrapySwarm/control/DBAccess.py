@@ -73,7 +73,7 @@ class UniqueDBInsertUtil(object):
 
         # baidu search unique index
         self.BDSearch = db[COLL_BAIDU_SREACH]
-        bdfield=[
+        bdfield = [
             ("url", pymongo.ASCENDING)
         ]
         self.BDSearch.create_index(bdfield, unique=True)
@@ -274,7 +274,7 @@ class LogDBAccessUtil(object):
             .insert_one(logdict).acknowledged
 
     def updateSpiderFinishStats(self, logdict):
-        return self.Spiderslog.update_many(
+        return self.Spiderslog.update_one(
             {"spider": logdict['spider'],
              "start_time": {'$lt': datetime.datetime.now(),
                             '$gt': logdict['start_time']
@@ -283,4 +283,14 @@ class LogDBAccessUtil(object):
         ).acknowledged
 
     def addAPICallingLog(self, logdict):
-        pass
+        return self.APIlog \
+            .insert_one(logdict).acknowledged
+
+    def updateAPIFinishLog(self, logdict):
+        return self.APIlog.update_one(
+            {"api_name": logdict['api_name'],
+             "start_time": {'$lt': datetime.datetime.now(),
+                            '$gt': logdict['start_time']
+                                   - datetime.timedelta(seconds=1)}},
+            {"$set": logdict}
+        ).acknowledged

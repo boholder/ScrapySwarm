@@ -23,10 +23,9 @@ import re
 import scrapy
 
 from ScrapySwarm.tools.time_format_util \
-    import getCurrentTime, getCurrentTimeReadable, \
-    getUTCDateTimeObj
+    import getUTCDateTimeObj
 
-from ScrapySwarm.tools.DBAccess import LogDBAccessUtil
+from ScrapySwarm.control.DBAccess import LogDBAccessUtil
 
 '''
 
@@ -39,7 +38,7 @@ class SpiderLogUtil(object):
         self.logger = logging.getLogger(__name__)
 
     def spider_start(self, spider=scrapy.Spider):
-        self.logger.info('calling spider_log_util.spider_start')
+        self.logger.info('calling SpiderLogUtil.spider_start')
         logdict = {}
 
         logdict['spider'] = spider.name
@@ -55,7 +54,7 @@ class SpiderLogUtil(object):
                              .format(spider.name))
 
     def spider_finish(self, spider=scrapy.Spider):
-        self.logger.info('calling spider_log_util.spider_finish')
+        self.logger.info('calling SpiderLogUtil.spider_finish')
         logdict = {}
         statsdict = copy.deepcopy(spider.crawler.stats._stats)
 
@@ -102,9 +101,46 @@ class SpiderLogUtil(object):
 
         if self.logdb.updateSpiderFinishStats(logdict):
             self.logger.info('{0} finish log successfully updated'
-                         .format(spider.name))
+                             .format(spider.name))
 
 
 class APILogUtil(object):
     def __init__(self):
-        logdb = LogDBAccessUtil()
+        self.logdb = LogDBAccessUtil()
+        self.logger = logging.getLogger(__name__)
+
+    def api_start(self, loggingdict):
+        self.logger.info('calling APILogUtil.api_start')
+        logdict = {}
+
+        logdict['api_name'] = loggingdict['api_name']
+
+        logdict['last_modified'] = \
+            getUTCDateTimeObj()
+
+        logdict['start_time'] = loggingdict['start_time']
+
+        if self.logdb.addAPICallingLog(logdict):
+            self.logger.info('{0} start log successfully created'
+                             .format(logdict['api_name']))
+
+    def api_finish(self, loggingdict):
+        self.logger.info('calling APILogUtil.api_finish')
+        logdict = {}
+
+        logdict['api_name'] = loggingdict['api_name']
+
+        logdict['last_modified'] = \
+            getUTCDateTimeObj()
+
+        logdict['start_time'] = loggingdict['start_time']
+
+        logdict['finish_time'] = loggingdict['finish_time']
+
+        logdict['argsdict'] = loggingdict['argsdict']
+
+        logdict['finish_reason'] = loggingdict['finish_reason']
+
+        if self.logdb.updateAPIFinishLog(logdict):
+            self.logger.info('{0} finish log successfully created'
+                             .format(logdict['api_name']))

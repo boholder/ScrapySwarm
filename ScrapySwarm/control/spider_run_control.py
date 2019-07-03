@@ -44,13 +44,14 @@ class BDAssistSpiderProcessor(object):
         elif spidername == 'sinanews_spider':
             site = 'news.sina.com.cn'
 
+        thesettings = copy.deepcopy(get_project_settings())
+
         if log and not settings:
-            thesettings = copy.deepcopy(get_project_settings())
             self.logfilename = LOG_DIR + getCurrentTimeReadable() \
                                + '-' + spidername + '.log'
             logfilename = self.logfilename
             thesettings['LOG_FILE']: logfilename
-        else:
+        elif settings:
             thesettings = settings
 
         # https://docs.scrapy.org/en/latest/topics
@@ -97,8 +98,9 @@ class DirectUrlSpiderProcessor(object):
 
     def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
 
+        thesettings = copy.deepcopy(get_project_settings())
+
         if log and not settings:
-            thesettings = copy.deepcopy(get_project_settings())
             self.logfilename = LOG_DIR + getCurrentTimeReadable() \
                                + '-' + spidername + '.log'
             logfilename = self.logfilename

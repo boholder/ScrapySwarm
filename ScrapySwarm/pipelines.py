@@ -4,16 +4,13 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-import os
 
 import pymongo
-from pymongo.errors import DuplicateKeyError
 
-from ScrapySwarm.tools.imag import download_pic
 import ScrapySwarm.items as items
-from ScrapySwarm.tools.DBAccess \
+from ScrapySwarm.control.DBAccess \
     import UniqueDBInsertUtil as Uni
-from ScrapySwarm.tools.DBAccess \
+from ScrapySwarm.control.DBAccess \
     import NormalDBInsertUtil as Nor
 
 
@@ -24,9 +21,8 @@ class ScrapyswarmPipeline(object):
     def __init__(self):
         from ScrapySwarm.settings import \
             LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
-            COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
-            COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS, \
-            COLL_QQ_NEWS, COLL_SINA_NEWS
+            COLL_BAIDU_SREACH, COLL_WEIBO_COMMENTS, \
+            COLL_WEIBO_INFOMATION, COLL_WEIBO_RELATIONSHIPS, COLL_WEIBO_TWEETS
 
         connection = pymongo.MongoClient(LOCAL_MONGO_HOST, LOCAL_MONGO_PORT)
 

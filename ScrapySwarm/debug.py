@@ -13,12 +13,13 @@
 # from scrapy.cmdline import execute
 # execute()
 
-# from ScrapySwarm.control.spider_run_control import *
-#
-# a=MultiSpidersProcessor()
-# a.runAll('中朝贸易')
-# print('aaa')
+from ScrapySwarm.control.swarm_api import *
+runOneSpider('qqnews_spider','中朝贸易', False)
+print('aaa')
 
+
+# import copy
+#
 # from scrapy import spiderloader
 # from scrapy.utils import project
 #
@@ -27,5 +28,6 @@
 # spiders = spider_loader.list()
 # classes = [spider_loader.load(name) for name in spiders]
 # print(classes[0].name)
-
-print(type('a'))
+#
+# a=copy.deepcopy(project.get_project_settings())
+# pass

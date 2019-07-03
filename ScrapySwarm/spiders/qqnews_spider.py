@@ -25,7 +25,7 @@
 import scrapy
 import re
 
-from ScrapySwarm.tools.DBAccess \
+from ScrapySwarm.control.DBAccess \
     import BDsearchUrlUtil
 
 from ScrapySwarm.items import QQNewsItem
