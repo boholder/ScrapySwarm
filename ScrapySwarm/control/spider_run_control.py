@@ -12,19 +12,27 @@
 '''
 import copy
 import os
-from multiprocessing import Pool
+from functools import wraps
+from multiprocessing import Pool, Process
+from queue import Queue
 
+from scrapy import crawler
 from scrapy.utils.project import get_project_settings
 from twisted.internet import reactor, defer
 from scrapy.crawler import CrawlerProcess, CrawlerRunner
+
 from scrapy.utils.log import configure_logging
 import logging
 import time
 
+from ScrapySwarm.spiders.weibo_spider import WeiboSpider
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTimeReadable
 
 from ScrapySwarm.settings import LOG_DIR
+
+
+# from multiprocessing import Process, Queue
 
 
 class BDAssistSpiderProcessor(object):
@@ -82,11 +90,13 @@ class BDAssistSpiderProcessor(object):
 
 
 class DirectUrlSpiderProcessor(object):
+    loop = 0
+
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
     def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
-
+        print("当前是" + spidername)
         if log and not settings:
             thesettings = copy.deepcopy(get_project_settings())
             logfilename = LOG_DIR + getCurrentTimeReadable() \
@@ -108,9 +118,12 @@ class DirectUrlSpiderProcessor(object):
 
         if not runner:
             d.addBoth(lambda _: reactor.stop())
+        if spidername == "weibo_spider" and self.loop < 3:
+            d.addBoth(lambda _: self.crawl(spidername, keyword, log, runner, settings))
+            self.loop = self.loop + 1
 
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
-
+        self.loop = 0
         self.crawl(spidername, keyword, log, runner, settings)
 
         if not runner:
@@ -127,6 +140,7 @@ class DirectUrlSpiderProcessor(object):
 
 
 class MultiSpidersProcessor(object):
+
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
@@ -183,8 +197,7 @@ class MultiSpidersProcessor(object):
             settings = copy.deepcopy(get_project_settings())
             logfile = LOG_DIR + \
                       getCurrentTimeReadable() + '-all-spider.log'
-            settings['LOG_FILE']=logfile
-
+            settings['LOG_FILE'] = logfile
             configure_logging(settings)
 
             runner = CrawlerRunner(settings)
@@ -250,8 +263,9 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-
-        spiders = ['qqnews', 'sinanews']
+        self.loop = 0
+        spiders = [
+            'qqnews', 'sinanews', "chinanews_spider", "weibo_spider"]
 
         runconfiglist = []
 

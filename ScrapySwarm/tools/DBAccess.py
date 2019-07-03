@@ -88,13 +88,13 @@ class UniqueDBInsertUtil(object):
         try:
             if isinstance(item, items.ChinaNewsItem):
                 self.Chinanews.insert(dict(item))
-                folderpath = "E:\chinanews" + item['keyword'];
-
-                for img in item['imgs']:
-                    image_path1 = img.split("/")[-1]
-                    image_path1 = item["url"].split("/")[-1] + image_path1
-                    image_path = os.path.join(folderpath, image_path1)
-                    download_pic(img, image_path)
+                # folderpath = "E:\chinanews" + item['keyword'];
+                #
+                # for img in item['imgs']:
+                #     image_path1 = img.split("/")[-1]
+                #     image_path1 = item["url"].split("/")[-1] + image_path1
+                #     image_path = os.path.join(folderpath, image_path1)
+                #     download_pic(img, image_path)
             elif isinstance(item, items.QQNewsItem):
                 self.QQNews.insert(dict(item))
             elif isinstance(item, items.SinaNewsItem):
@@ -149,21 +149,28 @@ class UniqueDBInsertUtil(object):
 
                 else:
                     self.Tweets.insert(dict(item))
-                    print("保存空的了")
-                    folderpath = "e:\weibo" + item['keyword'];
-                    if 'image_url' in item:
-                        print("保存")
-                        image_path1 = item['image_url'].split("/")[-1]
-                        image_path = os.path.join(folderpath, image_path1)
-                        download_pic(item['image_url'], image_path)
 
-
+                    # folderpath = "e:\weibo" + item['keyword'];
+                    # if 'image_url' in item:
+                    #     print("保存")
+                    #     image_path1 = item['image_url'].split("/")[-1]
+                    #     image_path = os.path.join(folderpath, image_path1)
+                    #     download_pic(item['image_url'], image_path)
 
         except DuplicateKeyError:
             # 有重复数�
             # 不做处理也可以，结果是没插入成功，
             # 就是不让raise error了
             pass
+
+    def export(self,  keyword, source=None, aftertime=None):
+        dic={"keyword":keyword}
+        if aftertime:
+            dic['crawl_time']={ "$gt": aftertime }
+        last = self.Tweets.find(dic)
+        return last
+
+
 
 
 class NormalDBInsertUtil(object):
@@ -179,7 +186,7 @@ class NormalDBInsertUtil(object):
                 self.Bdsearch.insert(dict(item))
             elif isinstance(item, items.RelationshipsItem):
                 self.Relationships.insert(dict(item))
-            elif isinstance(item, items.InformationItem):
+            else :
                 self.Information.insert(dict(item))
 
         except DuplicateKeyError:
