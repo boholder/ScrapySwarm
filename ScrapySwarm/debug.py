@@ -15,8 +15,10 @@
 
 # from ScrapySwarm.control.spider_run_control import *
 #
-# a=MultiSpidersProcessor()
-# a.runAll('中朝贸易')
+from ScrapySwarm.control.spider_run_control import MultiSpidersProcessor
+
+a=MultiSpidersProcessor()
+a.runAll('中朝贸易')
 # print('aaa')
 
 # from scrapy import spiderloader
@@ -28,4 +30,3 @@
 # classes = [spider_loader.load(name) for name in spiders]
 # print(classes[0].name)
 
-print(type('a'))

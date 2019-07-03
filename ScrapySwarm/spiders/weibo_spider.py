@@ -205,7 +205,7 @@ class WeiboSpider(Spider):
 
     def parse_further_information(self, response):
         text = response.text
-        print(text)
+        # print(text)
         information_item = response.meta['item']
         tweets_num = re.findall('微博\[(\d+)\]', text)
         if tweets_num:
