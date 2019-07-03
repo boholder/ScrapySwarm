@@ -65,9 +65,6 @@ class BDAssistSpiderProcessor(object):
         yield therunner.crawl('baidusearch', q=keyword, site=site)
         yield therunner.crawl(spidername, q=keyword)
 
-        if not runner:
-            reactor.stop()
-
     def run(self, spidername, keyword,
             log=True, runner=None, settings=None):
 
@@ -79,6 +76,7 @@ class BDAssistSpiderProcessor(object):
             start = time.time()
 
             reactor.run()
+            reactor.stop()
 
             end = time.time()
             self.logger.info(
