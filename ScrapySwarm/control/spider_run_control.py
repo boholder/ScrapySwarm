@@ -132,15 +132,9 @@ class DirectUrlSpiderProcessor(object):
         if not runner:
             d.addBoth(lambda _: reactor.stop())
 
-        if spidername == "weibo_spider" and self.loop < 3:
-            d.addBoth(lambda _:
-                      self.crawl(spidername, keyword,
-                                 log, runner, settings))
-            self.loop = self.loop + 1
 
-    def run(self, spidername, keyword,
-            log=True, runner=None, settings=None):
 
+    def run(self, spidername, keyword, log=True, runner=None, settings=None):
         self.crawl(spidername, keyword, log, runner, settings)
 
         if not runner:
@@ -160,6 +154,65 @@ class DirectUrlSpiderProcessor(object):
             else:
                 return True
 
+class WeiboSpiderProcessor(object):
+
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.logfilename = ''
+        self.loop = 0
+
+    def crawl(self, spidername, keyword, times,
+              log=True, runner=None, settings=None):
+
+        thesettings = copy.deepcopy(get_project_settings())
+
+        if log and not settings:
+            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
+                               + '-' + spidername + '.log'
+            logfilename = self.logfilename
+            thesettings['LOG_FILE'] = logfilename
+        else:
+            thesettings = settings
+
+        # https://docs.scrapy.org/en/latest/topics
+        # /api.html#scrapy.settings.Settings
+        # process = CrawlerProcess(get_project_settings())
+
+        if not runner:
+            configure_logging(thesettings)
+            therunner = CrawlerRunner(thesettings)
+        else:
+            therunner = runner
+
+        d = therunner.crawl(spidername, q=keyword, t = times)
+
+        if not runner:
+            d.addBoth(lambda _: reactor.stop())
+
+        if  self.loop < 3:
+            self.loop = self.loop + 1
+            d.addBoth(lambda _: self.crawl(spidername, keyword, self.loop, log, runner, settings))
+
+    def run(self, spidername, keyword, log=True, runner=None, settings=None):
+        self.loop = 0
+        self.crawl(spidername, keyword,self.loop, log, runner, settings)
+
+        if not runner:
+            self.logger.info('Spider \"{0}\" begin to run...'
+                             .format(spidername))
+            start = time.time()
+
+            reactor.run()
+
+            end = time.time()
+            self.logger.info(
+                'Spider \"{0}\" finished, time used: {1} seconds.'
+                    .format(spidername, (end - start)))
+
+            if self.logfilename != '':
+                return self.logfilename
+            else:
+                return True
 
 class MultiSpidersProcessor(object):
 
@@ -175,13 +228,13 @@ class MultiSpidersProcessor(object):
         # https://docs.scrapy.org/en/latest/topics/
         # settings.html#topics-settings-ref
 
-        def prog(spidername, keyword,
-                 log=True, runner=None, settings=None):
-
+        def prog(spidername, keyword, log=True, runner=None, settings=None):
             if isBDAType(spidername):
                 processor = BDAssistSpiderProcessor()
+            elif spidername=="weibo_spider":
+                processor = WeiboSpiderProcessor()
             else:
-                processor = DirectUrlSpiderProcessor()
+                processor =DirectUrlSpiderProcessor()
 
             processor.run(spidername, keyword, log, runner, settings)
 
@@ -287,8 +340,8 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-        spiders = BDA_SPIDERS + ['chinanews_spider', "weibo_spider"]
-        # spiders = ['qqnews_spider']
+        spiders =BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
+
 
         runconfiglist = []
 

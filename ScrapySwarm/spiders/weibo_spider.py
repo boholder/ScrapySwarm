@@ -40,7 +40,6 @@ class WeiboSpider(Spider):
         }
     }
 
-    q = []
 
     def __init__(self, *args, **kwargs):
 
@@ -59,7 +58,9 @@ class WeiboSpider(Spider):
 
         querystr = getattr(self, 'q', '中美贸易')
         self.querystr=querystr
-
+        times = getattr(self, 't', 3)
+        self.querystr = querystr
+        self.times=times
         # #此处设置微博图片保存路径
         # folderpath = "e:\weibo" +querystr
         # if (not os.path.exists(folderpath)):
@@ -72,39 +73,40 @@ class WeiboSpider(Spider):
         self.q=[]
         self.base_url=self.base_url.replace("#",querystr)
         self.hotbase_url = self.hotbase_url.replace("#", querystr)
+        print("开始爬取微博,关键字为"+self.querystr+"第"+str(self.times)+"次")
         yield Request(url=self.hotbase_url+"1", callback=self.parse_tweet)
         yield Request(url=self.base_url + "1", callback=self.parse_tweet)
 
 
 
-    def parse_url(self,response):
-        if  response.url.endswith('page=1'):
-            # 如果是第1页，一次性获取后面的所有页
-            all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
-            if all_page:
-                all_page = all_page.group(1)
-                all_page = int(all_page)
-                print('获取到了页数',all_page)
-                if all_page>=99:
-                    all_page=220
-                for page_num in range(2,all_page):
-                    page_url = response.url.replace(
-                        'page=1', 'page={}'.format(page_num))
-                    yield Request(url=page_url, callback=self.parse_url,
-                                  dont_filter=True, meta=response.meta)
-        """
-        解析本页的数据
-        """
-        tree_node = etree.HTML(response.body)
-        tweet_nodes = tree_node.xpath('//div[@class="c" and @id]')
-        for tweet_node in tweet_nodes:
-                tweet_repost_url = tweet_node.xpath(
-                    './/a[contains(text(),"转发[")]/@href')[0]
-                user_tweet_id = re.search(
-                    r'/repost/(.*?)\?uid=(\d+)', tweet_repost_url)
-                weibo_url = 'https://weibo.com/{}/{}'.format(user_tweet_id.group(2),user_tweet_id.group(1))
-                yield Request(url=weibo_url,callback= self.parse_details,
-                              dont_filter=True, meta=response.meta,args={'wait': 2})
+    # def parse_url(self,response):
+    #     if  response.url.endswith('page=1'):
+    #         # 如果是第1页，一次性获取后面的所有页
+    #         all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
+    #         if all_page:
+    #             all_page = all_page.group(1)
+    #             all_page = int(all_page)
+    #             print('获取到了页数',all_page)
+    #             if all_page>=99:
+    #                 all_page=99
+    #             for page_num in range(2,3):
+    #                 page_url = response.url.replace(
+    #                     'page=1', 'page={}'.format(page_num))
+    #                 yield Request(url=page_url, callback=self.parse_url,
+    #                               dont_filter=True, meta=response.meta)
+    #     """
+    #     解析本页的数据
+    #     """
+    #     tree_node = etree.HTML(response.body)
+    #     tweet_nodes = tree_node.xpath('//div[@class="c" and @id]')
+    #     for tweet_node in tweet_nodes:
+    #             tweet_repost_url = tweet_node.xpath(
+    #                 './/a[contains(text(),"转发[")]/@href')[0]
+    #             user_tweet_id = re.search(
+    #                 r'/repost/(.*?)\?uid=(\d+)', tweet_repost_url)
+    #             weibo_url = 'https://weibo.com/{}/{}'.format(user_tweet_id.group(2),user_tweet_id.group(1))
+    #             yield Request(url=weibo_url,callback= self.parse_details,
+    #                           dont_filter=True, meta=response.meta,args={'wait': 2})
 
     def parse_details(self,response):
         body = response.body
@@ -249,6 +251,7 @@ class WeiboSpider(Spider):
                 print('获取到了页数',all_page)
                 if all_page>=99:
                     all_page=99
+
                 for page_num in range(2,all_page):
                     page_url = response.url.replace(
                         'page=1', 'page={}'.format(page_num))
@@ -275,6 +278,8 @@ class WeiboSpider(Spider):
                 tweet_item['user_id'] = user_tweet_id.group(2)
                 tweet_item['_id'] = '{}_{}'.format(user_tweet_id.group(2),
                                                    user_tweet_id.group(1))
+
+
                 create_time_info_node = tweet_node.xpath('.//span[@class="ct"]')[-1]
                 create_time_info = create_time_info_node.xpath('string(.)')
                 if "来自" in create_time_info:
@@ -338,13 +343,14 @@ class WeiboSpider(Spider):
                     self.q.append(tweet_item['_id'])
                     yield tweet_item
 
-                # 抓取该微博的评论信息
-                comment_url = 'https://weibo.cn/comment/hot/' \
-                              + tweet_item['weibo_url'].split('/')[-1] + '?rl=2'
-                # print(comment_url)
-                yield Request(url=comment_url,
-                              callback=self.parse_comment,
-                              meta={'weibo_url': tweet_item['weibo_url']})
+                if self.times==3:
+                    # 抓取该微博的评论信息
+                    comment_url = 'https://weibo.cn/comment/hot/' \
+                                  + tweet_item['weibo_url'].split('/')[-1] + '?rl=2'
+                    # print(comment_url)
+                    yield Request(url=comment_url,
+                                  callback=self.parse_comment,
+                                  meta={'weibo_url': tweet_item['weibo_url']})
 
             except Exception as e:
                 self.logger.error(e)
@@ -355,7 +361,7 @@ class WeiboSpider(Spider):
 
         body = body.decode("utf-8", "ignore")
         # print(body)
-        # print(body)
+
         response.replace(body=body)
         tree_node = etree.HTML(response.body)
         tweet_item = response.meta['item']
@@ -434,9 +440,8 @@ class WeiboSpider(Spider):
 
         body = body.decode("utf-8")
         # print(body)
-        # print(body)
         response.replace(body=body)
-        print(response.body)
+        # print(response.body)
         tree_node = etree.HTML(response.body)
         comment_nodes = tree_node.xpath('//div[@class="c" and contains(@id,"C_")]')
         for comment_node in comment_nodes:

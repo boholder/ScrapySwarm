@@ -149,7 +149,6 @@ class UniqueDBInsertUtil(object):
                 last = self.Tweets.find_one({'_id': item['_id']})
                 if last:
                     # last=last[0]
-                    print(last)
                     if len(last['crawl_time']) <= 3:
                         last['crawl_time'].append(item['crawl_time'][0])
                         last['like_num'].append(item['like_num'][0])
