@@ -53,6 +53,8 @@ class ScrapyswarmPipeline(object):
             self.nor.insert_item( item)
         elif isinstance(item, items.TweetsItem):
             self.uni.weiboUniqueInsert(item)
+        elif isinstance(item, items.InformationItem):
+            self.nor.insert_item( item)
         elif isinstance(item, items.ChinaNewsItem):
             self.uni.newsUniqueInsert(item)
         elif isinstance(item, items.QQNewsItem):

@@ -37,7 +37,7 @@ from ScrapySwarm.control.log_util import SpiderLogUtil
 
 
 class QQNewsSpider(scrapy.Spider):
-    name = 'qqnews'
+    name = 'qqnews_spider'
 
     def __init__(self, *args, **kwargs):
         # 与BDsearchUrlUtil交互要用的参数，指明网址

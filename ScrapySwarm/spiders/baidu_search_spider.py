@@ -21,7 +21,7 @@ from ScrapySwarm.tools.time_format_util import getCurrentTime
 from ScrapySwarm.control.log_util import SpiderLogUtil
 
 class BaiduSearchSpider(scrapy.Spider):
-    name = 'baidusearch'
+    name = 'baidu_search_spider'
 
     def __init__(self, *args, **kwargs):
 

@@ -63,13 +63,20 @@ class UniqueDBInsertUtil(object):
         self.SinaNews = db[COLL_SINA_NEWS]
 
         # create news collection unique index
-        field = [
+        newsfield = [
             ("url", pymongo.DESCENDING),
             ("title", pymongo.ASCENDING)
         ]
-        self.Chinanews.create_index(field, unique=True)
-        self.QQNews.create_index(field, unique=True)
-        self.SinaNews.create_index(field, unique=True)
+        self.Chinanews.create_index(newsfield, unique=True)
+        self.QQNews.create_index(newsfield, unique=True)
+        self.SinaNews.create_index(newsfield, unique=True)
+
+        # baidu search unique index
+        self.BDSearch = db[COLL_BAIDU_SREACH]
+        bdfield=[
+            ("url", pymongo.ASCENDING)
+        ]
+        self.BDSearch.create_index(bdfield, unique=True)
 
         # 剩下的你对照着加吧，你那个weibo可能因为爬取类型不同，要写不只一个索引
         # 索引是对应单个集合的，
@@ -83,6 +90,10 @@ class UniqueDBInsertUtil(object):
     '''
     
     '''
+
+    def BDUniqueInsert(self, item):
+        if isinstance(item, items.BaiduSearchItem):
+            self.BDSearch.insert(dict(item))
 
     def newsUniqueInsert(self, item):
         try:
@@ -176,15 +187,12 @@ class UniqueDBInsertUtil(object):
 class NormalDBInsertUtil(object):
     def __init__(self):
         db = connection[MONGO_DB_NAME]
-        self.Bdsearch = db[COLL_BAIDU_SREACH]
         self.Information = db[COLL_WEIBO_INFOMATION]
         self.Relationships = db[COLL_WEIBO_RELATIONSHIPS]
 
     def insert_item(self, item):
         try:
-            if isinstance(item, items.BaiduSearchItem):
-                self.Bdsearch.insert(dict(item))
-            elif isinstance(item, items.RelationshipsItem):
+            if isinstance(item, items.RelationshipsItem):
                 self.Relationships.insert(dict(item))
             else :
                 self.Information.insert(dict(item))

@@ -32,7 +32,7 @@ from ScrapySwarm.control.log_util import SpiderLogUtil
 
 
 class SinaNewsSpider(scrapy.Spider):
-    name = 'sinanews'
+    name = 'sinanews_spider'
 
     def __init__(self, *args, **kwargs):
         # 与BDsearchUrlUtil交互要用的参数，指明网址
@@ -87,8 +87,14 @@ class SinaNewsSpider(scrapy.Spider):
         item['crawl_time'] = getCurrentTime()
         item['keyword'] = self.keyword
 
-        item['title'] = response.xpath(
-            '//h1[@class=\'main-title\']/text()').get()
+        title = response.xpath(
+            '//title/text()').get()
+        if title:
+            title = title.replace('_新浪新闻', '')
+            title = title.replace('_新浪网', '')
+            title = title.replace('_新浪军事', '')
+            title = title.replace('_新闻中心', '')
+        item['title'] = title
 
         item['time'] = self.trygetPublishTime(response)
 
