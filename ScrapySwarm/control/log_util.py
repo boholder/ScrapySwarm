@@ -38,7 +38,8 @@ class SpiderLogUtil(object):
         self.logger = logging.getLogger(__name__)
 
     def spider_start(self, spider=scrapy.Spider):
-        self.logger.info('calling SpiderLogUtil.spider_start')
+        self.logger.info('{0} calling SpiderLogUtil.spider_start'
+                         .format(spider.name))
         logdict = {}
 
         logdict['spider'] = spider.name
@@ -54,7 +55,8 @@ class SpiderLogUtil(object):
                              .format(spider.name))
 
     def spider_finish(self, spider=scrapy.Spider):
-        self.logger.info('calling SpiderLogUtil.spider_finish')
+        self.logger.info('{0} calling SpiderLogUtil.spider_finish'
+                         .format(spider.name))
         logdict = {}
         statsdict = copy.deepcopy(spider.crawler.stats._stats)
 
@@ -110,7 +112,8 @@ class APILogUtil(object):
         self.logger = logging.getLogger(__name__)
 
     def api_start(self, loggingdict):
-        self.logger.info('calling APILogUtil.api_start')
+        self.logger.info('API {0} calling APILogUtil.api_start'
+                         .format(loggingdict['api_name']))
         logdict = {}
 
         logdict['api_name'] = loggingdict['api_name']
@@ -121,11 +124,12 @@ class APILogUtil(object):
         logdict['start_time'] = loggingdict['start_time']
 
         if self.logdb.addAPICallingLog(logdict):
-            self.logger.info('{0} start log successfully created'
+            self.logger.info('API {0} start log successfully created'
                              .format(logdict['api_name']))
 
     def api_finish(self, loggingdict):
-        self.logger.info('calling APILogUtil.api_finish')
+        self.logger.info('API {0} calling APILogUtil.api_finish'
+                         .format(loggingdict['api_name']))
         logdict = {}
 
         logdict['api_name'] = loggingdict['api_name']
@@ -142,5 +146,5 @@ class APILogUtil(object):
         logdict['finish_reason'] = loggingdict['finish_reason']
 
         if self.logdb.updateAPIFinishLog(logdict):
-            self.logger.info('{0} finish log successfully created'
+            self.logger.info('API {0} finish log successfully created'
                              .format(logdict['api_name']))

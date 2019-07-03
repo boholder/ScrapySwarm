@@ -12,3 +12,5 @@ main.py
 scrapylog.txt
 *.log
  Start.py
+ debug.py
+/ScrapySwarm/debug.py

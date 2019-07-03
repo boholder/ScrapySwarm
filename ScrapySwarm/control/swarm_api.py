@@ -39,7 +39,8 @@ Run one spider in project, get process's log in return
 '''
 apilogutil = APILogUtil()
 
-logger=logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
+
 
 def runOneSpider(spidername, keyword,
                  log=True, settings=None):
@@ -57,7 +58,7 @@ def runOneSpider(spidername, keyword,
         "argsdict": argsdict
     }
 
-    logger.info('calling '+runOneSpider.__name__)
+    logger.info('calling ' + runOneSpider.__name__)
     apilogutil.api_start(logdict)
 
     # judge spidername exist in project or not
@@ -89,11 +90,8 @@ def runOneSpider(spidername, keyword,
     # or return a bool
     if type(logfilename) == str:
         try:
-            logfile = open(logfilename, 'r')
-            loglist = []
-
-            while logfile:
-                loglist.append(logfile.readline())
+            with open(logfilename, 'r', encoding='utf-8') as f:
+                loglist = f.readlines()
 
             logdict['finish_reason'] = 'api finished normally.'
             apilogutil.api_finish(logdict)
@@ -102,14 +100,18 @@ def runOneSpider(spidername, keyword,
             return loglist
         except IOError:
             logdict['finish_reason'] = \
-                'spider run finished, ' \
+                runOneSpider.__name__ + \
+                ' run finished, ' \
                 'but can\' t open expect log file' \
                 '(I/O error threw).'
             apilogutil.api_finish(logdict)
-            logger.info(runOneSpider.__name__ + ' finished.')
+            logger.info(runOneSpider.__name__ +
+                        ' finished with I/O error.')
             return None
 
     else:
+        logdict['finish_reason'] = 'api finished without a logfile'
+        apilogutil.api_finish(logdict)
         return True
 
 
@@ -123,8 +125,8 @@ Just run all spiders that can be ran.
 
 
 def runAllSpider(keyword):
-    argsdict={
-        "keyword":keyword
+    argsdict = {
+        "keyword": keyword
     }
 
     logdict = {
@@ -139,11 +141,12 @@ def runAllSpider(keyword):
     m = MultiSpidersProcessor()
     m.runAll(keyword)
 
-    logdict['finish_time']=getUTCDateTimeObj()
-    logdict['finish_reason']='api finished normally'
+    logdict['finish_time'] = getUTCDateTimeObj()
+    logdict['finish_reason'] = 'api finished normally'
 
     apilogutil.api_finish(logdict)
     logger.info(runAllSpider.__name__ + ' finished.')
+
 
 '''
 Run more than one spiders with each one given different settings

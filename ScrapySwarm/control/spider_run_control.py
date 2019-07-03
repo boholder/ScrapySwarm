@@ -36,7 +36,7 @@ class BDAssistSpiderProcessor(object):
 
     @defer.inlineCallbacks
     def crawl(self, spidername, keyword,
-              log=True, runner=None, settings=None):
+              runner):
 
         site = ''
         if spidername == 'qqnews_spider':
@@ -44,39 +44,47 @@ class BDAssistSpiderProcessor(object):
         elif spidername == 'sinanews_spider':
             site = 'news.sina.com.cn'
 
-        thesettings = copy.deepcopy(get_project_settings())
+        therunner = runner
 
-        if log and not settings:
-            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
-                               + '-' + spidername + '.log'
-            logfilename = self.logfilename
-            thesettings['LOG_FILE']: logfilename
-        elif settings:
-            thesettings = settings
-
-        # https://docs.scrapy.org/en/latest/topics
-        # /api.html#scrapy.settings.Settings
-
-        if not runner:
-            therunner = CrawlerRunner(thesettings)
-        else:
-            therunner = runner
-
-        yield therunner.crawl('baidusearch', q=keyword, site=site)
+        yield therunner.crawl('baidu_search_spider', q=keyword, site=site)
         yield therunner.crawl(spidername, q=keyword)
 
     def run(self, spidername, keyword,
             log=True, runner=None, settings=None):
 
-        self.crawl(spidername, keyword,
-                   log, runner, settings)
+        if settings:
+            thesettings = settings
+        else:
+            thesettings = copy.deepcopy(get_project_settings())
 
-        if not runner:
+        if log and not settings:
+            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
+                               + '-' + spidername + '.log'
+            logfilename = self.logfilename
+            thesettings['LOG_FILE'] = logfilename
+
+        # https://docs.scrapy.org/en/latest/topics
+        # /api.html#scrapy.settings.Settings
+
+        configure_logging(thesettings)
+
+        if runner:
+            self.crawl(spidername, keyword,
+                       runner)
+        else:
+            runner = CrawlerRunner(thesettings)
+
             self.logger.info('Spider baidusearch begin to run...')
             start = time.time()
 
+            self.crawl(spidername, keyword,
+                       runner)
+
+            d = runner.join()
+            d.addBoth(lambda _: reactor.stop())
+
+            # it will block until return back
             reactor.run()
-            reactor.stop()
 
             end = time.time()
             self.logger.info(
@@ -90,21 +98,22 @@ class BDAssistSpiderProcessor(object):
 
 
 class DirectUrlSpiderProcessor(object):
-    loop = 0
 
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         self.logfilename = ''
+        self.loop = 0
 
-    def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
-        print("当前� + spidername)
+    def crawl(self, spidername, keyword,
+              log=True, runner=None, settings=None):
+
         thesettings = copy.deepcopy(get_project_settings())
 
         if log and not settings:
             self.logfilename = LOG_DIR + getCurrentTimeReadable() \
                                + '-' + spidername + '.log'
             logfilename = self.logfilename
-            thesettings['LOG_FILE']: logfilename
+            thesettings['LOG_FILE'] = logfilename
         else:
             thesettings = settings
 
@@ -113,6 +122,7 @@ class DirectUrlSpiderProcessor(object):
         # process = CrawlerProcess(get_project_settings())
 
         if not runner:
+            configure_logging(thesettings)
             therunner = CrawlerRunner(thesettings)
         else:
             therunner = runner
@@ -121,12 +131,16 @@ class DirectUrlSpiderProcessor(object):
 
         if not runner:
             d.addBoth(lambda _: reactor.stop())
+
         if spidername == "weibo_spider" and self.loop < 3:
-            d.addBoth(lambda _: self.crawl(spidername, keyword, log, runner, settings))
+            d.addBoth(lambda _:
+                      self.crawl(spidername, keyword,
+                                 log, runner, settings))
             self.loop = self.loop + 1
 
-    def run(self, spidername, keyword, log=True, runner=None, settings=None):
-        self.loop = 0
+    def run(self, spidername, keyword,
+            log=True, runner=None, settings=None):
+
         self.crawl(spidername, keyword, log, runner, settings)
 
         if not runner:
@@ -161,7 +175,9 @@ class MultiSpidersProcessor(object):
         # https://docs.scrapy.org/en/latest/topics/
         # settings.html#topics-settings-ref
 
-        def prog(spidername, keyword, log=True, runner=None, settings=None):
+        def prog(spidername, keyword,
+                 log=True, runner=None, settings=None):
+
             if isBDAType(spidername):
                 processor = BDAssistSpiderProcessor()
             else:
@@ -271,7 +287,8 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-        spiders = BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
+        spiders = BDA_SPIDERS + ['chinanews_spider', "weibo_spider"]
+        # spiders = ['qqnews_spider']
 
         runconfiglist = []
 
