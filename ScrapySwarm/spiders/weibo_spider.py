@@ -28,7 +28,7 @@ class WeiboSpider(Spider):
     custom_settings = {
         # 请将Cookie替换成你自己的Cookie
          'CONCURRENT_REQUESTS': 16,
-        'DOWNLOAD_DELAY': 1,
+        'DOWNLOAD_DELAY': 2,
         'COOKIES_ENABLED':False,
         'DEFAULT_REQUEST_HEADERS' : {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
@@ -59,24 +59,25 @@ class WeiboSpider(Spider):
 
         querystr = getattr(self, 'q', '中美贸易')
         self.querystr=querystr
-        folderpath = "e:\weibo" +querystr
-        if (not os.path.exists(folderpath)):
-            os.mkdir(folderpath)
-        folderpath = "e:\weibo"
-        if (not os.path.exists(folderpath)):
-            os.mkdir(folderpath)
+
+        # #此处设置微博图片保存路径
+        # folderpath = "e:\weibo" +querystr
+        # if (not os.path.exists(folderpath)):
+        #     os.mkdir(folderpath)
+        # folderpath = "e:\weibo"
+        # if (not os.path.exists(folderpath)):
+        #     os.mkdir(folderpath)
 
 
         self.q=[]
         self.base_url=self.base_url.replace("#",querystr)
         self.hotbase_url = self.hotbase_url.replace("#", querystr)
         yield Request(url=self.hotbase_url+"1", callback=self.parse_tweet)
-        # yield Request(url=self.base_url + "1", callback=self.parse_tweet)
+        yield Request(url=self.base_url + "1", callback=self.parse_tweet)
 
 
 
     def parse_url(self,response):
-        print('我被调用了哦')
         if  response.url.endswith('page=1'):
             # 如果是第1页，一次性获取后面的所有页
             all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
@@ -195,15 +196,16 @@ class WeiboSpider(Spider):
         if labels and labels[0]:
             information_item["labels"] = \
                 labels[0].replace(u"\xa0", ",").replace(';', '').strip(',')
-        yield information_item
-        # request_meta = response.meta
-        # request_meta['item'] = information_item
-        # yield Request(self.base_url + '/u/{}'.format(information_item['_id']),
-        #               callback=self.parse_further_information,
-        #               meta=request_meta, dont_filter=True, priority=1)
+        #yield information_item
+        request_meta = response.meta
+        request_meta['item'] = information_item
+        yield Request("https://weibo.cn/u/"+information_item['_id'],
+                      callback=self.parse_further_information,
+                      meta=request_meta, dont_filter=True, priority=1)
 
     def parse_further_information(self, response):
         text = response.text
+        # print(text)
         information_item = response.meta['item']
         tweets_num = re.findall('微博\[(\d+)\]', text)
         if tweets_num:
@@ -215,29 +217,28 @@ class WeiboSpider(Spider):
         if fans_num:
             information_item['fans_num'] = int(fans_num[0])
         yield information_item
-
-        # 获取该用户微博
-        yield Request(url=self.base_url +
-                          '/{}/profile?page=1'.format(information_item['_id']),
-                      callback=self.parse_tweet,
-                      priority=1)
-
-        # 获取关注列表
-        yield Request(url=self.base_url +
-                          '/{}/follow?page=1'.format(information_item['_id']),
-                      callback=self.parse_follow,
-                      dont_filter=True)
-        # 获取粉丝列表
-        yield Request(url=self.base_url +
-                          '/{}/fans?page=1'.format(information_item['_id']),
-                      callback=self.parse_fans,
-                      dont_filter=True)
+        # # 获取该用户微博
+        # yield Request(url=self.base_url +
+        #                   '/{}/profile?page=1'.format(information_item['_id']),
+        #               callback=self.parse_tweet,
+        #               priority=1)
+        #
+        # # 获取关注列表
+        # yield Request(url=self.base_url +
+        #                   '/{}/follow?page=1'.format(information_item['_id']),
+        #               callback=self.parse_follow,
+        #               dont_filter=True)
+        # # 获取粉丝列表
+        # yield Request(url=self.base_url +
+        #                   '/{}/fans?page=1'.format(information_item['_id']),
+        #               callback=self.parse_fans,
+        #               dont_filter=True)
 
 
     def parse_tweet(self, response):
-        body = response.body
-        body = body.decode("utf-8")
-        print(body)
+        # body = response.body
+        # body = body.decode("utf-8")
+        # print(body)
         if  response.url.endswith('page=1'):
             # 如果是第1页，一次性获取后面的所有页
             all_page = re.search(r'&nbsp;1/(\d+)页', response.text)
@@ -340,7 +341,7 @@ class WeiboSpider(Spider):
                 # 抓取该微博的评论信息
                 comment_url = 'https://weibo.cn/comment/hot/' \
                               + tweet_item['weibo_url'].split('/')[-1] + '?rl=2'
-                print(comment_url)
+                # print(comment_url)
                 yield Request(url=comment_url,
                               callback=self.parse_comment,
                               meta={'weibo_url': tweet_item['weibo_url']})

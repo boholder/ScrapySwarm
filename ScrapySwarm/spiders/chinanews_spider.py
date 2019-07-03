@@ -44,9 +44,9 @@ class China(Spider):
             querystr = '中美贸易'
         self.querystr = querystr
         self.q = []
-        folderpath ='E:\chinanews' + querystr
-        if (not os.path.exists(folderpath)):
-            os.mkdir(folderpath)
+        # folderpath ='E:\chinanews' + querystr
+        # if (not os.path.exists(folderpath)):
+        #     os.mkdir(folderpath)
         my_data = {'q': querystr,
                    'ps': '10',
                    'start': '0',
@@ -97,7 +97,6 @@ class China(Spider):
         response.replace(body=body)
         for div in response.xpath('//td/ul/li[@class="news_title"]/a/@href'):
             url = div.extract()
-            print(url)
             yield Request(url=url, callback=self.parse2)
 
 
@@ -144,7 +143,6 @@ class China(Spider):
         item['time'] = otherStyleTime
         item['url'] = url
         item['imgs'] = imgs
-        print(title, content, time, url)
         yield item
 
 

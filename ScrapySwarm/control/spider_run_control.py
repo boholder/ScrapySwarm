@@ -90,12 +90,14 @@ class BDAssistSpiderProcessor(object):
 
 
 class DirectUrlSpiderProcessor(object):
+    loop = 0
+
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         self.logfilename = ''
 
     def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
-
+        print("当前� + spidername)
         thesettings = copy.deepcopy(get_project_settings())
 
         if log and not settings:
@@ -119,9 +121,12 @@ class DirectUrlSpiderProcessor(object):
 
         if not runner:
             d.addBoth(lambda _: reactor.stop())
+        if spidername == "weibo_spider" and self.loop < 3:
+            d.addBoth(lambda _: self.crawl(spidername, keyword, log, runner, settings))
+            self.loop = self.loop + 1
 
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
-
+        self.loop = 0
         self.crawl(spidername, keyword, log, runner, settings)
 
         if not runner:
@@ -143,6 +148,7 @@ class DirectUrlSpiderProcessor(object):
 
 
 class MultiSpidersProcessor(object):
+
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
@@ -265,7 +271,7 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-        spiders = BDA_SPIDERS + ['chinanews_spider']
+        spiders = BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
 
         runconfiglist = []
 
