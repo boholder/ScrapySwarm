@@ -33,7 +33,8 @@ Run one spider in project, get process's log in return
 @ param {dict} settings: same as above
 
 @ return {bool} if no log file generated, return process result
-         {list} log text, one index per line
+         {list} log text, one index per line 
+                    (already remove '\n' behind every line)
          {None} something throw error inside file I/O code
 
 '''
@@ -92,6 +93,7 @@ def runOneSpider(spidername, keyword,
         try:
             with open(logfilename, 'r', encoding='utf-8') as f:
                 loglist = f.readlines()
+                loglist = [line.strip() for line in loglist]
 
             logdict['finish_reason'] = 'api finished normally.'
             apilogutil.api_finish(logdict)
