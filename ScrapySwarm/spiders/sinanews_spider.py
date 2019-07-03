@@ -32,7 +32,7 @@ from ScrapySwarm.control.log_util import SpiderLogUtil
 
 
 class SinaNewsSpider(scrapy.Spider):
-    name = 'sinanews'
+    name = 'sinanews_spider'
 
     def __init__(self, *args, **kwargs):
         # 与BDsearchUrlUtil交互要用的参数，指明网址

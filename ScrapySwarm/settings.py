@@ -37,6 +37,13 @@ COLL_API_LOG = 'api_log'
 # log file directory
 LOG_DIR = './log/'
 
+# spiders name list divide by type
+# (baidu search assist OR direct url)
+# used by tools.spider_exist_util.py
+BDA_SPIDERS=['qqnews_spider','sinanews_spider']
+DIRC_SPIDERS=['chinanews_spider','weibo_spider']
+
+
 ITEM_PIPELINES = {'ScrapySwarm.pipelines.ScrapyswarmPipeline': 300, }
 ROBOTSTXT_OBEY = False
 #

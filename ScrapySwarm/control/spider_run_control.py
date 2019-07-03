@@ -16,7 +16,7 @@ from multiprocessing import Pool
 
 from scrapy.utils.project import get_project_settings
 from twisted.internet import reactor, defer
-from scrapy.crawler import CrawlerProcess, CrawlerRunner
+from scrapy.crawler import CrawlerRunner
 from scrapy.utils.log import configure_logging
 import logging
 import time
@@ -26,25 +26,29 @@ from ScrapySwarm.tools.time_format_util \
 
 from ScrapySwarm.settings import LOG_DIR
 
+from ScrapySwarm.tools.spider_exist_util import *
+
 
 class BDAssistSpiderProcessor(object):
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        self.logfilename = ''
 
     @defer.inlineCallbacks
     def crawl(self, spidername, keyword,
               log=True, runner=None, settings=None):
 
         site = ''
-        if spidername == 'qqnews':
+        if spidername == 'qqnews_spider':
             site = 'news.qq.com'
-        elif spidername == 'sinanews':
+        elif spidername == 'sinanews_spider':
             site = 'news.sina.com.cn'
 
         if log and not settings:
             thesettings = copy.deepcopy(get_project_settings())
-            logfilename = LOG_DIR + getCurrentTimeReadable() \
-                          + '-' + spidername + '.log'
+            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
+                               + '-' + spidername + '.log'
+            logfilename = self.logfilename
             thesettings['LOG_FILE']: logfilename
         else:
             thesettings = settings
@@ -80,17 +84,24 @@ class BDAssistSpiderProcessor(object):
                 'Spider \"{0}\" finished, time used: {1} seconds.'
                     .format(spidername, (end - start)))
 
+            if self.logfilename != '':
+                return self.logfilename
+            else:
+                return True
+
 
 class DirectUrlSpiderProcessor(object):
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        self.logfilename = ''
 
     def crawl(self, spidername, keyword, log=True, runner=None, settings=None):
 
         if log and not settings:
             thesettings = copy.deepcopy(get_project_settings())
-            logfilename = LOG_DIR + getCurrentTimeReadable() \
-                          + '-' + spidername + '.log'
+            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
+                               + '-' + spidername + '.log'
+            logfilename = self.logfilename
             thesettings['LOG_FILE']: logfilename
         else:
             thesettings = settings
@@ -125,6 +136,11 @@ class DirectUrlSpiderProcessor(object):
                 'Spider \"{0}\" finished, time used: {1} seconds.'
                     .format(spidername, (end - start)))
 
+            if self.logfilename != '':
+                return self.logfilename
+            else:
+                return True
+
 
 class MultiSpidersProcessor(object):
     def __init__(self):
@@ -140,82 +156,81 @@ class MultiSpidersProcessor(object):
         # settings.html#topics-settings-ref
 
         def prog(spidername, keyword, log=True, runner=None, settings=None):
-            if spidername == 'qqnews' \
-                    or spidername == 'sinanews':
+            if isBDAType(spidername):
                 processor = BDAssistSpiderProcessor()
             else:
                 processor = DirectUrlSpiderProcessor()
 
             processor.run(spidername, keyword, log, runner, settings)
 
-        # linux, use multiprocess
-        if os.name == 'posix':
-            pool = Pool()
-
-            for config in runconfiglist:
-                spidername = config['spidername']
-                keyword = config['keyword']
-
-                log = True
-                if 'log' in config:
-                    log = config['log']
-
-                settings = None
-                if 'settings' in config:
-                    settings = config['settings']
-
-                pool.apply_async(prog,
-                                 (spidername, keyword, log,
-                                  None, settings))
-
-            self.logger.info('Multiprocess begin...')
-            start = time.process_time()
-            pool.close()
-            pool.join()
-            end = time.process_time()
-            self.logger.info(
-                'Multiprocess finished, time used: {0} seconds.'
-                    .format(end - start))
+        # # linux, use multiprocess
+        # if os.name == 'posix':
+        #     pool = Pool()
+        #
+        #     for config in runconfiglist:
+        #         spidername = config['spidername']
+        #         keyword = config['keyword']
+        #
+        #         log = True
+        #         if 'log' in config:
+        #             log = config['log']
+        #
+        #         settings = None
+        #         if 'settings' in config:
+        #             settings = config['settings']
+        #
+        #         pool.apply_async(prog,
+        #                          (spidername, keyword, log,
+        #                           None, settings))
+        #
+        #     self.logger.info('Multiprocess begin...')
+        #     start = time.process_time()
+        #     pool.close()
+        #     pool.join()
+        #     end = time.process_time()
+        #     self.logger.info(
+        #         'Multiprocess finished, time used: {0} seconds.'
+        #             .format(end - start))
 
         # windows
-        elif os.name == 'nt':
+        # elif os.name == 'nt':
 
-            settings = copy.deepcopy(get_project_settings())
-            logfile = LOG_DIR + \
-                      getCurrentTimeReadable() + '-all-spider.log'
-            settings['LOG_FILE']=logfile
+        settings = copy.deepcopy(get_project_settings())
+        logfile = LOG_DIR + \
+                  getCurrentTimeReadable() + '-all-spider.log'
+        settings['LOG_FILE'] = logfile
 
-            configure_logging(settings)
+        configure_logging(settings)
 
-            runner = CrawlerRunner(settings)
+        runner = CrawlerRunner(settings)
 
-            for config in runconfiglist:
-                spidername = config['spidername']
-                keyword = config['keyword']
+        for config in runconfiglist:
+            spidername = config['spidername']
+            keyword = config['keyword']
 
-                log = True
-                if 'log' in config:
-                    log = config['log']
+            log = True
+            if 'log' in config:
+                log = config['log']
 
-                settings = None
-                if 'settings' in config:
-                    settings = config['settings']
+            settings = None
+            if 'settings' in config:
+                settings = config['settings']
 
-                prog(spidername, keyword, log, runner, settings)
+            prog(spidername, keyword, log, runner, settings)
 
-            d = runner.join()
-            d.addBoth(lambda _: reactor.stop())
+        d = runner.join()
+        d.addBoth(lambda _: reactor.stop())
 
-            # it will block every time until return back
-            reactor.run()
+        # it will block every time until return back
+        reactor.run()
 
-        # This function only generate one log file
-        # All spiders share one settings.
-        #
-        # And note that this method can ONLY active
-        #   direct url spiders like chinanews_spider.
+    # This function only generate one log file
+    # All spiders share one settings.
+    #
+    # And note that this method can ONLY active
+    #   direct url spiders like chinanews_spider.
 
-        # !!!it has error!!!
+    # !!!it has error!!!
 
     def runSameSettings(self, spiders,
                         keyword, log=True, settings=None):
@@ -250,8 +265,7 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-
-        spiders = ['qqnews', 'sinanews']
+        spiders = BDA_SPIDERS + ['chinanews_spider']
 
         runconfiglist = []
 
