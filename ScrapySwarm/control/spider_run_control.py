@@ -163,7 +163,6 @@ class WeiboSpiderProcessor(object):
 
     def crawl(self, spidername, keyword, times,
               log=True, runner=None, settings=None):
-
         thesettings = copy.deepcopy(get_project_settings())
 
         if log and not settings:
@@ -195,6 +194,7 @@ class WeiboSpiderProcessor(object):
 
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
         self.loop = 0
+
         self.crawl(spidername, keyword,self.loop, log, runner, settings)
 
         if not runner:
@@ -309,7 +309,7 @@ class MultiSpidersProcessor(object):
 
     def runSameSettings(self, spiders,
                         keyword, log=True, settings=None):
-        if log and not settings:
+        if  log and not settings:
             logfilename = LOG_DIR + getCurrentTimeReadable() \
                           + '-spiders-all.log'
             settings = {
@@ -340,7 +340,8 @@ class MultiSpidersProcessor(object):
                 .format((end - start)))
 
     def runAll(self, keyword):
-        spiders =BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
+        spiders =['chinanews_spider']
+            #BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
 
 
         runconfiglist = []
