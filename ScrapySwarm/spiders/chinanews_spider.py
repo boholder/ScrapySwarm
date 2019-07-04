@@ -37,7 +37,6 @@ class China(Spider):
         super().close(self, reason)
 
     def start_requests(self):
-        self.slog.spider_start(self)
 
         querystr = getattr(self, 'q', None)
         if not querystr:
@@ -47,6 +46,9 @@ class China(Spider):
         # folderpath ='E:\chinanews' + querystr
         # if (not os.path.exists(folderpath)):
         #     os.mkdir(folderpath)
+
+        self.slog.spider_start(self)
+
         my_data = {'q': querystr,
                    'ps': '10',
                    'start': '0',

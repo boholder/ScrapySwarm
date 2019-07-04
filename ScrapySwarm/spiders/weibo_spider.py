@@ -54,13 +54,14 @@ class WeiboSpider(Spider):
 
     def start_requests(self):
 
-        self.slog.spider_finish(self)
-
         querystr = getattr(self, 'q', '中美贸易')
         self.querystr=querystr
         times = getattr(self, 't', 3)
         self.querystr = querystr
         self.times=times
+
+        self.slog.spider_finish(self)
+
         # #此处设置微博图片保存路径
         # folderpath = "e:\weibo" +querystr
         # if (not os.path.exists(folderpath)):

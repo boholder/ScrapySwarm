@@ -47,6 +47,8 @@ class SpiderLogUtil(object):
         logdict['last_modified'] = \
             getUTCDateTimeObj()
 
+        logdict['keyword'] = spider.q
+
         logdict['start_time'] = \
             spider.crawler.stats._stats['start_time']
 
