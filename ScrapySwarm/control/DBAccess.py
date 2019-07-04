@@ -264,7 +264,7 @@ class BDsearchUrlUtil(object):
         }
 
         return self.bdsearch.update_many(
-            {"waste": 0},
+            query,
             {"$set": {"waste": 1}}
         ).acknowledged
 
