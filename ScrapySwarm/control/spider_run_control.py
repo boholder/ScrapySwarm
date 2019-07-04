@@ -132,7 +132,6 @@ class DirectUrlSpiderProcessor(object):
         if not runner:
             d.addBoth(lambda _: reactor.stop())
 
-
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
         self.crawl(spidername, keyword, log, runner, settings)
 
@@ -152,6 +151,7 @@ class DirectUrlSpiderProcessor(object):
                 return self.logfilename
             else:
                 return True
+
 
 class WeiboSpiderProcessor(object):
 
@@ -182,19 +182,19 @@ class WeiboSpiderProcessor(object):
         else:
             therunner = runner
 
-        d = therunner.crawl(spidername, q=keyword, t = times)
+        d = therunner.crawl(spidername, q=keyword, t=times)
 
         if not runner:
             d.addBoth(lambda _: reactor.stop())
 
-        if  self.loop < 3:
+        if self.loop < 3:
             self.loop = self.loop + 1
             d.addBoth(lambda _: self.crawl(spidername, keyword, self.loop, log, runner, settings))
 
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
         self.loop = 0
 
-        self.crawl(spidername, keyword,self.loop, log, runner, settings)
+        self.crawl(spidername, keyword, self.loop, log, runner, settings)
 
         if not runner:
             self.logger.info('Spider \"{0}\" begin to run...'
@@ -213,13 +213,16 @@ class WeiboSpiderProcessor(object):
             else:
                 return True
 
+
 class OneSpiderProcessor(object):
     def run(self, spidername, keyword,
-                     log=True, runner=None,
-                        settings=None, repeatnum=None):
+            log=True, runner=None,
+            settings=None, repeatnum=None):
 
         if isBDAType(spidername):
             processor = BDAssistSpiderProcessor()
+        elif spidername == 'weibo_spider':
+            processor = WeiboSpiderProcessor()
         else:
             processor = DirectUrlSpiderProcessor()
 
@@ -343,50 +346,8 @@ class MultiSpidersProcessor(object):
         # it will block until return back
         reactor.run()
 
-    # # This function only generate one log file
-    # # All spiders share one settings.
-    # #
-    # # And note that this method can ONLY active
-    # #   direct url spiders like chinanews_spider.
-    #
-    # # !!!it has error!!!
-    #
-    # def runSameSettings(self, spiders,
-    #                     keyword, log=True, settings=None):
-    #     if log and not settings:
-    #         logfilename = LOG_DIR + getCurrentTimeReadable() \
-    #                       + '-spiders-all.log'
-    #     if log and not settings:
-    #             "LOG_FILE"= logfilename
-    #
-    #
-    #     # https://docs.scrapy.org/en/latest/topics
-    #     # /api.html#scrapy.settings.Settings
-    #     configure_logging(settings)
-    #
-    #     runner = CrawlerRunner(settings)
-    #     for spider in spiders:
-    #         runner.crawl(spider, q=keyword)
-    #
-    #     d = runner.join()
-    #     d.addBoth(lambda _: reactor.stop())
-    #
-    #     self.logger.info('All spiders \"{0}\" begin to run...')
-    #     start = time.time()
-    #
-    #     # the script will block here
-    #     # until all crawling jobs are finished
-    #     reactor.run()
-    #
-    #     end = time.time()
-    #     self.logger.info(
-    #         'All spiders\' job finished, time used: {0} seconds.'
-    #             .format((end - start)))
-
     def runAll(self, keyword):
-        spiders =['chinanews_spider']
-            #BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
-
+        spiders = BDA_SPIDERS + ['chinanews_spider', 'weibo_spider']
 
         runconfiglist = []
 
