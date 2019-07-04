@@ -108,42 +108,44 @@ class China(Spider):
         response.replace(body=body)
         item = ChinaNewsItem()
 
-        title = response.xpath('//div[@class="content"]/h1/text()').get().strip();
+        title = response.xpath('//div[@class="content"]/h1/text()').get()
+        if title:
+            title=title.strip();
 
-        imgs = []
-        content = ''
-        ire = re.compile(r'src=\"(.+?)\"')
-        pre = re.compile(r'<img[\s\S]+?>')
-        url = response.url
-        for p in response.xpath('//div[@class="left_zw"]').extract():
-            p = re.sub(r'<[^i].*?>', '', p)
-            p = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', p)
-            q = pre.findall(p)
-            for i in q:
-                imgs.append(ire.findall(i)[0])
-                p = p.replace(i, '&&此处有图片，url:' + imgs[-1] + ",存储名为:" + (url.split('/')[-1]) + imgs[-1].split('/')[
-                    -1] + '&&')
-            content = content + p.strip()
-        timeandsource = response.xpath('//div[@class="left-t"]/text()').get().strip()
-        ts = timeandsource.split('来源')
+            imgs = []
+            content = ''
+            ire = re.compile(r'src=\"(.+?)\"')
+            pre = re.compile(r'<img[\s\S]+?>')
+            url = response.url
+            for p in response.xpath('//div[@class="left_zw"]').extract():
+                p = re.sub(r'<[^i].*?>', '', p)
+                p = re.sub(r'\(function[\s\S]+?\}\)\(\);', '', p)
+                q = pre.findall(p)
+                for i in q:
+                    imgs.append(ire.findall(i)[0])
+                    p = p.replace(i, '&&此处有图片，url:' + imgs[-1] + ",存储名为:" + (url.split('/')[-1]) + imgs[-1].split('/')[
+                        -1] + '&&')
+                content = content + p.strip()
+            timeandsource = response.xpath('//div[@class="left-t"]/text()').get().strip()
+            ts = timeandsource.split('来源')
 
-        item['crawl_time'] = str(int(time.time()))
-        created_time = ts[0].strip()
-        timeArray = time.strptime(created_time, "%Y年%m月%d日 %H:%M")
-        otherStyleTime = time.strftime("%Y-%m-%d-%H-%M-%S", timeArray)
-        item['source'] = '中国新闻'
-        if len(ts) > 1:
-            source = ts[1]
-            item['source'] = source
+            item['crawl_time'] = str(int(time.time()))
+            created_time = ts[0].strip()
+            timeArray = time.strptime(created_time, "%Y年%m月%d日 %H:%M")
+            otherStyleTime = time.strftime("%Y-%m-%d-%H-%M-%S", timeArray)
+            item['source'] = '中国新闻'
+            if len(ts) > 1:
+                source = ts[1]
+                item['source'] = source
 
-        item['_id'] = url + otherStyleTime
-        item['keyword'] = self.querystr
-        item['title'] = title
-        item['content'] = content
-        item['time'] = otherStyleTime
-        item['url'] = url
-        item['imgs'] = imgs
-        yield item
+            item['_id'] = url + otherStyleTime
+            item['keyword'] = self.querystr
+            item['title'] = title
+            item['content'] = content
+            item['time'] = otherStyleTime
+            item['url'] = url
+            item['imgs'] = imgs
+            yield item
 
 
 # if __name__ == "__main__":
