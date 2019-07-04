@@ -17,6 +17,10 @@ from ScrapySwarm.tools.spider_exist_util import *
 from ScrapySwarm.control.log_util import APILogUtil
 from ScrapySwarm.tools.time_format_util import getUTCDateTimeObj
 
+apilogutil = APILogUtil()
+
+logger = logging.getLogger(__name__)
+
 '''
 Run one spider in project, get process's log in return
 
@@ -30,7 +34,10 @@ Run one spider in project, get process's log in return
     https://docs.scrapy.org/en/latest/topics/settings.html#log-file
                     for more
 
-@ param {dict} settings: same as above
+@ param {dict} settings: same as above (None default)
+
+@ param {int} repeatnum: Make the spider run several times in a chain
+                            (None default)
 
 @ return {bool} if no log file generated, return process result
          {list} log text, one index per line 
@@ -38,13 +45,10 @@ Run one spider in project, get process's log in return
          {None} something throw error inside file I/O code
 
 '''
-apilogutil = APILogUtil()
-
-logger = logging.getLogger(__name__)
 
 
 def runOneSpider(spidername, keyword,
-                 log=True, settings=None):
+                 log=True, settings=None, repeatnum=None):
     # prepare to log api's begin
     argsdict = {
         "spidername": spidername,
@@ -66,24 +70,24 @@ def runOneSpider(spidername, keyword,
     # Spider.name MUST equal to python file name
     # due to implement method
     if not exist(spidername):
+        logdict['finish_time'] = getUTCDateTimeObj()
+
         logdict['finish_reason'] = \
             'given spider name not found under \'spider\' dir' \
             '(it may because spider\'s name var ' \
             'not equal to class file\'s name)'
+
         apilogutil.api_finish(logdict)
+
         logger.info(runOneSpider.__name__ + ' finished.')
 
         return False
 
-    # judge spider's type (baidu assist OR direct url)
-    if isBDAType(spidername):
-        processor = BDAssistSpiderProcessor()
-    else:
-        processor = DirectUrlSpiderProcessor()
-
     # run it, stuck until get return
+    processor=OneSpiderProcessor()
     logfilename = processor.run(spidername, keyword,
-                                log, None, settings)
+                                log, None,
+                                settings, repeatnum)
 
     logdict['finish_time'] = getUTCDateTimeObj()
 

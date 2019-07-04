@@ -102,20 +102,20 @@ class DirectUrlSpiderProcessor(object):
     def __init__(self):
         self.logger = logging.getLogger(__name__)
         self.logfilename = ''
-        self.loop = 0
 
     def crawl(self, spidername, keyword,
               log=True, runner=None, settings=None):
 
-        thesettings = copy.deepcopy(get_project_settings())
+        if settings:
+            thesettings = settings
+        else:
+            thesettings = copy.deepcopy(get_project_settings())
 
         if log and not settings:
             self.logfilename = LOG_DIR + getCurrentTimeReadable() \
                                + '-' + spidername + '.log'
             logfilename = self.logfilename
             thesettings['LOG_FILE'] = logfilename
-        else:
-            thesettings = settings
 
         # https://docs.scrapy.org/en/latest/topics
         # /api.html#scrapy.settings.Settings
@@ -131,12 +131,6 @@ class DirectUrlSpiderProcessor(object):
 
         if not runner:
             d.addBoth(lambda _: reactor.stop())
-
-        if spidername == "weibo_spider" and self.loop < 3:
-            d.addBoth(lambda _:
-                      self.crawl(spidername, keyword,
-                                 log, runner, settings))
-            self.loop = self.loop + 1
 
     def run(self, spidername, keyword,
             log=True, runner=None, settings=None):
@@ -161,10 +155,60 @@ class DirectUrlSpiderProcessor(object):
                 return True
 
 
+class OneSpiderProcessor(object):
+    def run(self, spidername, keyword,
+                     log=True, runner=None,
+                        settings=None, repeatnum=None):
+
+        if isBDAType(spidername):
+            processor = BDAssistSpiderProcessor()
+        else:
+            processor = DirectUrlSpiderProcessor()
+
+        if settings:
+            thesettings = settings
+        else:
+            thesettings = copy.deepcopy(get_project_settings())
+
+        if log and not settings:
+            self.logfilename = LOG_DIR + getCurrentTimeReadable() \
+                               + '-' + spidername + '-repeat-run.log'
+            logfilename = self.logfilename
+            thesettings['LOG_FILE'] = logfilename
+
+        configure_logging(thesettings)
+
+        if repeatnum and not runner:
+            therunner = CrawlerRunner(thesettings)
+
+            d = therunner.join()
+            for loop in range(1, repeatnum):
+                d.addBoth(lambda _: processor.run(
+                    spidername, keyword, log, therunner, thesettings))
+
+            d.addBoth(lambda _: reactor.stop())
+
+            reactor.run()
+
+        elif repeatnum and runner:
+            d = runner.join()
+            for loop in range(1, repeatnum):
+                d.addBoth(lambda _: processor.run(
+                    spidername, keyword, log, therunner, thesettings))
+
+        elif not repeatnum and not runner and not settings:
+            processor.run(spidername, keyword, log, None, thesettings)
+        elif runner and settings:
+            processor.run(spidername, keyword, log, runner, thesettings)
+        elif runner and not settings:
+            processor.run(spidername, keyword, log, runner, None)
+
+
 class MultiSpidersProcessor(object):
 
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        self.oneprocessor = OneSpiderProcessor()
 
     def runINDEPSettings(self, runconfiglist):
         # runconfiglist: [config1,config2,...]
@@ -174,16 +218,6 @@ class MultiSpidersProcessor(object):
         #
         # https://docs.scrapy.org/en/latest/topics/
         # settings.html#topics-settings-ref
-
-        def prog(spidername, keyword,
-                 log=True, runner=None, settings=None):
-
-            if isBDAType(spidername):
-                processor = BDAssistSpiderProcessor()
-            else:
-                processor = DirectUrlSpiderProcessor()
-
-            processor.run(spidername, keyword, log, runner, settings)
 
         # # linux, use multiprocess
         # if os.name == 'posix':
@@ -228,6 +262,10 @@ class MultiSpidersProcessor(object):
 
         for config in runconfiglist:
             spidername = config['spidername']
+
+            if not exist(spidername):
+                continue
+
             keyword = config['keyword']
 
             log = True
@@ -238,53 +276,54 @@ class MultiSpidersProcessor(object):
             if 'settings' in config:
                 settings = config['settings']
 
-            prog(spidername, keyword, log, runner, settings)
+            self.oneprocessor.runOneSpider(
+                spidername, keyword, log, runner, settings)
 
         d = runner.join()
         d.addBoth(lambda _: reactor.stop())
 
-        # it will block every time until return back
+        # it will block until return back
         reactor.run()
 
-    # This function only generate one log file
-    # All spiders share one settings.
+    # # This function only generate one log file
+    # # All spiders share one settings.
+    # #
+    # # And note that this method can ONLY active
+    # #   direct url spiders like chinanews_spider.
     #
-    # And note that this method can ONLY active
-    #   direct url spiders like chinanews_spider.
-
-    # !!!it has error!!!
-
-    def runSameSettings(self, spiders,
-                        keyword, log=True, settings=None):
-        if log and not settings:
-            logfilename = LOG_DIR + getCurrentTimeReadable() \
-                          + '-spiders-all.log'
-            settings = {
-                "LOG_FILE": logfilename
-            }
-
-        # https://docs.scrapy.org/en/latest/topics
-        # /api.html#scrapy.settings.Settings
-        configure_logging(settings)
-
-        runner = CrawlerRunner(settings)
-        for spider in spiders:
-            runner.crawl(spider, q=keyword)
-
-        d = runner.join()
-        d.addBoth(lambda _: reactor.stop())
-
-        self.logger.info('All spiders \"{0}\" begin to run...')
-        start = time.time()
-
-        # the script will block here
-        # until all crawling jobs are finished
-        reactor.run()
-
-        end = time.time()
-        self.logger.info(
-            'All spiders\' job finished, time used: {0} seconds.'
-                .format((end - start)))
+    # # !!!it has error!!!
+    #
+    # def runSameSettings(self, spiders,
+    #                     keyword, log=True, settings=None):
+    #     if log and not settings:
+    #         logfilename = LOG_DIR + getCurrentTimeReadable() \
+    #                       + '-spiders-all.log'
+    #         settings = {
+    #             "LOG_FILE": logfilename
+    #         }
+    #
+    #     # https://docs.scrapy.org/en/latest/topics
+    #     # /api.html#scrapy.settings.Settings
+    #     configure_logging(settings)
+    #
+    #     runner = CrawlerRunner(settings)
+    #     for spider in spiders:
+    #         runner.crawl(spider, q=keyword)
+    #
+    #     d = runner.join()
+    #     d.addBoth(lambda _: reactor.stop())
+    #
+    #     self.logger.info('All spiders \"{0}\" begin to run...')
+    #     start = time.time()
+    #
+    #     # the script will block here
+    #     # until all crawling jobs are finished
+    #     reactor.run()
+    #
+    #     end = time.time()
+    #     self.logger.info(
+    #         'All spiders\' job finished, time used: {0} seconds.'
+    #             .format((end - start)))
 
     def runAll(self, keyword):
         spiders = BDA_SPIDERS + ['chinanews_spider', "weibo_spider"]
