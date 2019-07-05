@@ -25,9 +25,12 @@ def time_fix(time_string):
         time_string = str(now_time.year) + '-' + time_string+'-00'
         return time_string
 
+    time_string=time_re.sub("-",time_string)
+    time_string=time_string.replace(" ","-")
+
     return time_string
 
-
+time_re = re.compile(':')
 keyword_re = re.compile('<span class="kt">|</span>|原图|<!-- 是否进行翻译 -->|')
 emoji_re = re.compile('<img alt="|" src="//h5\.sinaimg(.*?)/>')
 white_space_re = re.compile('<br />')
