@@ -82,11 +82,6 @@ class UniqueDBInsertUtil(object):
         # 索引是对应单个集合的，
         # 所以实际上我上面那个没必要两个新闻统一一个索引
 
-        # weibo collection unique index
-        field = {
-            "1": 1
-        }
-
     '''
     
     '''

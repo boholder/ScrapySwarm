@@ -337,7 +337,7 @@ class MultiSpidersProcessor(object):
             if 'settings' in config:
                 settings = config['settings']
 
-            self.oneprocessor.runOneSpider(
+            self.oneprocessor.run(
                 spidername, keyword, log, runner, settings)
 
         d = runner.join()
