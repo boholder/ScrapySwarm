@@ -186,7 +186,7 @@ class SinaNewsSpider(scrapy.Spider):
         # http://news.sina.com.cn/o/2017-07-07/doc-ifyhvyie0474852.shtml
         elif response.xpath('//div[@id=\'artibody\']//p/text()'):
             for paragraph in response.xpath(
-                    '//div[@id=\'article\']//div/text()'):
+                    '//div[@id=\'artibody\']//p/text()'):
                 content = content + paragraph_process(paragraph)
 
         return content
