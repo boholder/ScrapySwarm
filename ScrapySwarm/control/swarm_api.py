@@ -166,7 +166,7 @@ def runAllSpider(keyword):
         logger.info(runAllSpider.__name__ + ' finished.')
 
     t = threading.Thread(target=prog,
-                         args=(keyword))
+                         args=(keyword,))
     t.daemon = True
     t.start()
 
@@ -211,6 +211,6 @@ def runMultiSpidersINDEPSettings(runconfiglist):
         logger.info(runMultiSpidersINDEPSettings.__name__ + ' finished.')
 
     t = threading.Thread(target=prog,
-                         args=(runconfiglist))
+                         args=(runconfiglist,))
     t.daemon = True
     t.start()

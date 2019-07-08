@@ -35,7 +35,7 @@ COLL_SPIDERS_LOG = 'spiders_log'
 COLL_API_LOG = 'api_log'
 
 # log file directory
-LOG_DIR = './log/'
+LOG_DIR = '../ScrapySwarm/log/'
 
 # spiders name list divide by type
 # (baidu search assist OR direct url)
