@@ -42,7 +42,7 @@ class BaiduSearchItem(Item):
     site = Field()
     # 搜索的关键字�exm: '中美贸易'
     keyword = Field()
-    # 是否已被对应爬虫使用�(int 0 没用过| 1 用过�
+    # 是否已被对应爬虫使用�(False 没用过| True 用过�
     waste = Field()
 
 

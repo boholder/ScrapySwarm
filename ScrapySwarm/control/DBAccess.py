@@ -208,7 +208,7 @@ class BDsearchUrlUtil(object):
         self.bdsearch = db[COLL_BAIDU_SREACH]
 
     '''
-    从mongodb中按'site'表项读取所有“新的('waste'=0)”url,
+    从mongodb中按'site'表项读取所有“新的('waste'=False)”url,
     组成url列表并返回列表
 
     @ param {string} site   exm: 'news.qq.com'
@@ -225,7 +225,7 @@ class BDsearchUrlUtil(object):
         query = {
             "site": site,
             "keyword": keyword,
-            "waste": 0
+            "waste": False
         }
 
         fields = {
@@ -241,7 +241,7 @@ class BDsearchUrlUtil(object):
 
     '''
     clockoff就是打卡下班的意思，当爬虫运行完时（如果能介入过程的话）
-    应该调用此函数，把这次query到的url的'waste'字段都打为1，
+    应该调用此函数，把这次query到的url的'waste'字段都打为True，
     标记这个url已查询
 
     @ param {string} site   exm: 'news.qq.com'
@@ -255,12 +255,12 @@ class BDsearchUrlUtil(object):
         query = {
             "site": site,
             "keyword": keyword,
-            "waste": 0
+            "waste": False
         }
 
         return self.bdsearch.update_many(
             query,
-            {"$set": {"waste": 1}}
+            {"$set": {"waste": True}}
         ).acknowledged
 
 

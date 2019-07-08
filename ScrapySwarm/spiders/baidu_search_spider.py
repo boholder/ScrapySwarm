@@ -62,7 +62,7 @@ class BaiduSearchSpider(scrapy.Spider):
             item['url'] = oneresult.get()
             item['crawl_time'] = getCurrentTime()
             item['site'] = self.getOrigSiteUrl(response.url)
-            item['waste'] = 0
+            item['waste'] = False
             item['keyword'] = self.getOrigKeyword(response.url)
             yield item
 
