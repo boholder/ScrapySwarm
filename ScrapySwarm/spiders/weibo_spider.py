@@ -28,7 +28,7 @@ class WeiboSpider(Spider):
     custom_settings = {
         # 请将Cookie替换成你自己的Cookie
          'CONCURRENT_REQUESTS': 16,
-        'DOWNLOAD_DELAY': 2,
+        'DOWNLOAD_DELAY': 3,
         'COOKIES_ENABLED':False,
         'DEFAULT_REQUEST_HEADERS' : {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
@@ -253,7 +253,7 @@ class WeiboSpider(Spider):
                 if all_page>=99:
                     all_page=99
 
-                for page_num in range(2,all_page):
+                for page_num in range(2,30):
                     page_url = response.url.replace(
                         'page=1', 'page={}'.format(page_num))
                     yield Request(page_url, self.parse_tweet,
@@ -344,7 +344,7 @@ class WeiboSpider(Spider):
                     self.q.append(tweet_item['_id'])
                     yield tweet_item
 
-                if self.times==3:
+                if self.times==0:
                     # 抓取该微博的评论信息
                     comment_url = 'https://weibo.cn/comment/hot/' \
                                   + tweet_item['weibo_url'].split('/')[-1] + '?rl=2'

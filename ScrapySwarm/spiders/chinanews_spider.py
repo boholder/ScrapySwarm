@@ -143,7 +143,7 @@ class China(Spider):
             item['_id'] = url + otherStyleTime
             item['keyword'] = self.querystr
             item['title'] = title
-            item['content'] = content
+            item['content'] = content.replace("\r","").replace("\n","")
             item['time'] = otherStyleTime
             item['url'] = url
             item['imgs'] = imgs
