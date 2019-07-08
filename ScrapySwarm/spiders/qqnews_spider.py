@@ -130,15 +130,20 @@ class QQNewsSpider(scrapy.Spider):
                 '//span[@class=\'pubTime\']/text()').get()
 
         # 如果时间拿到，格式化时间
-        # 两种原格式：
+        # 三种原格式：
         # 2011年07月12日10:33
+        # 2011年07月12日 10:33
         # 2017-08-23 06:30
         # 格式化为：
-        # 2017-08-23 06:30
+        # 2017-08-23-06-30-00
         if time:
-            time = formatTimeStr(time)
-
-        return time
+            timefmt = formatTimeStr(time)
+            if timefmt:
+                return timefmt
+            else:
+                return time
+        else:
+            return None
 
     @staticmethod
     def trygetPublishSource(response):

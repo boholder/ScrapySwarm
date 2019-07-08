@@ -129,8 +129,13 @@ class SinaNewsSpider(scrapy.Spider):
                     time = re.sub(r'<[^i].*?>', '', time)
 
         if time:
-            time = formatTimeStr(time)
-        return time
+            timefmt = formatTimeStr(time)
+            if timefmt:
+                return timefmt
+            else:
+                return time
+        else:
+            return None
 
     @staticmethod
     def trygetPublishSource(response):

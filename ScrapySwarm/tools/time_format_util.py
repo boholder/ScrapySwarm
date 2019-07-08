@@ -12,6 +12,7 @@
 '''
 import datetime
 import time
+import re
 
 '''
 返回被调用时的系统时间
@@ -49,6 +50,8 @@ def getUTCDateTimeObj():
 '''
 
 def formatTimeStr(time):
+    time = time.strip()
+
     try:
         # time exm: 2017-08-23 06:30
         if time[4] == '-':
@@ -71,4 +74,4 @@ def formatTimeStr(time):
                            .replace(':', '-') + '-00'
         return time
     except IndexError:
-        pass
+        return None
