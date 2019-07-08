@@ -49,23 +49,26 @@ def getUTCDateTimeObj():
 '''
 
 def formatTimeStr(time):
-    # time exm: 2017-08-23 06:30
-    if time[4] == '-':
-        time = time.replace(' ', '-') \
-                   .replace(':', '-') + '-00'
+    try:
+        # time exm: 2017-08-23 06:30
+        if time[4] == '-':
+            time = time.replace(' ', '-') \
+                       .replace(':', '-') + '-00'
 
-    # 2011年...
-    if time[4] == '年':
-        # 2019年06月21日 17:38
-        if time[11] == ' ':
-            time = time.replace('年', '-') \
-                       .replace('月', '-') \
-                       .replace('日 ', '-') \
-                       .replace(':', '-') + '-00'
-        # 2011年07月12日10:33
-        else:
-            time = time.replace('年', '-') \
-                       .replace('月', '-') \
-                       .replace('日', '-') \
-                       .replace(':', '-') + '-00'
-    return time
+        # 2011年...
+        if time[4] == '年':
+            # 2019年06月21日 17:38
+            if time[11] == ' ':
+                time = time.replace('年', '-') \
+                           .replace('月', '-') \
+                           .replace('日 ', '-') \
+                           .replace(':', '-') + '-00'
+            # 2011年07月12日10:33
+            else:
+                time = time.replace('年', '-') \
+                           .replace('月', '-') \
+                           .replace('日', '-') \
+                           .replace(':', '-') + '-00'
+        return time
+    except IndexError:
+        pass
