@@ -28,16 +28,9 @@
 
 '''
 import datetime
-import os
-
 import pymongo
 from pymongo.errors import DuplicateKeyError
-from scrapy import cmdline
-
 import ScrapySwarm.items as items
-
-from ScrapySwarm.tools.imag import download_pic
-
 from ScrapySwarm.settings import \
     LOCAL_MONGO_HOST, LOCAL_MONGO_PORT, MONGO_DB_NAME, \
     COLL_BAIDU_SREACH, COLL_CHINA_NEWS, COLL_WEIBO_COMMENTS, \
@@ -144,7 +137,7 @@ class UniqueDBInsertUtil(object):
                 last = self.Tweets.find_one({'_id': item['_id']})
                 if last:
                     # last=last[0]
-                    if len(last['crawl_time']) <= 3:
+                    if len(last['crawl_time']) <= 100:
                         last['crawl_time'].append(item['crawl_time'][0])
                         last['like_num'].append(item['like_num'][0])
                         last['repost_num'].append(item['repost_num'][0])
