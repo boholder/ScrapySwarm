@@ -17,7 +17,7 @@ import threading
 from ScrapySwarm.control.spider_run_control \
     import OneSpiderProcessor, MultiSpidersProcessor
 from ScrapySwarm.tools.spider_exist_util import exist
-from ScrapySwarm.control.log_util import APILogUtil
+from ScrapySwarm.control.log_utils import APILogUtil
 from ScrapySwarm.tools.time_format_util import getUTCDateTimeObj
 
 apilogutil = APILogUtil()

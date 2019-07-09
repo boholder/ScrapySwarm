@@ -33,7 +33,7 @@ from ScrapySwarm.items import QQNewsItem
 from ScrapySwarm.tools.time_format_util \
     import getCurrentTime, formatTimeStr
 
-from ScrapySwarm.control.log_util import SpiderLogUtil
+from ScrapySwarm.control.log_utils import SpiderLogUtil
 
 
 class QQNewsSpider(scrapy.Spider):
