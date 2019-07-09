@@ -17,3 +17,6 @@
 * /mysite, a django app, witch have a web interface to run all spiders.
   * Can only do run-all-spiders process.
   * You'd better to use python script to import Scrapyswarm.control.swarm_api, to run spiders.
+
+### How to run
+* https://github.com/boholder/ScrapySwarm/blob/master/ScrapySwarm/control/swarm_api.py
