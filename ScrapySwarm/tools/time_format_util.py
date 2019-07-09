@@ -12,7 +12,6 @@
 '''
 import datetime
 import time
-import re
 
 '''
 返回被调用时的系统时间

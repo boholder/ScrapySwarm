@@ -6,7 +6,10 @@
 本程序使用 [MongoDB](https://www.mongodb.com/) 作为数据库支持，  
 [pymongo](https://api.mongodb.com/python/current/) 库作为语言级DB驱动。
 
-运行本程序需要 **提前** 构建两个数据库：WebData，与 SwaemLog。  
+运行本程序 **不需要** 提前构建数据库中的集合(pymongo自动构建)，  
+但数据库本身还是 **需要** 提前建好的。  
+本程序用到两个数据库两个数据库：**WebData**，与 **SwarmLog** 。
+ 
 WebData 为爬虫抓取到的数据。  
 SwaemLog 为爬虫与爬虫主控API的日志。
 

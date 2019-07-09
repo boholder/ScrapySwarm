@@ -144,19 +144,19 @@ Just run all spiders that can be ran.
 '''
 
 
-def runAllSpider(keyword):
+def runAllSpiders(keyword):
     def prog(keyword):
         argsdict = {
             "keyword": keyword
         }
 
         logdict = {
-            "api_name": runAllSpider.__name__,
+            "api_name": runAllSpiders.__name__,
             "start_time": getUTCDateTimeObj(),
             "argsdict": argsdict
         }
 
-        logger.info('calling ' + runAllSpider.__name__)
+        logger.info('calling ' + runAllSpiders.__name__)
         apilogutil.api_start(logdict)
 
         m = MultiSpidersProcessor()
@@ -166,7 +166,7 @@ def runAllSpider(keyword):
         logdict['finish_reason'] = 'api finished normally'
 
         apilogutil.api_finish(logdict)
-        logger.info(runAllSpider.__name__ + ' finished.')
+        logger.info(runAllSpiders.__name__ + ' finished.')
 
     t = threading.Thread(target=prog,
                          args=(keyword,))
