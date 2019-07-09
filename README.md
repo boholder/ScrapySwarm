@@ -1,5 +1,7 @@
 # ScrapySwarm
 
+### About
+
 * Messy spiders crawl news.sina.com.cn, news.qq.com, chinanews.com, weibo.cn, based on Python Scrapy frame. 
   * This proj is serves for a web data analysing proj as a base module.
 * It's a remote cooperative practice project, so I can't guarantee that every spider works well. 
@@ -9,6 +11,10 @@
 * Documents and notes are mostly Chinese.
 * But I'll try my best to standardize this proj with my buddy.  
 ¯\\_(ツ)_/¯
+
+**Our project is a bit special:   
+It accepts a keyword and starts searching and crawling data that contains keywords，  
+instead of building a website topology in general.**
 
 ### Directory introduction:
 * /ScrapySwarm, yeh that's a scrapy project.
