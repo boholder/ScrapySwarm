@@ -42,10 +42,12 @@ Run one spider in project, get process's log in return
 @ param {int} repeatnum: Make the spider run several times in a chain
                             (None default)
 
-@ return {bool} if no log file generated, return process result
-         {list} log text, one index per line 
-                    (already remove '\n' behind every line)
-         {None} something throw error inside file I/O code
+# @ return {bool} if no log file generated, return process result
+#          {list} log text, one index per line 
+#                     (already remove '\n' behind every line)
+#          {None} something throw error inside file I/O code
+
+@ return {object} thread object, use it to check process status
 
 '''
 
@@ -130,6 +132,7 @@ def runOneSpider(spidername, keyword,
                                log, settings, repeatnum))
     t.daemon = True
     t.start()
+    return t
 
 
 '''
@@ -137,7 +140,7 @@ Just run all spiders that can be ran.
 
 @ param {str} keyword: only need it to config spider
 
-@ return {None}
+@ return {object} thread object, use it to check process status
 '''
 
 
@@ -183,7 +186,7 @@ Run more than one spiders with each one given different settings
         # https://docs.scrapy.org/en/latest/topics/
         # settings.html#topics-settings-ref
         
-@ return {None}
+@ return {object} thread object, use it to check process status
 '''
 
 
@@ -215,3 +218,4 @@ def runMultiSpidersINDEPSettings(runconfiglist):
                          args=(runconfiglist,))
     t.daemon = True
     t.start()
+    return t
