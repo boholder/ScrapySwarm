@@ -152,7 +152,6 @@ class DirectUrlSpiderProcessor(object):
             else:
                 return True
 
-
 class WeiboSpiderProcessor(object):
 
     def __init__(self):
@@ -187,14 +186,14 @@ class WeiboSpiderProcessor(object):
         if not runner:
             d.addBoth(lambda _: reactor.stop())
 
-        if self.loop < 3:
+        if  self.loop < 3:
             self.loop = self.loop + 1
             d.addBoth(lambda _: self.crawl(spidername, keyword, self.loop, log, runner, settings))
 
     def run(self, spidername, keyword, log=True, runner=None, settings=None):
         self.loop = 0
 
-        self.crawl(spidername, keyword, self.loop, log, runner, settings)
+        self.crawl(spidername, keyword,self.loop, log, runner, settings)
 
         if not runner:
             self.logger.info('Spider \"{0}\" begin to run...'
@@ -348,6 +347,8 @@ class MultiSpidersProcessor(object):
 
     def runAll(self, keyword):
         spiders = BDA_SPIDERS + ['chinanews_spider', 'weibo_spider']
+            #BDA_SPIDERS + ['chinanews_spider',"weibo_spider"]
+
 
         runconfiglist = []
 
