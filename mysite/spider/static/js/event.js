@@ -1,2 +1,0 @@
-$("body").height($(window).height());
-
