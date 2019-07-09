@@ -1,7 +1,7 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from ScrapySwarm.control.swarm_api import runAllSpider
+from ScrapySwarm.control.swarm_api import runAllSpiders
 # Create your views here.
 
 from .models import keyword_statistics as WebData
@@ -42,6 +42,6 @@ def start_spider(request):
         else:
             thread_dict[keyword]==None
 
-    t=runAllSpider(keyword)
+    t=runAllSpiders(keyword)
     thread_dict[keyword]=t
     return HttpResponse("1")

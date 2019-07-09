@@ -56,6 +56,12 @@ class SpiderLogUtil(object):
             self.logger.info('{0} start log successfully created'
                              .format(spider.name))
 
+    # def removeunfish(self):
+    #     unfinshs=self.logdb.find({'finish_time': None})
+    #     for unfinsh in unfinshs:
+    #
+    #         self.logdb.update({"_id":unfinsh['_id']}, {"$set": {"finish_reason": "中断" , "finish_time": }})
+
     def spider_finish(self, spider=scrapy.Spider):
         self.logger.info('{0} calling SpiderLogUtil.spider_finish'
                          .format(spider.name))
