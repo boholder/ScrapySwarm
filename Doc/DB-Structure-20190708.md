@@ -176,7 +176,8 @@ getCurrentTime()函数进行修改。
 
 * spiders_log
 
-	[各爬虫](https://github.com/boholder/ScrapySwarm/tree/master/ScrapySwarm/spiders) 的运行记录。
+	[各爬虫](https://github.com/boholder/ScrapySwarm/tree/master/ScrapySwarm/spiders) 的运行记录。  
+	基本是将 [scrapy的Stats Collection](https://docs.scrapy.org/en/latest/topics/stats.html)  导出。
 
 * keyword_statistics
 
@@ -195,13 +196,66 @@ getCurrentTime()函数进行修改。
 |`api_name`|String|被调用的api函数的函数名|"runOneSpider"|
 |`last_modified`|Date|最后修改时间|2019-07-08T00:46:38.904+00:00|
 |`start_time`|Date|开始运行时间|2019-07-08T00:46:36.651+00:00|
-|`finish_time`|Date|结束运行时间|
-2019-07-08T00:46:38.904+00:00|
-|`finish_reason`|String|结束原因(程序中判断+硬编码)|
-"api finished without a logfile"|
-|`argsdict`|Object|调用api函数时传入的参数|{"keyword":"中美贸易"}|
+|`finish_time`|Date|结束运行时间|2019-07-08T00:46:38.904+00:00|
+|`finish_reason`|String|结束原因(程序中判断+硬编码)|"api finished without a logfile"|
+|`argsdict`|Object|调用api函数时传入的参数字典|{"keyword":"中美贸易"}|
+
+* `argsdict` 中的键名受被调用的api函数的参数所控。
+
+* 所有Date对象都是**UTC格式**，  
+使用python的datetime.datetime.utcnow()生成。  
+**下同**。
 
 #### 2.2.2 spiders_log
 
+|属性|类型|描述|示例|
+|-|-|-|-|
+|`_id`|ObjectId|pymongo生成|5d1e9c3a33aafb07cc2ccd8d|
+|`spider`|String|爬虫名|"qqnews_spider"|
+|`last_modified`|Date|最后修改时间|2019-07-08T00:46:38.904+00:00|
+|`start_time`|Date|开始运行时间|2019-07-08T00:46:36.651+00:00|
+|`finish_time`|Date|结束运行时间|2019-07-08T00:46:38.904+00:00|
+|`finish_reason`|String|scrapy机制|"finished"|
+|`item_scraped_count`|Int32|本次运行抓取的条数|34|
+|`downloader/request_count`|Int32|爬虫向服务器请求的条数|34|
+|`downloader/response_count`|Int32|服务器回复爬虫的条数|34|
+|`downloader/response_bytes`|Int32|近似于抓取的数据大小|34|
+|`downloader/response_status_count/{code num}`|Int32|服务器回复的各状态码的计数|34|
+|`log_count/WARNING`|Int32|logger报出的warning级别的日志条数|2|
+|`log_count/ERROR`|Int32|同上，error级别的日志条数|2|
+
+* `spider` 爬虫名取scrapy爬虫的类属性 `name` ，  
+但因程序设计因素，实际上name要等同于所在文件的文件(模块)名。
+
+* `downloader/response_status_count/{code num}`   
+每有一种状态码，该字段就多一个。
+
+* `log_count/ERROR` , `log_count/WARNING`  
+scrapy框架中含有调用python logging库生成的logger，  
+程序员可以主动调用这些logger来添加日志，  
+scrapy所属的部分的log也会向这些logger中写。  
+其实5个级别的计数在scrapy的Stats Collection都有，  
+但只往数据库里记录了需要注意的两个严重级别。  
+（critical error要能报出来程序也爆了，也不会走到记log到DB这一步）
+
 #### 2.2.3 keyword_statistics
 
+|属性|类型|描述|示例|
+|-|-|-|-|
+|`_id`|ObjectId|pymongo生成|5d1e9c3a33aafb07cc2ccd8d|
+|`keyword`|String|搜索关键字|"中美贸易"|
+|`last_modified`|Date|最后修改时间|2019-07-08T00:46:38.904+00:00|
+|`item_num_dict`|Object|记录**哪个表中有几条**|{"news_qq":23}|
+|`old_item_num_dict`|Object|最后刷新前的记录|{"news_qq":12}|
+
+* `item_num_dict` 示例：  
+```
+{
+	"news_china":23,
+	"news_qq":41,
+	"news_sina":51,
+	"weibo_comment":241,
+	"weibo_infomation":0,
+	"weibo_tweets":213
+}
+```
