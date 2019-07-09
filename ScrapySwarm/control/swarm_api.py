@@ -169,6 +169,7 @@ def runAllSpider(keyword):
                          args=(keyword,))
     t.daemon = True
     t.start()
+    return t
 
 
 '''
