@@ -140,7 +140,6 @@ class China(Spider):
                 source = ts[1]
                 item['source'] = source
 
-            item['_id'] = url + otherStyleTime
             item['keyword'] = self.querystr
             item['title'] = title
             item['content'] = content.replace("\r","").replace("\n","")

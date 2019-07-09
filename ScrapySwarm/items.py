@@ -48,7 +48,6 @@ class BaiduSearchItem(Item):
 
 class ChinaNewsItem(Item):
     """中国新闻�"""
-    _id=Field()  #主键，由url+time构成
     url = Field()
     content=Field()  #内容，其中保留了图片的路径，�&隔断
     title = Field()
