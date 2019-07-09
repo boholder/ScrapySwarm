@@ -1,5 +1,7 @@
 # ScrapySwarm
 
+### About
+
 * Messy spiders crawl news.sina.com.cn, news.qq.com, chinanews.com, weibo.cn, based on Python Scrapy frame. 
   * This proj is serves for a web data analysing proj as a base module.
 * It's a remote cooperative practice project, so I can't guarantee that every spider works well. 
@@ -10,6 +12,10 @@
 * But I'll try my best to standardize this proj with my buddy.  
 ¯\\_(ツ)_/¯
 
+**Our project is a bit special:   
+It accepts a keyword and starts searching and crawling data that contains keywords，  
+instead of building a website topology in general.**
+
 ### Directory introduction:
 * /ScrapySwarm, yeh that's a scrapy project.
 * /Doc, documentions about ScrapySwarm.
@@ -17,3 +23,6 @@
 * /mysite, a django app, witch have a web interface to run all spiders.
   * Can only do run-all-spiders process.
   * You'd better to use python script to import Scrapyswarm.control.swarm_api, to run spiders.
+
+### How to run
+* https://github.com/boholder/ScrapySwarm/blob/master/ScrapySwarm/control/swarm_api.py
